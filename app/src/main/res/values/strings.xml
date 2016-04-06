@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FinalMobileProject</string>
+    <string name="title_activity_main_login">MainLogin</string>
+    <string name="title_activity_main_create_manager">MainCreateManager</string>
+    <string name="title_activity_main_activity_create_m">MainActivityCreateM</string>
+    <string name="title_activity_main_activity_create">MainActivityCreate</string>
+    <string name="title_activity_main_activity_tasks">MainActivityTasks</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_create_new_task">CreateNewTask</string>
+    <string name="title_activity_manager">Manager</string>
+    <string name="users_changes">USERS_CHANGED</string>
+
+</resources>
