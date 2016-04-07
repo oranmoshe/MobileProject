@@ -177,6 +177,12 @@ public class Controller {
         return dbLocal.Get_Total_Users();
     }
 
+    public boolean IsManager(){
+        if(ParseUser.getCurrentUser().getString("m_id").equals(ParseUser.getCurrentUser().getObjectId())){
+            return true;
+        }
+        return false;
+    }
 
     public  ArrayList<LocalTask> getLocalTasks(String key, String value){
         return dbLocal.Get_Tasks(key, value);
@@ -184,6 +190,17 @@ public class Controller {
 
     public  ArrayList<LocalTask> getLocalTasksByUserAndStatus(String assign, int status){
         return dbLocal.Get_Tasks_By_User_And_Status(assign, status);
+    }
+
+    public  ArrayList<LocalTask> getLocalTasksByManagerAndStatus(String assign, int status){
+        return dbLocal.Get_Tasks_By_Manager_And_Status(assign, status);
+    }
+
+    public  ArrayList<LocalTask> getLocalTasksByUser(String assign){
+        return dbLocal.Get_Tasks_By_User(assign);
+    }
+    public  ArrayList<LocalTask> getLocalTasksByManager(String assign){
+        return dbLocal.Get_Tasks_By_Manager(assign);
     }
 
     public  LocalTask getLocalTask(String key, String value){

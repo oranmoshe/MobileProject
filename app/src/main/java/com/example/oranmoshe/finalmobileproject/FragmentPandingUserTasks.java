@@ -53,9 +53,11 @@ public class FragmentPandingUserTasks extends Fragment {
     void LoadData(){
         // specify an adapter (see also next example)
         items = new ArrayList<RecycleItem>();
-        ArrayList<LocalTask> list = controller.getLocalTasksByUserAndStatus(userObjectID,2);
-        for (LocalTask lt: list) {
-            items.add(new RecycleItem(lt.get_name(),lt.get_t_id()));
+        ArrayList<LocalTask> list = null;
+        if(controller.IsManager()){
+            list = controller.getLocalTasksByManagerAndStatus(userObjectID,2);
+        }else{
+            list = controller.getLocalTasksByUserAndStatus(userObjectID,2);
         }
 
         mAdapter = new RecycleAdapterManager(items);
@@ -65,8 +67,10 @@ public class FragmentPandingUserTasks extends Fragment {
     int UNIQUE_FRAGMENT_GROUP_ID=2,MENU_OPTION_1=1,MENU_OPTION_2=2;
 
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_view);
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 2, 0, R.string.option_task_edit);
+        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 0, 0, R.string.option_task_view);
+        if(controller.IsManager()) {
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_edit);
+        }
     }
 
     public boolean onContextItemSelected(MenuItem item) {

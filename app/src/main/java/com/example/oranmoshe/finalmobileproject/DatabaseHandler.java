@@ -197,9 +197,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_USERS, new String[] { KEY_U_ID,
-                        KEY_M_ID, KEY_USERNAME, KEY_PASSWORD,KEY_EMAIL, KEY_PHONE,KEY_T_ID,KEY_TEAM}, KEY_U_ID + "=?",
-                new String[] { String.valueOf(u_id) }, null, null, null, null);
+        Cursor cursor = db.query(TABLE_USERS, new String[]{KEY_U_ID,
+                        KEY_M_ID, KEY_USERNAME, KEY_PASSWORD, KEY_EMAIL, KEY_PHONE, KEY_T_ID, KEY_TEAM}, KEY_U_ID + "=?",
+                new String[]{String.valueOf(u_id)}, null, null, null, null);
         // looping through all rows and adding to list
         LocalUser lu = null;
         if (cursor.moveToFirst()) {
@@ -272,6 +272,136 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+
+    public ArrayList<LocalTask>  Get_Tasks_By_Manager(String m_id){
+        try {
+            task_list.clear();
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            Cursor cursor = db.rawQuery("select * from " + TABLE_TASKS +
+                    " where " + KEY_MANAGER_ID + " = ?", new String[] { m_id});
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Log.d("size","1");
+                    LocalTask task = new LocalTask();
+                    String _t_id = cursor.getString(0);
+                    String _m_id = cursor.getString(1);
+                    String _name = cursor.getString(2);
+                    int _priority = cursor.getInt(3);
+                    String _location = cursor.getString(4);
+                    String _due_time = cursor.getString(5);
+                    String _assign = cursor.getString(6);
+                    int _accept = cursor.getInt(7);
+                    int _status = cursor.getInt(8);
+                    String _pic = cursor.getString(9);
+                    String _category = cursor.getString(10);
+                    LocalTask lt = new LocalTask(_t_id,_m_id,_name,_priority,_location,_due_time,_assign,_accept,_status,_pic,_category);
+                    task=lt;
+                    // Adding contact to list
+                    task_list.add(task);
+                } while (cursor.moveToNext());
+            }
+
+            // return contact list
+            cursor.close();
+            db.close();
+            return task_list;
+        } catch (Exception e) {
+            // TODO: handle exception
+            Log.e("all_contact", "" + e);
+        }
+
+        return task_list;
+    }
+
+    public ArrayList<LocalTask>  Get_Tasks_By_User(String u_id){
+        try {
+            task_list.clear();
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            Cursor cursor = db.rawQuery("select * from " + TABLE_TASKS +
+                    " where " + KEY_ASSIGN + " = ?", new String[] { u_id});
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Log.d("size","1");
+                    LocalTask task = new LocalTask();
+                    String _t_id = cursor.getString(0);
+                    String _m_id = cursor.getString(1);
+                    String _name = cursor.getString(2);
+                    int _priority = cursor.getInt(3);
+                    String _location = cursor.getString(4);
+                    String _due_time = cursor.getString(5);
+                    String _assign = cursor.getString(6);
+                    int _accept = cursor.getInt(7);
+                    int _status = cursor.getInt(8);
+                    String _pic = cursor.getString(9);
+                    String _category = cursor.getString(10);
+                    LocalTask lt = new LocalTask(_t_id,_m_id,_name,_priority,_location,_due_time,_assign,_accept,_status,_pic,_category);
+                    task=lt;
+                    // Adding contact to list
+                    task_list.add(task);
+                } while (cursor.moveToNext());
+            }
+
+            // return contact list
+            cursor.close();
+            db.close();
+            return task_list;
+        } catch (Exception e) {
+            // TODO: handle exception
+            Log.e("all_contact", "" + e);
+        }
+
+        return task_list;
+    }
+
+
+    public ArrayList<LocalTask>  Get_Tasks_By_Manager_And_Status(String m_id, int status){
+        try {
+            task_list.clear();
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            Cursor cursor = db.rawQuery("select * from " + TABLE_TASKS +
+                    " where " + KEY_MANAGER_ID + " = ? AND  " + KEY_STATUS + " = ?", new String[] { m_id, String.valueOf(status)});
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Log.d("size","1");
+                    LocalTask task = new LocalTask();
+                    String _t_id = cursor.getString(0);
+                    String _m_id = cursor.getString(1);
+                    String _name = cursor.getString(2);
+                    int _priority = cursor.getInt(3);
+                    String _location = cursor.getString(4);
+                    String _due_time = cursor.getString(5);
+                    String _assign = cursor.getString(6);
+                    int _accept = cursor.getInt(7);
+                    int _status = cursor.getInt(8);
+                    String _pic = cursor.getString(9);
+                    String _category = cursor.getString(10);
+                    LocalTask lt = new LocalTask(_t_id,_m_id,_name,_priority,_location,_due_time,_assign,_accept,_status,_pic,_category);
+                    task=lt;
+                    // Adding contact to list
+                    task_list.add(task);
+                } while (cursor.moveToNext());
+            }
+
+            // return contact list
+            cursor.close();
+            db.close();
+            return task_list;
+        } catch (Exception e) {
+            // TODO: handle exception
+            Log.e("all_contact", "" + e);
+        }
+
+        return task_list;
+    }
 
     public ArrayList<LocalTask>  Get_Tasks_By_User_And_Status(String u_id, int status){
         try {

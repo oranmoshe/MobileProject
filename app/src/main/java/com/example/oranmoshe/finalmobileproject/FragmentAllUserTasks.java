@@ -55,7 +55,12 @@ public class FragmentAllUserTasks extends Fragment {
     void LoadData(){
         // specify an adapter (see also next example)
         items = new ArrayList<RecycleItem>();
-        ArrayList<LocalTask> list = controller.getLocalTasks("assign",userObjectID);
+        ArrayList<LocalTask> list = null;
+        if(controller.IsManager()){
+             list = controller.getLocalTasksByManager(userObjectID);
+        }else{
+             list = controller.getLocalTasksByUser(userObjectID);
+        }
         for (LocalTask lt: list) {
             items.add(new RecycleItem(lt.get_name(),lt.get_t_id()));
         }
@@ -68,7 +73,9 @@ public class FragmentAllUserTasks extends Fragment {
 
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
         menu.add(UNIQUE_FRAGMENT_GROUP_ID, 0, 0, R.string.option_task_view);
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_edit);
+        if(controller.IsManager()) {
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_edit);
+        }
     }
     public boolean onContextItemSelected(MenuItem item) {
         if (getUserVisibleHint()) {

@@ -48,7 +48,7 @@ public class MainLogin extends AppCompatActivity {
 
     }
 
-    public void goToCreate(View v) {
+    public void goToListTasks(View v) {
         String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
         String password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
         ParseUser.logInInBackground(username, password, new LogInCallback() {
@@ -56,7 +56,7 @@ public class MainLogin extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (e == null) {
                     Intent intent = new Intent(getBaseContext(), UserTasks.class);
-                    controller.ImportData(user.getObjectId(), intent);
+                    controller.ImportData(user.getString("m_id"), intent);
                 } else {
                     Toast.makeText(getBaseContext(), "Invalid username or password..", Toast.LENGTH_LONG).show();
                 }
@@ -64,7 +64,7 @@ public class MainLogin extends AppCompatActivity {
         });
     }
 
-    public void goToListTasks(View v) {
+    public void goToCreate(View v) {
 
         String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
         String password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
@@ -73,8 +73,9 @@ public class MainLogin extends AppCompatActivity {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (e == null) {
+                    Log.d(user.getString("m_id"),user.getObjectId());
                     Intent intent  = new Intent(getBaseContext(),MainActivityCreateTeam.class);
-                    controller.ImportData(user.getObjectId(), intent);
+                    controller.ImportData(user.getString("m_id"), intent);
                 } else {
                     Toast.makeText(getBaseContext(), "Invalid username or password..", Toast.LENGTH_LONG).show();
                 }

@@ -1,6 +1,7 @@
 package com.example.oranmoshe.finalmobileproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class UserTasks extends AppCompatActivity {
     Controller controller;
@@ -43,6 +47,27 @@ public class UserTasks extends AppCompatActivity {
 
         controller = Controller.getInstance(this);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(controller.IsManager()) {
+            getMenuInflater().inflate(R.menu.manager, menu);
+        }
+        Log.d("manager","sdfssfsF");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuManagerEditGroup:
+                Intent i = new Intent(this,MainActivityCreateTeam.class);
+                this.startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private class CustomAdapter extends FragmentPagerAdapter {

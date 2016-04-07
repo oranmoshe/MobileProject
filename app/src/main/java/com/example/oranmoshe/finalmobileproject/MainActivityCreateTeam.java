@@ -82,8 +82,10 @@ public class MainActivityCreateTeam extends AppCompatActivity {
             ArrayList<LocalUser> users = controller.getLocalUsers(managerObjectID);
             items.clear();
             for(LocalUser lu:users){
-                items.add(new RecycleItem(lu.getEmail(),lu.get_id()));
-                Log.d("mail:",lu.getEmail());
+                if(!lu.get_id().equals(u_id)) {
+                    items.add(new RecycleItem(lu.getEmail(), lu.get_id()));
+                    Log.d("mail:", lu.getEmail());
+                }
             }
             mAdapter = new RecycleAdapterManager(items);
             mRecyclerView.setAdapter(mAdapter);

@@ -84,7 +84,7 @@ public class DatabaseParse extends Application {
                     }
                 }
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
-                query.whereEqualTo("assign", objectID);
+                query.whereEqualTo("m_id", objectID);
                 final List<ParseObject> list = new ArrayList<ParseObject>();
                 query.findInBackground(new FindCallback<ParseObject>() {
                     @Override
@@ -92,7 +92,7 @@ public class DatabaseParse extends Application {
 
                         if (e == null) {
                             for (ParseObject o : objects) {
-                                LocalTask lt = new LocalTask(o.getObjectId(), o.getString("u_id"), o.getString("name"),
+                                LocalTask lt = new LocalTask(o.getObjectId(), o.getString("m_id"), o.getString("name"),
                                         o.getInt("priority"), o.getString("location"), o.getString("due_time"),
                                         o.getString("assign"), o.getInt("accept"), o.getInt("status"), o.getString("pic"),
                                         o.getString("category"));
