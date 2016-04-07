@@ -31,6 +31,7 @@ public class TaskEdit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("killl", "2");
         setContentView(R.layout.activity_task_edit);
 
         String taskID = (String)getIntent().getSerializableExtra("TASKID");

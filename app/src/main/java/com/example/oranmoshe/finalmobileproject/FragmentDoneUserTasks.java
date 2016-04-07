@@ -38,7 +38,7 @@ public class FragmentDoneUserTasks extends Fragment {
 
         userObjectID = ParseUser.getCurrentUser().getObjectId();
 
-        mRecyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerViewAllTask);
+        mRecyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerViewDoneUserTask);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -61,41 +61,53 @@ public class FragmentDoneUserTasks extends Fragment {
         mAdapter = new RecycleAdapterManager(items);
         mRecyclerView.setAdapter(mAdapter);
     }
+    int UNIQUE_FRAGMENT_GROUP_ID=1,MENU_OPTION_1=1,MENU_OPTION_2=2;
+
+    public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
+        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_view);
+        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 2, 0, R.string.option_task_edit);
+    }
 
     public boolean onContextItemSelected(MenuItem item) {
+        if (getUserVisibleHint()) {
+            // Handle menu events and return true
+        } else
+            return false; // Pass the event to the next fragment
 
+        Log.d("isit","uniq");
         int position = -1;
         try {
             position =  ((RecycleAdapterManager)mAdapter).getPosition();
         } catch (Exception e) {
-            Log.d("dd", e.getLocalizedMessage(), e);
+
             return super.onContextItemSelected(item);
         }
-        switch (item.getItemId()) {
-            case R.id.id_option_view:
-                RecycleItem currentItem = items.get(position);
-                Intent intent = new Intent(getContext(),TaskView.class);
-                Bundle mBundle = new Bundle();
-                mBundle.putSerializable("TASKID", currentItem.GetUID());
-                intent.putExtras(mBundle);
-                getContext().startActivity(intent);
-                break;
-            case R.id.id_option_edit:
-                RecycleItem currentItem1 = items.get(position);
-                Intent intent1 = new Intent(getContext(),TaskEdit.class);
-                Bundle mBundle1 = new Bundle();
-                mBundle1.putSerializable("TASKID", currentItem1.GetUID());
-                intent1.putExtras(mBundle1);
-                getContext().startActivity(intent1);
-                break;
-        }
-        return super.onContextItemSelected(item);
-    }
+        //only this fragment's context menus have group ID of -1
+        if (item.getGroupId() == UNIQUE_FRAGMENT_GROUP_ID) {
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.setHeaderTitle("Friends Option");
-        getActivity().getMenuInflater().inflate(R.menu.menu_task_item, menu);
+
+            switch (item.getItemId()) {
+                case 1:
+                    RecycleItem currentItem = items.get(position);
+                    Intent intent = new Intent(getContext(),TaskView.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("TASKID", currentItem.GetUID());
+                    intent.putExtras(mBundle);
+                    getContext().startActivity(intent);
+                    break;
+                case 2:
+                    RecycleItem currentItem1 = items.get(position);
+                    Intent intent1 = new Intent(getContext(),TaskEdit.class);
+                    Bundle mBundle1 = new Bundle();
+                    mBundle1.putSerializable("TASKID", currentItem1.GetUID());
+                    intent1.putExtras(mBundle1);
+                    getContext().startActivity(intent1);
+                    break;
+            }
+        }
+        else
+        Log.d("isit","uniq");
+        return true;
     }
 
 }

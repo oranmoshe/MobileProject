@@ -9,14 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.parse.ParseUser;
 
@@ -45,7 +40,7 @@ public class FragmentAllUserTasks extends Fragment {
 
         userObjectID = ParseUser.getCurrentUser().getObjectId();
 
-        mRecyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerViewAllTask);
+        mRecyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerViewAllTaskee);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -69,8 +64,19 @@ public class FragmentAllUserTasks extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    public boolean onContextItemSelected(MenuItem item) {
+    int UNIQUE_FRAGMENT_GROUP_ID=0,MENU_OPTION_1=1,MENU_OPTION_2=2;
 
+    public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
+        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 0, 0, R.string.option_task_view);
+        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_edit);
+    }
+    public boolean onContextItemSelected(MenuItem item) {
+        if (getUserVisibleHint()) {
+            // Handle menu events and return true
+        } else
+            return false; // Pass the event to the next fragment
+
+        Log.d("isit","uniq");
         int position = -1;
         try {
             position =  ((RecycleAdapterManager)mAdapter).getPosition();
@@ -78,31 +84,31 @@ public class FragmentAllUserTasks extends Fragment {
             Log.d("dd", e.getLocalizedMessage(), e);
             return super.onContextItemSelected(item);
         }
-        switch (item.getItemId()) {
-            case R.id.id_option_view:
-                RecycleItem currentItem = items.get(position);
-                Intent intent = new Intent(getContext(),TaskView.class);
-                Bundle mBundle = new Bundle();
-                mBundle.putSerializable("TASKID", currentItem.GetUID());
-                intent.putExtras(mBundle);
-                getContext().startActivity(intent);
-                break;
-            case R.id.id_option_edit:
-                RecycleItem currentItem1 = items.get(position);
-                Intent intent1 = new Intent(getContext(),TaskEdit.class);
-                Bundle mBundle1 = new Bundle();
-                mBundle1.putSerializable("TASKID", currentItem1.GetUID());
-                intent1.putExtras(mBundle1);
-                getContext().startActivity(intent1);
-                break;
+        //only this fragment's context menus have group ID of -1
+        if (item.getGroupId() == UNIQUE_FRAGMENT_GROUP_ID) {
+            switch (item.getItemId()) {
+                case 0:
+                    RecycleItem currentItem = items.get(position);
+                    Intent intent = new Intent(getContext(),TaskView.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("TASKID", currentItem.GetUID());
+                    intent.putExtras(mBundle);
+                    getContext().startActivity(intent);
+                    break;
+                case 1:
+                    RecycleItem currentItem1 = items.get(position);
+                    Intent intent1 = new Intent(getContext(),TaskEdit.class);
+                    Bundle mBundle1 = new Bundle();
+                    mBundle1.putSerializable("TASKID", currentItem1.GetUID());
+                    intent1.putExtras(mBundle1);
+                    getContext().startActivity(intent1);
+                    break;
+            }
         }
-        return super.onContextItemSelected(item);
+        return true;
     }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.setHeaderTitle("Friends Option");
-        getActivity().getMenuInflater().inflate(R.menu.menu_task_item, menu);
-    }
-
 }
+
+
+
+
