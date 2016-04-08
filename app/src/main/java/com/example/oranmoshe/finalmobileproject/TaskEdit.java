@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ public class TaskEdit extends AppCompatActivity {
     TextView textViewLoaction = null;
     TextView textViewPriority = null;
     TextView textViewCategory = null;
-    TextView textViewName = null;
+    EditText editTextName = null;
     Spinner spinnerPriority = null;
     Spinner spinnerStatus = null;
     Spinner spinnerAssign = null;
@@ -41,8 +42,8 @@ public class TaskEdit extends AppCompatActivity {
          localUser = controller.getLocalUser(localTask.get_assign());
 
 
-        textViewName = (TextView)findViewById(R.id.textViewNameTaskEdit);
-        textViewName.setText(localTask.get_name());
+        editTextName = (EditText)findViewById(R.id.editTextTaskEditName);
+        editTextName.setText(localTask.get_name());
 
         textViewCategory = (TextView)findViewById(R.id.textViewCategoryTaskEdit);
         textViewCategory.setText(localTask.get_category());
@@ -106,20 +107,24 @@ public class TaskEdit extends AppCompatActivity {
             spinnerStatus.setSelection(spinnerPosition);
         }
 
-        spinnerAssign = (Spinner)findViewById(R.id.spinnerTaskViewAssign);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, android.R.id.text1);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerAssign.setAdapter(spinnerAdapter);
 
         ArrayList<LocalUser> users = controller.getLocalUsers(ParseUser.getCurrentUser().getObjectId());
+        ArrayList<String> usernameArr = new ArrayList<String>();
         for (LocalUser user: users) {
-                spinnerAdapter.add(user.getUsername());
+            if(!user.get_id().equals(ParseUser.getCurrentUser().getObjectId()))
+            usernameArr.add(user.getEmail());
         }
+        String assignMail = controller.getLocalUser(localTask.get_assign()).getEmail();
+        spinnerAssign = (Spinner) findViewById(R.id.spinnerTaskViewAssign);
+
+        ArrayAdapter<CharSequence> adapterAssign = new ArrayAdapter(this,android.R.layout.simple_spinner_item,usernameArr);
+        adapterAssign.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAssign.setAdapter(adapterAssign);
         if (!localTask.get_assign().equals(null)) {
-            int spinnerPosition = adapter.getPosition(localTask.get_assign());
+            int spinnerPosition = adapterAssign.getPosition(assignMail);
             spinnerAssign.setSelection(spinnerPosition);
         }
-        spinnerAdapter.notifyDataSetChanged();
+        adapterAssign.notifyDataSetChanged();
 
 
         Button btnSave = (Button) findViewById(R.id.buttonSave);
@@ -158,7 +163,7 @@ public class TaskEdit extends AppCompatActivity {
                 status=1;
                 break;
         }
-        controller.UpdateTask(localTask.get_t_id(), localTask.get_name(), priority,
+        controller.UpdateTask(localTask.get_t_id(), editTextName.getText().toString(), priority,
                 textViewLoaction.getText().toString(),textViewDueTime.getText().toString(),
                 user.get_id(), localTask.get_accept(),
                 status,localTask.get_pic(),textViewCategory.getText().toString());

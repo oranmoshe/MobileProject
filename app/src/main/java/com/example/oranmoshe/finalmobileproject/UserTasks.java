@@ -13,10 +13,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.Parse;
+import com.parse.ParseUser;
+
 public class UserTasks extends AppCompatActivity {
     Controller controller;
     TabLayout tabLayout;
     ViewPager viewPager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,15 +59,25 @@ public class UserTasks extends AppCompatActivity {
         if(controller.IsManager()) {
             getMenuInflater().inflate(R.menu.manager, menu);
         }
+        else{
+            getMenuInflater().inflate(R.menu.user, menu);
+        }
         Log.d("manager","sdfssfsF");
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i = null;
         switch (item.getItemId()) {
             case R.id.menuManagerEditGroup:
-                Intent i = new Intent(this,MainActivityCreateTeam.class);
+                i = new Intent(this,MainActivityCreateTeam.class);
+                this.startActivity(i);
+                return true;
+            case R.id.menuUserLogout:
+            case R.id.menuManagerLogout:
+                ParseUser.logOut();
+                i = new Intent(this,MainLogin.class);
                 this.startActivity(i);
                 return true;
             default:
@@ -72,7 +87,7 @@ public class UserTasks extends AppCompatActivity {
 
     private class CustomAdapter extends FragmentPagerAdapter {
 
-        String [] fragments = {"All","Panding","Done"};
+        String [] fragments = {"All","Panding","InProgress","Done"};
 
         public CustomAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
             super(supportFragmentManager);
@@ -86,11 +101,15 @@ public class UserTasks extends AppCompatActivity {
                 case 1:
                     return new FragmentPandingUserTasks();
                 case 2:
+                    return new FragmentInProgressUserTasks();
+                case 3:
                     return new FragmentDoneUserTasks();
                 default:
                     return null;
             }
         }
+
+
 
         @Override
         public int getCount() {

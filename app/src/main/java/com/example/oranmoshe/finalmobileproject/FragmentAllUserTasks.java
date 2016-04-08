@@ -52,6 +52,12 @@ public class FragmentAllUserTasks extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoadData();
+    }
+
     void LoadData(){
         // specify an adapter (see also next example)
         items = new ArrayList<RecycleItem>();
@@ -69,7 +75,7 @@ public class FragmentAllUserTasks extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    int UNIQUE_FRAGMENT_GROUP_ID=0,MENU_OPTION_1=1,MENU_OPTION_2=2;
+    int UNIQUE_FRAGMENT_GROUP_ID=0;
 
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
         menu.add(UNIQUE_FRAGMENT_GROUP_ID, 0, 0, R.string.option_task_view);

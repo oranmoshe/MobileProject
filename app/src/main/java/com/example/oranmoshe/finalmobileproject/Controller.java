@@ -84,6 +84,9 @@ public class Controller {
         db.ImportData(m_id, dbLocal, intent, ctx);
     }
 
+    public String GetManager(){
+        return ParseUser.getCurrentUser().getString("m_id");
+    }
 
     public void RemoveUser(String id){
         db.DeleteUser(id, dbLocal);
@@ -127,6 +130,10 @@ public class Controller {
 
     public List<LocalUser> getUsers(){
         return this.dbLocal.Get_Users();
+    }
+
+    public List<LocalTask> getTasks(){
+        return this.dbLocal.Get_Tasks();
     }
 
     public  ArrayList<LocalUser> getLocalUsers(String m_id){

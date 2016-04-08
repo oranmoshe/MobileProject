@@ -19,11 +19,14 @@
         android:paddingBottom="20dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="TaskApp-Login"
-            android:id="@+id/textView14" />
+            android:text="Login"
+            android:gravity="center"
+            android:id="@+id/textView14"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,9 +71,9 @@
         android:onClick="goToCreate"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout16"
-        android:paddingTop="10dp"
         android:layout_below="@+id/linearLayoutPassword"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -87,10 +90,10 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:paddingTop="20dp"
+        android:layout_alignParentStart="false"
         android:layout_below="@+id/linearLayout16"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:paddingTop="10dp">
 
         <Button
             style="?android:attr/buttonStyleSmall"

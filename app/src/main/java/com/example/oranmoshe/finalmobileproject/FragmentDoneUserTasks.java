@@ -50,6 +50,12 @@ public class FragmentDoneUserTasks extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoadData();
+    }
+
     void LoadData(){
         // specify an adapter (see also next example)
         items = new ArrayList<RecycleItem>();
@@ -67,7 +73,7 @@ public class FragmentDoneUserTasks extends Fragment {
         mAdapter = new RecycleAdapterManager(items);
         mRecyclerView.setAdapter(mAdapter);
     }
-    int UNIQUE_FRAGMENT_GROUP_ID=1,MENU_OPTION_1=1,MENU_OPTION_2=2;
+    int UNIQUE_FRAGMENT_GROUP_ID=1;
 
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
         menu.add(UNIQUE_FRAGMENT_GROUP_ID, 0, 0, R.string.option_task_view);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalMobileProject</string>
+    <string name="app_name">Task App</string>
     <string name="title_activity_main_login">MainLogin</string>
     <string name="title_activity_main_create_manager">MainCreateManager</string>
     <string name="title_activity_main_activity_create_m">MainActivityCreateM</string>

@@ -60,7 +60,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_PIC = "pic";
     private static final String KEY_CATEGORY = "category";
 
-
     private final ArrayList<LocalTask> task_list = new ArrayList<LocalTask>();
 
     public DatabaseHandler(Context context) {
@@ -108,12 +107,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
     /**
      * All CRUD(Create, Read, Update, Delete) Operations
      */
-
-
 
     // Adding new task
     public void Add_Task(LocalTask task) {
@@ -216,6 +212,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return lu;
     }
+
     // Getting single contact
     LocalUser Get_User_By_Username(String username) {
         user_list.clear();
@@ -242,9 +239,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return lu;
     }
 
-
-
-
     // Getting single contact
     ArrayList<LocalUser> Get_Users(String m_id) {
         user_list.clear();
@@ -270,8 +264,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return user_list;
     }
-
-
 
     public ArrayList<LocalTask>  Get_Tasks_By_Manager(String m_id){
         try {
@@ -358,7 +350,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return task_list;
     }
-
 
     public ArrayList<LocalTask>  Get_Tasks_By_Manager_And_Status(String m_id, int status){
         try {
@@ -536,7 +527,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
-
     public void UpdateTeamName(String teamName, String u_id) {
         try {
             LocalUser lu = Get_User(u_id);
@@ -552,6 +542,51 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         for (LocalUser lu: localUsers) {
              Delete_User(lu.get_id());
         }
+    }
+
+    // Getting All Contacts
+    public ArrayList<LocalTask> Get_Tasks() {
+        try {
+            task_list.clear();
+
+            // Select All Query
+            String selectQuery = "SELECT  * FROM " + TABLE_TASKS;
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            LocalUser lu;
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    LocalTask task = new LocalTask();
+                    String _t_id = cursor.getString(0);
+                    String _m_id = cursor.getString(1);
+                    String _name = cursor.getString(2);
+                    int _priority = cursor.getInt(3);
+                    String _location = cursor.getString(4);
+                    String _due_time = cursor.getString(5);
+                    String _assign = cursor.getString(6);
+                    int _accept = cursor.getInt(7);
+                    int _status = cursor.getInt(8);
+                    String _pic = cursor.getString(9);
+                    String _category = cursor.getString(10);
+                    LocalTask lt = new LocalTask(_t_id,_m_id,_name,_priority,_location,_due_time,_assign,_accept,_status,_pic,_category);
+                    task=lt;
+                    // Adding contact to list
+                    task_list.add(task);
+                } while (cursor.moveToNext());
+            }
+
+            // return contact list
+            cursor.close();
+            db.close();
+            return task_list;
+        } catch (Exception e) {
+            // TODO: handle exception
+            Log.e("all_contact", "" + e);
+        }
+
+        return task_list;
     }
 
     // Getting All Contacts
@@ -589,8 +624,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return user_list;
     }
 
-
-
     // Updating single contact
     public int Update_User(LocalUser user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -608,7 +641,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return db.update(TABLE_USERS, values, KEY_U_ID + " = ?",
                 new String[] { String.valueOf(user.get_id()) });
     }
-
 
     // Updating single task
     public int Update_Task(String t_id, String name, int priority, String location, String due_time, String assign,

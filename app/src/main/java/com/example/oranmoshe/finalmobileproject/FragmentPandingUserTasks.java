@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
@@ -50,26 +51,36 @@ public class FragmentPandingUserTasks extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoadData();
+    }
+
     void LoadData(){
         // specify an adapter (see also next example)
         items = new ArrayList<RecycleItem>();
         ArrayList<LocalTask> list = null;
         if(controller.IsManager()){
-            list = controller.getLocalTasksByManagerAndStatus(userObjectID,2);
+            list = controller.getLocalTasksByManagerAndStatus(userObjectID,1);
         }else{
-            list = controller.getLocalTasksByUserAndStatus(userObjectID,2);
+            list = controller.getLocalTasksByUserAndStatus(userObjectID,1);
+        }
+
+        for (LocalTask task:list) {
+            items.add(new RecycleItem(task.get_name(),task.get_t_id()));
         }
 
         mAdapter = new RecycleAdapterManager(items);
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    int UNIQUE_FRAGMENT_GROUP_ID=2,MENU_OPTION_1=1,MENU_OPTION_2=2;
+    int UNIQUE_FRAGMENT_GROUP_ID=2;
 
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 0, 0, R.string.option_task_view);
+        menu.add(UNIQUE_FRAGMENT_GROUP_ID, 4, 0, R.string.option_task_view);
         if(controller.IsManager()) {
-            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_edit);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 5, 0, R.string.option_task_edit);
         }
     }
 
@@ -92,15 +103,18 @@ public class FragmentPandingUserTasks extends Fragment {
 
 
             switch (item.getItemId()) {
-                case 1:
+                case 4:
                     RecycleItem currentItem = items.get(position);
-                    Intent intent = new Intent(getContext(),TaskView.class);
+
                     Bundle mBundle = new Bundle();
                     mBundle.putSerializable("TASKID", currentItem.GetUID());
+
+                    Intent intent = new Intent(getContext(),TaskView.class);
                     intent.putExtras(mBundle);
                     getContext().startActivity(intent);
+                    Toast.makeText(getContext(),String.valueOf(currentItem.GetUID()),Toast.LENGTH_LONG).show();
                     break;
-                case 2:
+                case 5:
                     RecycleItem currentItem1 = items.get(position);
                     Intent intent1 = new Intent(getContext(),TaskEdit.class);
                     Bundle mBundle1 = new Bundle();

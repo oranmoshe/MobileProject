@@ -3,6 +3,7 @@ package com.example.oranmoshe.finalmobileproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,5 +38,9 @@ public class TaskView extends AppCompatActivity {
 
         TextView textViewDueTime = (TextView)findViewById(R.id.textViewDueTime);
         textViewDueTime.setText(localTask.get_due_time());
+
+        TextView textViewStatus = (TextView) findViewById(R.id.textViewStaus);
+        textViewStatus.setText(String.valueOf(localTask.get_status()));
+
     }
 }

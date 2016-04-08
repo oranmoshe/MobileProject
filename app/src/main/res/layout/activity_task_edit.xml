@@ -15,12 +15,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Task Name"
-            android:id="@+id/textViewNameTaskEdit"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:text="Name"
+            android:id="@+id/textViewTaskEditName1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextTaskEditName"
+            android:layout_weight="1"
+            android:textColor="#4e65ff"
+            android:textColorHint="#4e65ff" />
+
     </LinearLayout>
 
     <LinearLayout
