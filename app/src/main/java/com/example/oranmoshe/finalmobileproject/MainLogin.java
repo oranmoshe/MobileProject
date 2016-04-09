@@ -57,6 +57,7 @@ public class MainLogin extends AppCompatActivity {
                 if (e == null) {
                     Intent intent = new Intent(getBaseContext(), UserTasks.class);
                     controller.ImportData(user.getString("m_id"), intent);
+                    controller.SetCurrentUser(controller.getLocalUser(ParseUser.getCurrentUser().getObjectId()));
                 } else {
                     Toast.makeText(getBaseContext(), "Invalid username or password..", Toast.LENGTH_LONG).show();
                 }
@@ -73,10 +74,8 @@ public class MainLogin extends AppCompatActivity {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (e == null) {
-                    Log.d(user.getString("m_id"), user.getObjectId());
                     Intent intent  = new Intent(getBaseContext(),MainActivityCreateTeam.class);
-                    controller.ImportData(user.getString("m_id"), intent);
-
+                    controller.ImportData(user.getObjectId(), intent);
                 } else {
                     Toast.makeText(getBaseContext(), "Invalid username or password..", Toast.LENGTH_LONG).show();
                 }

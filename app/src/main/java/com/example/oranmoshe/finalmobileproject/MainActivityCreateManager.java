@@ -39,7 +39,7 @@ public class MainActivityCreateManager extends AppCompatActivity {
                 EditText password = (EditText)findViewById(R.id.editTextPasswordManager);
                 EditText phone = (EditText)findViewById(R.id.editTextPhoneManager);
                 Intent intent = new Intent(MainActivityCreateManager.this,MainActivityCreateTeam.class);
-                controller.AddUser("0", username.getText().toString(), password.getText().toString(), username.getText().toString(), phone.getText().toString(), 0, "", getBaseContext());
+                controller.AddUser("0", username.getText().toString(), password.getText().toString(), username.getText().toString(), phone.getText().toString(), 0, "", null);
             }
         });
 

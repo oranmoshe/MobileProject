@@ -35,15 +35,15 @@ public class MainActivityCreateTeam extends AppCompatActivity {
     private String team = "";
     private String u_id = "";
     Controller controller = Controller.getInstance(this);
-    private String managerObjectID = "";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_activity_create_team);
         items = new ArrayList<RecycleItem>();
-        managerObjectID = ParseUser.getCurrentUser().getObjectId();
         mRecyclerView = (RecyclerView) findViewById(R.id.cardList);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -53,7 +53,7 @@ public class MainActivityCreateTeam extends AppCompatActivity {
         addEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WaitForChanges();
+              //  WaitForChanges();
                 Intent intent = new Intent(getBaseContext(), AddUser.class);
                 startActivity(intent);
             }
@@ -77,12 +77,12 @@ public class MainActivityCreateTeam extends AppCompatActivity {
 
     void UpdateData(){
         try {
-            u_id = ParseUser.getCurrentUser().getObjectId();
+            String u_id = ParseUser.getCurrentUser().getObjectId();
             team = ParseUser.getCurrentUser().getString("team") + "-" +  ParseUser.getCurrentUser().getObjectId();
-            ArrayList<LocalUser> users = controller.getLocalUsers(managerObjectID);
+            ArrayList<LocalUser> users = controller.getLocalUsers(ParseUser.getCurrentUser().getObjectId());
             items.clear();
             for(LocalUser lu:users){
-                if(!lu.get_id().equals(u_id)) {
+                if(!lu.get_id().equals(ParseUser.getCurrentUser().getObjectId())) {
                     items.add(new RecycleItem(lu.getEmail(), lu.get_id()));
                     Log.d("mail:", lu.getEmail());
                 }
@@ -99,45 +99,46 @@ public class MainActivityCreateTeam extends AppCompatActivity {
         }
     }
 
-    private void WaitForChanges(){
-        (new Thread(new Runnable()
-        {
-
-            @Override
-            public void run()
-            {
-                while (!Thread.interrupted())
-                    try
-                    {
-                        Thread.sleep(100);
-                        runOnUiThread(new Runnable() // start actions in UI thread
-                        {
-
-                            @Override
-                            public void run()
-                            {
-                                if (controller.IsUsersChanged()) {
-                                    List<LocalUser> users = controller.getUsers();
-                                    Toast.makeText(getBaseContext(), "changes: " + users.size() + " size..", Toast.LENGTH_LONG).show();
-                                    UpdateData();
-                                    controller.IsUsersChangedSeen();
-                                    Thread.interrupted();
-                                }
-                            }
-                        });
-                    }
-                    catch (InterruptedException e)
-                    {
-                        // ooops
-                    }
-            }
-        })).start(); // the while thread will start in BG thread
-
-    }
+//    private void WaitForChanges(){
+//        (new Thread(new Runnable()
+//        {
+//
+//            @Override
+//            public void run()
+//            {
+//                while (!Thread.interrupted())
+//                    try
+//                    {
+//                        Thread.sleep(100);
+//                        runOnUiThread(new Runnable() // start actions in UI thread
+//                        {
+//
+//                            @Override
+//                            public void run()
+//                            {
+//                                if (controller.IsUsersChanged()) {
+//                                    List<LocalUser> users = controller.getUsers();
+//                                    Toast.makeText(getBaseContext(), "changes: " + users.size() + " size..", Toast.LENGTH_LONG).show();
+//                                    UpdateData();
+//                                    controller.IsUsersChangedSeen();
+//                                    Thread.interrupted();
+//                                }
+//                            }
+//                        });
+//                    }
+//                    catch (InterruptedException e)
+//                    {
+//                        // ooops
+//                    }
+//            }
+//        })).start(); // the while thread will start in BG thread
+//
+//    }
 
     @Override
     protected void onResume() {
         super.onResume();
+        UpdateData();
     }
 
     @Override
@@ -170,10 +171,10 @@ public class MainActivityCreateTeam extends AppCompatActivity {
                 UpdateData();
                 break;
             case R.id.id_option_delete:
-                WaitForChanges();
                 RecycleItem currentItem = items.get(position);
-                String i = currentItem.GetUID();
-                controller.RemoveUser(i);
+                String u_id = currentItem.GetUID();
+                controller.RemoveUser(u_id);
+                ((RecycleAdapterManager) mAdapter).remove(position);
                 break;
         }
         return super.onContextItemSelected(item);

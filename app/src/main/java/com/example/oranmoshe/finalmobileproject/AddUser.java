@@ -1,5 +1,6 @@
 package com.example.oranmoshe.finalmobileproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,17 +13,21 @@ import android.widget.EditText;
 
 import com.parse.ParseUser;
 
+
+
 public class AddUser extends AppCompatActivity {
     Controller controller = Controller.getInstance(this);
     String username = null;
     String password = null;
     String u_id = "0";
+    public static Activity fa;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
-
+        fa = this;
         Button btn = (Button)findViewById(R.id.btnAddUserAdd);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,10 +37,8 @@ public class AddUser extends AppCompatActivity {
                 password = ((EditText)findViewById(R.id.etAddUserPassword)).getText().toString();
                 ParseUser pu = ParseUser.getCurrentUser();
                 if(pu!= null) {
-                    String u_id = (ParseUser.getCurrentUser()).getString("u_id");
-                    String team = (ParseUser.getCurrentUser()).getString("team");
-                    u_id = controller.AddUser(u_id, username, password, username, password, 0, "", controller.getContext());
-                    finish();
+                    String u_id = (ParseUser.getCurrentUser()).getObjectId();
+                    controller.AddUser(u_id, username, password, username, password, 0, "", fa);
                 }
             }
         });

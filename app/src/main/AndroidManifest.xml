@@ -43,6 +43,8 @@
         </activity>
         <activity android:name=".TaskView" >
         </activity>
+        <activity android:name=".TaskNew" >
+        </activity>
         <activity android:name=".AddUser" >
         </activity>
         <activity android:name=".LocalActivity" >

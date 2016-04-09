@@ -31,6 +31,7 @@ public class Controller {
     private DatabaseParse db;
     private static String username;
     private static String password;
+    private static LocalUser currentUser;
     public static Context ctx;
 
     private Controller(Context _ctx){
@@ -46,6 +47,13 @@ public class Controller {
             ctx = _ctx;
         }
         return mInstance;
+    }
+
+    public void SetCurrentUser(LocalUser user){
+        this.currentUser = user;
+    }
+    public LocalUser GetCurrentUser(){
+        return this.currentUser;
     }
 
     public void setContext(Context _ctx){
@@ -89,21 +97,14 @@ public class Controller {
     }
 
     public void RemoveUser(String id){
-        db.DeleteUser(id, dbLocal);
+        LocalUser user = getLocalUser(id);
+        dbLocal.Delete_User(id);
+        db.DeleteUser(user.getUsername(),user.getPassword());
     }
 
     public String AddUser(String  m_id, String username, String password, String email, String phone, int t_id,
-                          String team, Context context){
-        ParseUser parseUser = new ParseUser();
-        parseUser.put("username", username);
-        parseUser.put("password", phone);
-        parseUser.put("passwordClone", phone);
-        parseUser.put("phone", phone);
-        parseUser.put("email", email);
-        parseUser.put("t_id", 0);
-        parseUser.put("team", ParseUser.getCurrentUser().getString("team"));
-        parseUser.put("m_id", ParseUser.getCurrentUser().getObjectId());
-        db.SignUp(parseUser, dbLocal);
+                          String team, Activity fa){
+        db.SignUp(m_id, username, password, email, phone, t_id, team, dbLocal, fa);
         return "";
     }
 
@@ -113,10 +114,8 @@ public class Controller {
     }
 
     public void AddTask(String m_id, String name, int priority, String location, String due_time, String assign,
-                        int accept, int status, String pic, String category){
-        LocalTask lt = new LocalTask(m_id,  name,  priority,  location,  due_time,  assign, accept,  status,  pic,  category);
-        db.AddTask(m_id, name, priority, location, due_time, assign, accept, status, pic, category);
-        dbLocal.Add_Task(lt);
+                        int accept, int status, String pic, String category, Activity fa){
+        db.AddTask(m_id,name,priority,location,due_time,assign,accept,status,pic,category,dbLocal,fa);
     }
 
     public boolean IsUsersChanged(){
@@ -167,7 +166,7 @@ public class Controller {
         ParseUser parseUser=new ParseUser();
         parseUser.setUsername(username);
         parseUser.setPassword(password);
-        db.SignUp(parseUser, dbLocal);
+        //db.SignUp(parseUser, dbLocal);
     }
 
     public void Login(String _username, String _password){

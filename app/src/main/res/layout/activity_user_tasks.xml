@@ -22,4 +22,16 @@
         android:id="@+id/viewTabPager"
         android:layout_below="@+id/viewTabLayout"
         android:layout_centerHorizontal="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_alignBottom="@+id/viewTabPager"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="15dp" />
+
 </RelativeLayout>

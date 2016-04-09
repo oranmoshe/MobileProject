@@ -195,7 +195,7 @@ public class DatabaseParse extends Application {
         // Get User
         ParseUser pu = (GetUser(id)).get(0);
         // Login As user
-        Login(pu.getString("username"),pu.getString("passwordClone"));
+        Login(pu.getString("username"), pu.getString("passwordClone"));
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("u_id", pu.getInt("u_id"));
@@ -222,32 +222,44 @@ public class DatabaseParse extends Application {
         });
     }
 
-    protected void SignUp(final ParseUser parseUser, final DatabaseHandler dh) {
+    protected void SignUp(String  m_id, String username, String password, String email, String phone, int t_id,
+                          String team, final DatabaseHandler dh,final Activity fa) {
+
+        final ParseUser parseUser = new ParseUser();
+        parseUser.put("username", username);
+        parseUser.put("password", phone);
+        parseUser.put("passwordClone", phone);
+        parseUser.put("phone", phone);
+        parseUser.put("email", email);
+        parseUser.put("t_id", t_id);
+        parseUser.put("team", team);
+        parseUser.put("m_id", m_id);
 
         final ParseUser parseUserManager = ParseUser.getCurrentUser();
-
         if (parseUserManager!=null) {
             // do stuff with the user
             ParseUser.logOut();
         }
         parseUser.signUpInBackground(new SignUpCallback() {
-                                         @Override
-                                         public void done(com.parse.ParseException e) {
-                                             ParseUser.logInInBackground(parseUserManager.getUsername(), parseUserManager.getString("passwordClone"), new LogInCallback() {
-                                                 public void done(ParseUser user, com.parse.ParseException e) {
-                                                     if (user != null) {
-                                                         final LocalUser localUser = new LocalUser(parseUser.getObjectId(),
-                                                                 parseUser.getString("m_id"), parseUser.getString("username"),
-                                                                 parseUser.getString("passwordClone"), parseUser.getString("email"),
-                                                                 parseUser.getString("phone"), parseUser.getInt("t_id"), parseUser.getString("team"));
-                                                         dh.Add_User(localUser);
-                                                     } else {
-                                                     }
-                                                 }
-                                             });
-                                         }
-                                     }
-        );
+             @Override
+             public void done(com.parse.ParseException e) {
+                 ParseUser.logInInBackground(parseUserManager.getUsername(), parseUserManager.getString("passwordClone"), new LogInCallback() {
+                     public void done(ParseUser user, com.parse.ParseException e) {
+                         if (user != null) {
+                             final LocalUser localUser = new LocalUser(parseUser.getObjectId(),
+                                     parseUser.getString("m_id"), parseUser.getString("username"),
+                                     parseUser.getString("passwordClone"), parseUser.getString("email"),
+                                     parseUser.getString("phone"), parseUser.getInt("t_id"), parseUser.getString("team"));
+                             dh.Add_User(localUser);
+                             if(fa!=null){
+                                 fa.finish();
+                             }
+                         } else {
+                         }
+                     }
+                 });
+             }
+         });
     }
 
     public void UpdateTeamName(String teamName){
@@ -258,20 +270,28 @@ public class DatabaseParse extends Application {
 
     public  void AddTask(final String m_id, final String name, final int priority,
                             final String location, final String due_time, final String assign,
-                            final int accept, final int status, final String pic, final String category) {
+                            final int accept, final int status, final String pic, final String category,
+                         final DatabaseHandler dh, final Activity fa) {
 
-        ParseObject testObject = new ParseObject("Tasks");
-        testObject.put("m_id", "ddd");
-        testObject.put("name", "ddd");
-        testObject.put("priority", 0);
-        testObject.put("location", "ddd");
-        testObject.put("due_time", "ddd");
-        testObject.put("assign", "oo");
-        testObject.put("accept", 0);
-        testObject.put("status", 0);
-        testObject.put("pic", "ddd");
-        testObject.put("category", "ddd");
-        testObject.saveInBackground();
+        final ParseObject testObject = new ParseObject("Tasks");
+        testObject.put("m_id", m_id);
+        testObject.put("name", name);
+        testObject.put("priority", priority);
+        testObject.put("location", location);
+        testObject.put("due_time", due_time);
+        testObject.put("assign", assign);
+        testObject.put("accept", accept);
+        testObject.put("status", status);
+        testObject.put("pic", pic);
+        testObject.put("category", category);
+        testObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(com.parse.ParseException e) {
+                LocalTask lt = new LocalTask(testObject.getObjectId(),m_id,  name,  priority,  location,  due_time,  assign, accept,  status,  pic,  category);
+                dh.Add_Task(lt);
+                fa.finish();
+            }
+        });
     }
 
 
@@ -396,7 +416,7 @@ public class DatabaseParse extends Application {
         });
     }
 
-    public  void  DeleteUser(final String objectID, final DatabaseHandler dblocal) {
+    public  void  DeleteUser(final String username,final String password) {
         //Logout Admin
         ParseUser currentUser = ParseUser.getCurrentUser();
         final String managerUsername = currentUser.getUsername();
@@ -404,8 +424,7 @@ public class DatabaseParse extends Application {
         if (currentUser!=null) {
             ParseUser.logOut();
         }
-        LocalUser deletedUser = dblocal.Get_User(objectID);
-        ParseUser.logInInBackground(deletedUser.getUsername(), deletedUser.getPassword(), new LogInCallback() {
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, com.parse.ParseException e) {
                 if (user != null) {
                     user.deleteInBackground(new DeleteCallback() {
@@ -415,7 +434,7 @@ public class DatabaseParse extends Application {
                                     ParseUser.logInInBackground(managerUsername, managerPassword, new LogInCallback() {
                                         public void done(ParseUser user, com.parse.ParseException e) {
                                             if (user != null) {
-                                                dblocal.Delete_User(objectID);
+
                                             } else {
                                             }
                                         }
