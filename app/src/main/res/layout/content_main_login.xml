@@ -81,7 +81,6 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:id="@+id/buttonLogin"
-            android:onClick="goToListTasks"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
@@ -100,8 +99,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Signup"
-            android:id="@+id/button4"
-            android:onClick="goToCreate" />
+            android:id="@+id/buttonSignup" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -41,25 +41,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout10">
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Done"
-            android:id="@+id/buttonCreateTeamDone"
-            android:layout_below="@+id/linearLayout4"
-            android:layout_centerHorizontal="true" />
-    </LinearLayout>
-
 
     <LinearLayout
         android:orientation="horizontal"
@@ -70,13 +51,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:weightSum="1">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -119,8 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/linearLayout10"
-        android:layout_below="@+id/linearLayout13">
+        android:layout_below="@+id/linearLayout13"
+        android:id="@+id/linearLayout10">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/cardList"
@@ -131,6 +105,34 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/linearLayout11" />
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:gravity="left|right">
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabSave"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@android:drawable/ic_menu_save"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="right">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabMail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/ic_dialog_email" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

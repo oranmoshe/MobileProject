@@ -14,9 +14,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
 
 public class UserTasks extends AppCompatActivity {
     Controller controller;
@@ -57,11 +60,17 @@ public class UserTasks extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Click action
-                Intent intent = new Intent(getBaseContext(), TaskNew.class);
-                startActivity(intent);
+                ArrayList<LocalUser> list = controller.getLocalUsers(ParseUser.getCurrentUser().getString("m_id"));
+                if(list.size() >1) {
+                    Intent intent = new Intent(getBaseContext(), TaskNew.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getBaseContext(),"There are no users in the team, please add team members.",Toast.LENGTH_LONG).show();
+                }
             }
         });
-        if(controller.IsManager()){
+        if(!ParseUser.getCurrentUser().getString("m_id").equals(ParseUser.getCurrentUser().getObjectId())){
             fab.setVisibility(View.GONE);
         }
 
@@ -102,7 +111,7 @@ public class UserTasks extends AppCompatActivity {
 
     private class CustomAdapter extends FragmentPagerAdapter {
 
-        String [] fragments = {"All","Panding","InProgress","Done"};
+        String [] fragments = {"All","Pending","InProgress","Done"};
 
         public CustomAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
             super(supportFragmentManager);

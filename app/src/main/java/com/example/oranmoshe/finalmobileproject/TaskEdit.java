@@ -21,9 +21,8 @@ public class TaskEdit extends AppCompatActivity {
     LocalTask localTask =  null;
     LocalUser localUser = null;
     TextView textViewDueTime = null;
-    TextView textViewLoaction = null;
-    TextView textViewPriority = null;
-    TextView textViewCategory = null;
+    Spinner spinnerCategory = null;
+    Spinner spinnerLocation = null;
     EditText editTextName = null;
     Spinner spinnerPriority = null;
     Spinner spinnerStatus = null;
@@ -41,19 +40,24 @@ public class TaskEdit extends AppCompatActivity {
 
          localUser = controller.getLocalUser(localTask.get_assign());
 
+        spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
+        ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this,
+                R.array.category, android.R.layout.simple_spinner_item);
+        adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategory.setAdapter(adapterCategory);
+
+        spinnerLocation = (Spinner)findViewById(R.id.spinnerLocation);
+        ArrayAdapter<CharSequence> adapterLocation = ArrayAdapter.createFromResource(this,
+                R.array.location, android.R.layout.simple_spinner_item);
+        adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLocation.setAdapter(adapterLocation);
+
 
         editTextName = (EditText)findViewById(R.id.editTextTaskEditName);
         editTextName.setText(localTask.get_name());
 
-        textViewCategory = (TextView)findViewById(R.id.textViewCategoryTaskEdit);
-        textViewCategory.setText(localTask.get_category());
-
-        textViewLoaction = (TextView)findViewById(R.id.textViewLoactionTaskEdit);
-        textViewLoaction.setText(localTask.get_location());
-
         textViewDueTime = (TextView)findViewById(R.id.textViewDueTimeTaskEdit);
         textViewDueTime.setText(localTask.get_due_time());
-
 
         spinnerPriority = (Spinner) findViewById(R.id.spinnerTaskViewPriority);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -93,7 +97,7 @@ public class TaskEdit extends AppCompatActivity {
                 statusValue="Done";
                 break;
             case 2:
-                statusValue= "In Progress";
+                statusValue= "In Process";
                 break;
             case 1:
                 statusValue="Pending";
@@ -152,11 +156,12 @@ public class TaskEdit extends AppCompatActivity {
                 break;
         }
         int status = 0;
-        switch (spinnerStatus.getSelectedItem().toString()){
+        String statusStr = spinnerStatus.getSelectedItem().toString();
+        switch (statusStr){
             case "Done":
                 status=3;
                 break;
-            case "In Progress":
+            case "In Process":
                 status=2;
                 break;
             case "Pending":
@@ -164,9 +169,9 @@ public class TaskEdit extends AppCompatActivity {
                 break;
         }
         controller.UpdateTask(localTask.get_t_id(), editTextName.getText().toString(), priority,
-                textViewLoaction.getText().toString(),textViewDueTime.getText().toString(),
+                spinnerLocation.getSelectedItem().toString(),textViewDueTime.getText().toString(),
                 user.get_id(), localTask.get_accept(),
-                status,localTask.get_pic(),textViewCategory.getText().toString());
+                status,localTask.get_pic(),spinnerCategory.getSelectedItem().toString());
         finish();
     }
 

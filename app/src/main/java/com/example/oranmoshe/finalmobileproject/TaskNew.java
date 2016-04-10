@@ -21,9 +21,9 @@ public class TaskNew extends AppCompatActivity {
     Controller controller = Controller.getInstance(this);
 
     TextView textViewDueTime = null;
-    TextView textViewLoaction = null;
+    Spinner spinnerLocation = null;
     TextView textViewPriority = null;
-    TextView textViewCategory = null;
+    Spinner spinnerCategory = null;
     EditText editTextName = null;
     Spinner spinnerPriority = null;
     Spinner spinnerStatus = null;
@@ -37,8 +37,19 @@ public class TaskNew extends AppCompatActivity {
         fa = this;
 
         editTextName = (EditText)findViewById(R.id.editTextTaskEditName);
-        textViewCategory = (TextView)findViewById(R.id.textViewCategoryTaskEdit);
-        textViewLoaction = (TextView)findViewById(R.id.textViewLoactionTaskEdit);
+
+        spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
+        ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this,
+                R.array.category, android.R.layout.simple_spinner_item);
+        adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategory.setAdapter(adapterCategory);
+
+        spinnerLocation = (Spinner)findViewById(R.id.spinnerLocation);
+        ArrayAdapter<CharSequence> adapterLocation = ArrayAdapter.createFromResource(this,
+                R.array.location, android.R.layout.simple_spinner_item);
+        adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLocation.setAdapter(adapterLocation);
+
         textViewDueTime = (TextView)findViewById(R.id.textViewDueTimeTaskEdit);
         spinnerPriority = (Spinner) findViewById(R.id.spinnerTaskViewPriority);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -47,12 +58,8 @@ public class TaskNew extends AppCompatActivity {
         spinnerPriority.setAdapter(adapter);
         String priorityValue = null;
 
-        spinnerStatus = (Spinner) findViewById(R.id.spinnerTaskViewStatus);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.status, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerStatus.setAdapter(adapter2);
-
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linearLayout25);
+        linearLayout.setVisibility(View.GONE);
 
         ArrayList<LocalUser> users = controller.getLocalUsers(ParseUser.getCurrentUser().getObjectId());
         ArrayList<String> usernameArr = new ArrayList<String>();
@@ -95,10 +102,11 @@ public class TaskNew extends AppCompatActivity {
                 priority=1;
                 break;
         }
+
         String  u_id = controller.getLocalUserByUsername(spinnerAssign.getSelectedItem().toString()).get_id();
         controller.AddTask(ParseUser.getCurrentUser().getObjectId(), editTextName.getText().toString(), priority,
-                textViewLoaction.getText().toString(), textViewDueTime.getText().toString(), u_id,0, 1, " ",
-                textViewCategory.getText().toString(), fa);
+                spinnerLocation.getSelectedItem().toString(), textViewDueTime.getText().toString(), u_id,0, 1, " ",
+                spinnerCategory.getSelectedItem().toString(), fa);
 
     }
 

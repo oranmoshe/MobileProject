@@ -2,7 +2,7 @@
 <resources>
     <string-array name="status">
         <item>Done</item>
-        <item>In Progress</item>
+        <item>In Process</item>
         <item>Pending</item>
     </string-array>
 </resources>

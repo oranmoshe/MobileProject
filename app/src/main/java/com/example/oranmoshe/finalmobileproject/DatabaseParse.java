@@ -14,9 +14,11 @@ import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.Parse;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.PushService;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
@@ -49,7 +51,7 @@ public class DatabaseParse extends Application {
         ParseObject.registerSubclass(User.class);
         ParseObject.registerSubclass(Task.class);
         Parse.initialize(this);
-
+        ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 
 
@@ -262,6 +264,91 @@ public class DatabaseParse extends Application {
         });
     }
 
+    protected void SignUpManager(final String  m_id, final String username,final String password, String email, String phone, int t_id,
+                          String team, final DatabaseHandler dh,final Activity fa, final Intent intent) {
+        final ParseUser parseUser = new ParseUser();
+        parseUser.put("username", username);
+        parseUser.put("password", phone);
+        parseUser.put("passwordClone", phone);
+        parseUser.put("phone", phone);
+        parseUser.put("email", email);
+        parseUser.put("t_id", t_id);
+        parseUser.put("team", team);
+        final ParseUser parseUserManager = ParseUser.getCurrentUser();
+        if (parseUserManager!=null) {
+            // do stuff with the user
+            ParseUser.logOut();
+        }
+        parseUser.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(com.parse.ParseException e) {
+
+
+                ParseUser.logInInBackground(username, password, new LogInCallback() {
+                    public void done(ParseUser user, com.parse.ParseException e) {
+                        if (user != null) {
+                            user.put("m_id", user.getObjectId());
+                            user.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(com.parse.ParseException e) {
+                                    final LocalUser localUser = new LocalUser(parseUser.getObjectId(),
+                                            parseUser.getString("m_id"), parseUser.getString("username"),
+                                            parseUser.getString("passwordClone"), parseUser.getString("email"),
+                                            parseUser.getString("phone"), parseUser.getInt("t_id"), parseUser.getString("team"));
+                                    dh.Add_User(localUser);
+                                    if (fa != null) {
+                                        fa.startActivity(intent);
+                                        fa.finish();
+                                    }
+                                }
+                            });
+
+                        } else {
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+
+    public void UpdateUser(final String  m_id, final String username, final String password, final String email, final String phone, final int t_id,
+                           final String team, final DatabaseHandler dh,final Activity fa){
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            public void done(ParseUser user, com.parse.ParseException e) {
+                if (user != null) {
+                    user.put("m_id",m_id);
+                    user.put("password",password);
+                    user.put("passwordClone",password);
+                    user.put("email",email);
+                    user.put("t_id",t_id);
+                    user.put("team",team);
+                    user.put("phone",phone);
+                    user.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(com.parse.ParseException e) {
+                            LocalUser localUser = dh.Get_User(ParseUser.getCurrentUser().getObjectId());
+                            localUser.setTeam(team);
+                            localUser.setPhone(phone);
+                            localUser.setUsername(username);
+                            localUser.setEmail(email);
+                            localUser.setM_ID(m_id);
+                            localUser.setPassword(password);
+                            localUser.setT_ID(t_id);
+                            dh.Update_User(localUser);
+                            if (fa != null) {
+                                fa.startActivity(new Intent(getBaseContext(),MainActivityCreateTeam.class));
+                                fa.finish();
+                            }
+
+                        }
+                    });
+                } else {
+                }
+            }
+        });
+
+    }
     public void UpdateTeamName(String teamName){
         ParseUser pu = ParseUser.getCurrentUser();
         pu.put("team", teamName);

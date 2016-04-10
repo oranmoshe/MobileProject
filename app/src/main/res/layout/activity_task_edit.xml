@@ -48,10 +48,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <EditText
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewCategoryTaskEdit"
+            android:id="@+id/spinnerCategory"
             android:layout_weight="1" />
 
     </LinearLayout>
@@ -63,18 +63,18 @@
         android:id="@+id/linearLayout4TaskEdit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout2TaskEdit">
+        android:layout_below="@+id/linearLayout2TaskEdit"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Loaction"
             android:id="@+id/textViewLoaction1TaskEdit" />
-
-        <EditText
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewLoactionTaskEdit"
+            android:id="@+id/spinnerLocation"
             android:layout_weight="1" />
 
     </LinearLayout>

@@ -10,7 +10,7 @@
         ></item>
     <item
         android:id="@+id/option_user_task_in_progress"
-        android:title="@string/option_user_task_in_progress"
+        android:title="@string/option_user_task_in_process"
         ></item>
     <item
         android:id="@+id/id_option_user_edit"

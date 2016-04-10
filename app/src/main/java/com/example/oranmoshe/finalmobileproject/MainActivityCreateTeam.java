@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +37,7 @@ public class MainActivityCreateTeam extends AppCompatActivity {
     private String team = "";
     private String u_id = "";
     Controller controller = Controller.getInstance(this);
-
+    ArrayList<LocalUser> users;
 
 
     @Override
@@ -49,24 +51,42 @@ public class MainActivityCreateTeam extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // buttons
-        Button addEmail = (Button)findViewById(R.id.buttonAddEmail);
+        Button addEmail = (Button) findViewById(R.id.buttonAddEmail);
         addEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  WaitForChanges();
+                //  WaitForChanges();
                 Intent intent = new Intent(getBaseContext(), AddUser.class);
                 startActivity(intent);
             }
         });
 
-        Button done = (Button)findViewById(R.id.buttonCreateTeamDone);
-        done.setOnClickListener(new View.OnClickListener() {
+
+        FloatingActionButton fabmail = (FloatingActionButton) findViewById(R.id.fabMail);
+        fabmail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                String emails[] = new String[users.size()];
+                int counter = 0;
+                for (LocalUser user : users) {
+                    if (!user.get_id().equals(ParseUser.getCurrentUser().getObjectId())) {
+                        emails[counter] = (user.getEmail());
+                        counter++;
+                    }
+                }
+                sendEmail(emails);
+            }
+        });
+
+        FloatingActionButton fabsave = (FloatingActionButton) findViewById(R.id.fabSave);
+        fabsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 String team = ((EditText) findViewById(R.id.editTextTeamName)).getText().toString();
-                String u_id = ParseUser.getCurrentUser().getString("u_id");
+                String u_id = ParseUser.getCurrentUser().getObjectId();
                 controller.UpdateTeamName(team, u_id);
-                Toast.makeText(getBaseContext(), team, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(),UserTasks.class);
+                startActivity(intent);
             }
         });
 
@@ -75,11 +95,20 @@ public class MainActivityCreateTeam extends AppCompatActivity {
 
     }
 
+    protected void sendEmail(String[] TO) {
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, TO);
+        email.putExtra(Intent.EXTRA_SUBJECT, "Participation in the group\n");
+        email.putExtra(Intent.EXTRA_TEXT, "Congratulations, you are participating in a group.\nTo download the app: Link\n");
+        email.setType("message/rfc822");
+        startActivity(Intent.createChooser(email, "Choose an Email client :"));
+    }
+
     void UpdateData(){
         try {
             String u_id = ParseUser.getCurrentUser().getObjectId();
-            team = ParseUser.getCurrentUser().getString("team") + "-" +  ParseUser.getCurrentUser().getObjectId();
-            ArrayList<LocalUser> users = controller.getLocalUsers(ParseUser.getCurrentUser().getObjectId());
+            team = ParseUser.getCurrentUser().getString("team");
+            users = controller.getLocalUsers(ParseUser.getCurrentUser().getObjectId());
             items.clear();
             for(LocalUser lu:users){
                 if(!lu.get_id().equals(ParseUser.getCurrentUser().getObjectId())) {

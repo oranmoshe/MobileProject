@@ -1,6 +1,7 @@
 package com.example.oranmoshe.finalmobileproject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
@@ -33,6 +34,7 @@ public class Controller {
     private static String password;
     private static LocalUser currentUser;
     public static Context ctx;
+
 
     private Controller(Context _ctx){
         db = new DatabaseParse();
@@ -108,6 +110,12 @@ public class Controller {
         return "";
     }
 
+    public void AddManager(String  m_id, String username, String password, String email, String phone, int t_id,
+                          String team, Activity fa, final Intent intent){
+        db.SignUpManager(m_id, username, password, email, phone, t_id, team, dbLocal, fa, intent);
+    }
+
+
     public void UpdateTeamName(String teamName, String u_id){
         db.UpdateTeamName(teamName);
         dbLocal.UpdateTeamName(teamName, u_id);
@@ -166,16 +174,17 @@ public class Controller {
         db.UpdateTaskStatus(t_id, status);
     }
 
-    public void UpdateUser(String m_id, String username, String password, String email, String phone, int t_id, String team){
-        // Add User Locally
-        LocalUser localUser = new LocalUser( m_id,  username,  password,  email,  phone,  t_id, team);
-        dbLocal.Add_User(localUser);
-        // Add User Cloud
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        ParseUser parseUser=new ParseUser();
-        parseUser.setUsername(username);
-        parseUser.setPassword(password);
-        //db.SignUp(parseUser, dbLocal);
+    public void UpdateTaskPic(String t_id,String pic){
+        // Update Task Locally
+        dbLocal.Update_Task_Pic(t_id, pic);
+        // Update Task Cloud
+        db.UpdateTaskPic(t_id, pic);
+    }
+
+    public String UpdateUser(String  m_id, String username, String password, String email, String phone, int t_id,
+                          String team, Activity fa){
+        db.UpdateUser(m_id, username, password, email, phone, t_id, team, dbLocal, fa);
+        return "";
     }
 
     public void Login(String _username, String _password){
@@ -219,7 +228,7 @@ public class Controller {
     }
 
     public  LocalTask getLocalTask(String key, String value){
-        return dbLocal.Get_Task(key,value);
+        return dbLocal.Get_Task(key, value);
     }
 
 }
