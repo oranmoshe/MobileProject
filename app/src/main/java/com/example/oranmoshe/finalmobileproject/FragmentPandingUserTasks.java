@@ -81,6 +81,10 @@ public class FragmentPandingUserTasks extends Fragment {
         menu.add(UNIQUE_FRAGMENT_GROUP_ID, 4, 0, R.string.option_task_view);
         if(controller.IsManager()) {
             menu.add(UNIQUE_FRAGMENT_GROUP_ID, 5, 0, R.string.option_task_edit);
+        }else{
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 2, 0, R.string.option_user_task_pending);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 3, 0, R.string.option_user_task_in_progress);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 4, 0, R.string.option_user_task_done);
         }
     }
 
@@ -103,7 +107,7 @@ public class FragmentPandingUserTasks extends Fragment {
 
 
             switch (item.getItemId()) {
-                case 4:
+                case 0:
                     RecycleItem currentItem = items.get(position);
 
                     Bundle mBundle = new Bundle();
@@ -114,13 +118,31 @@ public class FragmentPandingUserTasks extends Fragment {
                     getContext().startActivity(intent);
                     Toast.makeText(getContext(),String.valueOf(currentItem.GetUID()),Toast.LENGTH_LONG).show();
                     break;
-                case 5:
+                case 1:
                     RecycleItem currentItem1 = items.get(position);
                     Intent intent1 = new Intent(getContext(),TaskEdit.class);
                     Bundle mBundle1 = new Bundle();
                     mBundle1.putSerializable("TASKID", currentItem1.GetUID());
                     intent1.putExtras(mBundle1);
                     getContext().startActivity(intent1);
+                    break;
+                case 2:
+                    RecycleItem currentItem2 = items.get(position);
+                    controller.UpdateTaskStatus(currentItem2.GetUID(), 1);
+                    getActivity().finish();
+                    startActivity(getActivity().getIntent());
+                    break;
+                case 3:
+                    RecycleItem currentItem3 = items.get(position);
+                    controller.UpdateTaskStatus(currentItem3.GetUID(), 2);
+                    getActivity().finish();
+                    startActivity(getActivity().getIntent());
+                    break;
+                case 4:
+                    RecycleItem currentItem4 = items.get(position);
+                    controller.UpdateTaskStatus(currentItem4.GetUID(),3);
+                    getActivity().finish();
+                    startActivity(getActivity().getIntent());
                     break;
             }
         }

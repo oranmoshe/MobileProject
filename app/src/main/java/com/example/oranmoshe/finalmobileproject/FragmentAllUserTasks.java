@@ -82,6 +82,11 @@ public class FragmentAllUserTasks extends Fragment {
         if(controller.IsManager()) {
             menu.add(UNIQUE_FRAGMENT_GROUP_ID, 1, 0, R.string.option_task_edit);
         }
+        else{
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 2, 0, R.string.option_user_task_pending);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 3, 0, R.string.option_user_task_in_progress);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, 4, 0, R.string.option_user_task_done);
+        }
     }
     public boolean onContextItemSelected(MenuItem item) {
         if (getUserVisibleHint()) {
@@ -115,6 +120,24 @@ public class FragmentAllUserTasks extends Fragment {
                     mBundle1.putSerializable("TASKID", currentItem1.GetUID());
                     intent1.putExtras(mBundle1);
                     getContext().startActivity(intent1);
+                    break;
+                case 2:
+                    RecycleItem currentItem2 = items.get(position);
+                    controller.UpdateTaskStatus(currentItem2.GetUID(), 1);
+                    getActivity().finish();
+                    startActivity(getActivity().getIntent());
+                    break;
+                case 3:
+                    RecycleItem currentItem3 = items.get(position);
+                    controller.UpdateTaskStatus(currentItem3.GetUID(), 2);
+                    getActivity().finish();
+                    startActivity(getActivity().getIntent());
+                    break;
+                case 4:
+                    RecycleItem currentItem4 = items.get(position);
+                    controller.UpdateTaskStatus(currentItem4.GetUID(),3);
+                    getActivity().finish();
+                    startActivity(getActivity().getIntent());
                     break;
             }
         }

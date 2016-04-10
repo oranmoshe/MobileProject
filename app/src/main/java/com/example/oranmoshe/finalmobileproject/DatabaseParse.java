@@ -149,16 +149,16 @@ public class DatabaseParse extends Application {
 
                 if (e == null) {
                     for (ParseObject o : objects) {
-                        LocalTask lt = new LocalTask(o.getObjectId(), o.getString("u_id"),o.getString("name"),
+                        LocalTask lt = new LocalTask(o.getObjectId(), o.getString("u_id"), o.getString("name"),
                                 o.getInt("priority"), o.getString("location"), o.getString("dueTime"),
                                 o.getString("assign"), o.getInt("accept"), o.getInt("status"), o.getString("pic"),
                                 o.getString("category"));
-                         dh.Add_Task(lt);
+                        dh.Add_Task(lt);
                     }
 
                 } else {
                 }
-                if(intent!=null) {
+                if (intent != null) {
                     intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
@@ -241,25 +241,25 @@ public class DatabaseParse extends Application {
             ParseUser.logOut();
         }
         parseUser.signUpInBackground(new SignUpCallback() {
-             @Override
-             public void done(com.parse.ParseException e) {
-                 ParseUser.logInInBackground(parseUserManager.getUsername(), parseUserManager.getString("passwordClone"), new LogInCallback() {
-                     public void done(ParseUser user, com.parse.ParseException e) {
-                         if (user != null) {
-                             final LocalUser localUser = new LocalUser(parseUser.getObjectId(),
-                                     parseUser.getString("m_id"), parseUser.getString("username"),
-                                     parseUser.getString("passwordClone"), parseUser.getString("email"),
-                                     parseUser.getString("phone"), parseUser.getInt("t_id"), parseUser.getString("team"));
-                             dh.Add_User(localUser);
-                             if(fa!=null){
-                                 fa.finish();
-                             }
-                         } else {
-                         }
-                     }
-                 });
-             }
-         });
+            @Override
+            public void done(com.parse.ParseException e) {
+                ParseUser.logInInBackground(parseUserManager.getUsername(), parseUserManager.getString("passwordClone"), new LogInCallback() {
+                    public void done(ParseUser user, com.parse.ParseException e) {
+                        if (user != null) {
+                            final LocalUser localUser = new LocalUser(parseUser.getObjectId(),
+                                    parseUser.getString("m_id"), parseUser.getString("username"),
+                                    parseUser.getString("passwordClone"), parseUser.getString("email"),
+                                    parseUser.getString("phone"), parseUser.getInt("t_id"), parseUser.getString("team"));
+                            dh.Add_User(localUser);
+                            if (fa != null) {
+                                fa.finish();
+                            }
+                        } else {
+                        }
+                    }
+                });
+            }
+        });
     }
 
     public void UpdateTeamName(String teamName){
@@ -287,7 +287,7 @@ public class DatabaseParse extends Application {
         testObject.saveInBackground(new SaveCallback() {
             @Override
             public void done(com.parse.ParseException e) {
-                LocalTask lt = new LocalTask(testObject.getObjectId(),m_id,  name,  priority,  location,  due_time,  assign, accept,  status,  pic,  category);
+                LocalTask lt = new LocalTask(testObject.getObjectId(), m_id, name, priority, location, due_time, assign, accept, status, pic, category);
                 dh.Add_Task(lt);
                 fa.finish();
             }
@@ -330,6 +330,50 @@ public class DatabaseParse extends Application {
 
     }
 
+    public  void UpdateTaskPic(final String t_id, final String pic) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
+        query.whereEqualTo("objectId", t_id);
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+
+                if (e == null) {
+                    if (objects.size() > 0) {
+                        ParseObject po = objects.get(0);
+                        po.put("pic", pic);
+                        po.saveInBackground();
+                    }
+                    Log.d("saved", objects.get(0).get("name").toString());
+                } else {
+                    Log.d("not saved", "no entries found");
+                }
+            }
+        });
+
+    }
+    public  void UpdateTaskStatus(final String t_id, final int status) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
+        query.whereEqualTo("objectId", t_id);
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+
+                if (e == null) {
+                    if (objects.size() > 0) {
+                        ParseObject po = objects.get(0);
+                        po.put("status", status);
+                        po.saveInBackground();
+                    }
+                    Log.d("saved", objects.get(0).get("name").toString());
+                } else {
+                    Log.d("not saved", "no entries found");
+                }
+            }
+        });
+
+    }
     public  List<ParseObject>  GetTasks(String key, int id) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Task");
         query.whereEqualTo(key, id);

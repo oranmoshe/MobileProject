@@ -115,8 +115,10 @@ public class Controller {
 
     public void AddTask(String m_id, String name, int priority, String location, String due_time, String assign,
                         int accept, int status, String pic, String category, Activity fa){
-        db.AddTask(m_id,name,priority,location,due_time,assign,accept,status,pic,category,dbLocal,fa);
+        db.AddTask(m_id, name, priority, location, due_time, assign, accept, status, pic, category, dbLocal, fa);
     }
+
+
 
     public boolean IsUsersChanged(){
         return dbLocal.IsUsersChanged();
@@ -155,6 +157,13 @@ public class Controller {
         // Update Task Cloud
         db.UpdateTask(t_id, name, priority, location, due_time, assign,
                 accept, status, pic, category);
+    }
+
+    public void UpdateTaskStatus(String t_id,int status){
+        // Update Task Locally
+        dbLocal.Update_Task_Status(t_id, status);
+        // Update Task Cloud
+        db.UpdateTaskStatus(t_id, status);
     }
 
     public void UpdateUser(String m_id, String username, String password, String email, String phone, int t_id, String team){

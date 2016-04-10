@@ -61,6 +61,9 @@ public class UserTasks extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        if(controller.IsManager()){
+            fab.setVisibility(View.GONE);
+        }
 
         controller = Controller.getInstance(this);
 
