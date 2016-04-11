@@ -35,7 +35,7 @@ public class MakePhotoActivity extends AppCompatActivity {
     public File imagefile;
     private ProgressDialog progress;
     public Controller controller = Controller.getInstance(this);
-
+    private ProgressDialog progressDialog;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class MakePhotoActivity extends AppCompatActivity {
         startActivityForResult(intent,0);
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

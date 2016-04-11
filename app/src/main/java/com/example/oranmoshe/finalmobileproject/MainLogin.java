@@ -29,7 +29,7 @@ public class MainLogin extends AppCompatActivity {
 
     Controller controller = Controller.getInstance(this);
     private ProgressDialog progress;
-
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +64,10 @@ public class MainLogin extends AppCompatActivity {
 
     public void goToListTasks(View v) {
         v.setEnabled(false);
-        Progress();
+        final View v1 = v;
+        progressDialog = ProgressDialog.show(MainLogin.this, "",
+                "Downloading Image...", true);
+
         String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
         String password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
         ParseUser.logInInBackground(username, password, new LogInCallback() {
@@ -77,6 +80,9 @@ public class MainLogin extends AppCompatActivity {
                 } else {
                     Toast.makeText(getBaseContext(), "Invalid username or password..", Toast.LENGTH_LONG).show();
                 }
+                // Close progress dialog
+                progressDialog.dismiss();
+                v1.setEnabled(true);
             }
         });
     }
@@ -86,34 +92,5 @@ public class MainLogin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void Progress(){
-        progress=new ProgressDialog(this);
-        progress.setMessage("Loading, please wait..");
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.setIndeterminate(true);
-        progress.setProgress(0);
-        progress.show();
-
-        final int totalProgressTime = 100;
-        final Thread t = new Thread() {
-            @Override
-            public void run() {
-                int jumpTime = 0;
-
-                while(jumpTime < totalProgressTime) {
-                    try {
-                        sleep(200);
-                        jumpTime += 5;
-                        progress.setProgress(jumpTime);
-                    }
-                    catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-        t.start();
-    }
 
 }
