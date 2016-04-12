@@ -132,7 +132,7 @@ public class DatabaseParse extends Application {
                                 if(list.size() > 0){
                                     for (LocalTask lt: list) {
                                         String email = dh.Get_User(lt.get_assign()).getEmail();
-                                        items.add(new RecycleTaskItem(lt.get_name(), lt.get_t_id(), email));
+                                        items.add(new RecycleTaskItem(lt.get_name(), lt.get_t_id(), email, lt.get_due_time()));
                                     }
 
                                     textView.setText(String.valueOf(list.size())+ " tasks");

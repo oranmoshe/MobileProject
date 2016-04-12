@@ -93,7 +93,7 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
         // - replace the contents of the view with that element
         final RecycleTaskItem task = mDataset.get(position);
         holder.txtHeader.setText(task.GetName());
-        holder.txtUserName.setText(task.GetUserName());
+        holder.txtUserName.setText(task.GetUserName() + " " + task.GetDate());
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

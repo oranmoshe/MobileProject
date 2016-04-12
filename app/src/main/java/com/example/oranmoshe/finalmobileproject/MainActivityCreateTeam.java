@@ -186,29 +186,41 @@ public class MainActivityCreateTeam extends AppCompatActivity {
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(controller.IsManager()) {
+            getMenuInflater().inflate(R.menu.manager, menu);
+        }
+        else{
+            getMenuInflater().inflate(R.menu.user, menu);
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
 
-        int position = -1;
-        try {
-            position =  ((RecycleAdapterManager)mAdapter).getPosition();
-        } catch (Exception e) {
-            Log.d("dd", e.getLocalizedMessage(), e);
-            return super.onContextItemSelected(item);
-        }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i = null;
         switch (item.getItemId()) {
-            case R.id.id_option_edit:
-                // do your stuff
-                Toast.makeText(this,"edit"+position,Toast.LENGTH_LONG).show();
-                UpdateData();
-                break;
-            case R.id.id_option_delete:
-                RecycleItem currentItem = items.get(position);
-                String u_id = currentItem.GetUID();
-                controller.RemoveUser(u_id);
-                ((RecycleAdapterManager) mAdapter).remove(position);
-                break;
+            case R.id.menuManagerEditGroup:
+                i = new Intent(this,MainActivityCreateTeam.class);
+                this.startActivity(i);
+                return true;
+            case R.id.menuUserLogout:
+            case R.id.menuManagerLogout:
+                ParseUser.logOut();
+                i = new Intent(this,MainLogin.class);
+                this.startActivity(i);
+                return true;
+            case R.id.menuManagerAbout:
+                i = new Intent(this,AboutActivity.class);
+                this.startActivity(i);
+                return true;
+            case R.id.menuManagerTasks:
+                i = new Intent(this,UserTasks.class);
+                this.startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onContextItemSelected(item);
     }
 
     @Override
@@ -219,11 +231,6 @@ public class MainActivityCreateTeam extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu_edit, menu);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     public void goToLogin(View v){
         Intent intent = new Intent(this, MainLogin.class);

@@ -144,6 +144,10 @@ public class UserTasks extends AppCompatActivity {
                 i = new Intent(this,MainLogin.class);
                 this.startActivity(i);
                 return true;
+            case R.id.menuManagerAbout:
+                i = new Intent(this,AboutActivity.class);
+                this.startActivity(i);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

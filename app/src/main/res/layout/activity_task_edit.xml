@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutTaskEdit">
+        android:id="@+id/linearLayoutTaskName">
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,8 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
-        android:id="@+id/linearLayout2TaskEdit"
-        android:layout_below="@+id/linearLayoutTaskEdit"
+        android:id="@+id/linearLayoutCategory"
+        android:layout_below="@+id/linearLayoutTaskName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp">
@@ -60,10 +60,10 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout4TaskEdit"
+        android:id="@+id/linearLayoutLocation"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout2TaskEdit"
+        android:layout_below="@+id/linearLayoutCategory"
         android:layout_marginTop="10dp">
 
         <TextView
@@ -78,13 +78,34 @@
             android:layout_weight="1" />
 
     </LinearLayout>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout5TaskEdit"
-        android:layout_below="@+id/linearLayout4TaskEdit"
+        android:id="@+id/LinearDueTime"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayoutLocation"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due Time"
+            android:id="@+id/textViewLoaction1TaskEdit2" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerDueTimeSimple"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LinearDueTimeCalander"
+        android:layout_below="@+id/LinearDueTime"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -94,18 +115,20 @@
             android:text="DueTime"
             android:id="@+id/textViewDueTime1" />
 
-        <EditText
+
+        <TextView
+            android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/textViewDueTimeTaskEdit"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_weight="1" />
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+        <Button
+            android:id="@+id/btnChangeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Date" />
 
     </LinearLayout>
 
@@ -113,7 +136,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout5TaskEdit"
+        android:layout_below="@+id/LinearDueTimeCalander"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout24"
@@ -205,6 +228,9 @@
             android:id="@+id/buttonSave"
             android:nestedScrollingEnabled="false"
             android:singleLine="true" />
+
     </LinearLayout>
+
+arLayout>
 
 </RelativeLayout>

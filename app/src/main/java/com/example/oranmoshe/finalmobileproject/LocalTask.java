@@ -3,10 +3,15 @@ package com.example.oranmoshe.finalmobileproject;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by oranmoshe on 3/21/16.
  */
-public class LocalTask {
+public class LocalTask implements Comparable<LocalTask>{
+
     public String _t_id;
     public String _m_id;
     public String _name;
@@ -19,6 +24,21 @@ public class LocalTask {
     public int _status;
     public String _pic;
 
+    @Override
+    public int compareTo(LocalTask o) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String dateInString = o.get_due_time();
+        String thisdateInString = get_due_time();
+        Date date = new Date();
+        Date thisdate = new Date();
+        try {
+             date = formatter.parse(dateInString);
+             thisdate = formatter.parse(thisdateInString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return thisdate.compareTo(date);
+    }
 
     LocalTask(){
 

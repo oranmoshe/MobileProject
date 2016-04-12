@@ -110,59 +110,63 @@ public class TaskView extends AppCompatActivity {
     }
 
     public void GetParseImage(String pic) {
-        progressDialog = ProgressDialog.show(TaskView.this, "",
-                "Downloading Image...", true);
+        try {
+            progressDialog = ProgressDialog.show(TaskView.this, "",
+                    "Downloading Image...", true);
 
-        // Locate the class table named "ImageUpload" in Parse.com
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                "ImageUpload");
+            // Locate the class table named "ImageUpload" in Parse.com
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                    "ImageUpload");
 
-        // Locate the objectId from the class
-        query.getInBackground(pic, new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject object, com.parse.ParseException e) {
-                if(e==null) {
-                    // Locate the column named "ImageName" and set
-                    // the string
-                    ParseFile fileObject = (ParseFile) object
-                            .get("ImageFile");
-                    fileObject
-                            .getDataInBackground(new GetDataCallback() {
-                                @Override
-                                public void done(byte[] data, com.parse.ParseException e) {
+            // Locate the objectId from the class
+            query.getInBackground(pic, new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject object, com.parse.ParseException e) {
+                    if (e == null) {
+                        // Locate the column named "ImageName" and set
+                        // the string
+                        ParseFile fileObject = (ParseFile) object
+                                .get("ImageFile");
+                        fileObject
+                                .getDataInBackground(new GetDataCallback() {
+                                    @Override
+                                    public void done(byte[] data, com.parse.ParseException e) {
 
-                                    if (e == null) {
-                                        Log.d("test",
-                                                "We've got data in data.");
-                                        // Decode the Byte[] into
-                                        // Bitmap
-                                        Bitmap bmp = BitmapFactory
-                                                .decodeByteArray(
-                                                        data, 0,
-                                                        data.length);
+                                        if (e == null) {
+                                            Log.d("test",
+                                                    "We've got data in data.");
+                                            // Decode the Byte[] into
+                                            // Bitmap
+                                            Bitmap bmp = BitmapFactory
+                                                    .decodeByteArray(
+                                                            data, 0,
+                                                            data.length);
 
-                                        // Get the ImageView from
-                                        // main.xml
-                                        ImageView image = (ImageView) findViewById(R.id.imageViewTask);
+                                            // Get the ImageView from
+                                            // main.xml
+                                            ImageView image = (ImageView) findViewById(R.id.imageViewTask);
 
-                                        // Set the Bitmap into the
-                                        // ImageView
-                                        image.setImageBitmap(bmp);
+                                            // Set the Bitmap into the
+                                            // ImageView
+                                            image.setImageBitmap(bmp);
 
-                                         // Close progress dialog
-                                        progressDialog.dismiss();
+                                            // Close progress dialog
+                                            progressDialog.dismiss();
 
-                                    } else {
-                                        Log.d("test",
-                                                "There was a problem downloading the data.");
-                                        progressDialog.dismiss();
+                                        } else {
+                                            Log.d("test",
+                                                    "There was a problem downloading the data.");
+                                            progressDialog.dismiss();
+                                        }
                                     }
-                                }
-                            });
-                }else{
-                    progressDialog.dismiss();
+                                });
+                    } else {
+                        progressDialog.dismiss();
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception exc){
+            Log.d("Error",exc.toString());
+        }
     }
 }

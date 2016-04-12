@@ -19,7 +19,12 @@ import android.widget.TextView;
 import com.parse.ParseRole;
 import com.parse.ParseUser;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by oranmoshe on 4/5/16.
@@ -88,13 +93,21 @@ public class FragmentAllUserTasks extends Fragment {
         }else{
             list = controller.getLocalTasksByUser(ParseUser.getCurrentUser().getObjectId());
         }
+
+        Collections.sort(list, new Comparator<LocalTask>() {
+            public int compare(LocalTask o1, LocalTask o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
         if(list.size() > 0){
             for (LocalTask lt: list) {
                 String email = controller.getLocalUser(lt.get_assign()).getEmail();
-                items.add(new RecycleTaskItem(lt.get_name(), lt.get_t_id(), email));
+                items.add(new RecycleTaskItem(lt.get_name(), lt.get_t_id(), email, lt.get_due_time()));
             }
             ((TextView)rootView.findViewById(R.id.textViewCurrent)).setText(String.valueOf(list.size())+ " tasks");
         }
+
         mAdapter = new RecycleTaskAdapterManager(items);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();

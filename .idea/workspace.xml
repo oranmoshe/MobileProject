@@ -36,188 +36,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseHandler.java">
+      <file leaf-file-name="MainActivityCreateTeam.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="647" column="0" selection-start-line="647" selection-start-column="0" selection-end-line="647" selection-end-column="0" />
-              <folding>
-                <element signature="method#Add_Task#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_User#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_User_By_Username#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Users#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Tasks_By_Manager#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Tasks_By_User#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Tasks_By_Manager_And_Status#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Tasks_By_User_And_Status#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Tasks#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Task#1;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#ClearUsers#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Tasks#1;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Users#1;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Update_User#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Update_Task_Status#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Update_Task_Pic#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Delete_User#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Delete_Task#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Total_Users#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#Get_Total_Tasks#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#InitData#0;class#DatabaseHandler#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FragmentAllUserTasks.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56632656">
-              <caret line="87" column="14" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+              <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3839#3864#0" expanded="true" />
-                <element signature="e#3869#3894#0" expanded="true" />
-                <element signature="e#3981#4006#0" expanded="true" />
-                <element signature="e#4011#4036#0" expanded="true" />
-                <element signature="e#4110#4143#0" expanded="true" />
-                <element signature="e#4148#4181#0" expanded="true" />
-                <element signature="e#4231#4267#0" expanded="true" />
-                <element signature="e#4272#4308#0" expanded="true" />
-                <element signature="e#4358#4388#0" expanded="true" />
-                <element signature="e#4393#4423#0" expanded="true" />
-                <element signature="method#onContextItemSelected#0;class#FragmentAllUserTasks#0" expanded="false" />
-                <element signature="e#5212#5237#0" expanded="true" />
-                <element signature="e#5709#5734#0" expanded="true" />
-                <element signature="e#6214#6247#0" expanded="true" />
-                <element signature="e#6593#6629#0" expanded="true" />
-                <element signature="e#6975#7005#0" expanded="true" />
+                <element signature="e#6679#6680#0" expanded="true" />
+                <element signature="e#6710#6711#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/Controller.java">
+      <file leaf-file-name="AboutActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/AboutActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="95" column="98" selection-start-line="95" selection-start-column="95" selection-end-line="95" selection-end-column="98" />
+              <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="57" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FragmentDoneUserTasks.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentDoneUserTasks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.888889">
-              <caret line="95" column="102" selection-start-line="95" selection-start-column="102" selection-end-line="95" selection-end-column="102" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4169#4194#0" expanded="true" />
-                <element signature="e#4199#4224#0" expanded="true" />
-                <element signature="e#4312#4337#0" expanded="true" />
-                <element signature="e#4342#4367#0" expanded="true" />
-                <element signature="e#4433#4463#0" expanded="true" />
-                <element signature="e#4468#4498#0" expanded="true" />
-                <element signature="e#4548#4581#0" expanded="true" />
-                <element signature="e#4586#4619#0" expanded="true" />
-                <element signature="e#4669#4705#0" expanded="true" />
-                <element signature="e#4710#4746#0" expanded="true" />
-                <element signature="e#4796#4826#0" expanded="true" />
-                <element signature="e#4831#4861#0" expanded="true" />
-                <element signature="method#onContextItemSelected#0;class#FragmentDoneUserTasks#0" expanded="false" />
-                <element signature="e#5651#5676#0" expanded="true" />
-                <element signature="e#6148#6173#0" expanded="true" />
-                <element signature="e#6653#6686#0" expanded="true" />
-                <element signature="e#7032#7068#0" expanded="true" />
-                <element signature="e#7414#7444#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainLogin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainLogin.java">
+      <file leaf-file-name="manager.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/manager.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FragmentInProgressUserTasks.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentInProgressUserTasks.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="90" column="102" selection-start-line="90" selection-start-column="102" selection-end-line="90" selection-end-column="102" />
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3926#3951#0" expanded="true" />
-                <element signature="e#3956#3981#0" expanded="true" />
-                <element signature="e#4069#4094#0" expanded="true" />
-                <element signature="e#4099#4124#0" expanded="true" />
-                <element signature="e#4191#4224#0" expanded="true" />
-                <element signature="e#4229#4262#0" expanded="true" />
-                <element signature="e#4312#4348#0" expanded="true" />
-                <element signature="e#4353#4389#0" expanded="true" />
-                <element signature="e#4439#4469#0" expanded="true" />
-                <element signature="e#4474#4504#0" expanded="true" />
-                <element signature="method#onContextItemSelected#0;class#FragmentInProgressUserTasks#0" expanded="false" />
-                <element signature="e#5294#5319#0" expanded="true" />
-                <element signature="e#5791#5816#0" expanded="true" />
-                <element signature="e#6296#6329#0" expanded="true" />
-                <element signature="e#6675#6711#0" expanded="true" />
-                <element signature="e#7057#7087#0" expanded="true" />
+                <element signature="e#840#858#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FragmentPandingUserTasks.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentPandingUserTasks.java">
+      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="88" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3907#3932#0" expanded="true" />
-                <element signature="e#3937#3962#0" expanded="true" />
-                <element signature="e#4049#4074#0" expanded="true" />
-                <element signature="e#4079#4104#0" expanded="true" />
-                <element signature="e#4178#4211#0" expanded="true" />
-                <element signature="e#4216#4249#0" expanded="true" />
-                <element signature="e#4299#4335#0" expanded="true" />
-                <element signature="e#4340#4376#0" expanded="true" />
-                <element signature="e#4426#4456#0" expanded="true" />
-                <element signature="e#4461#4491#0" expanded="true" />
-                <element signature="e#5281#5306#0" expanded="true" />
-                <element signature="e#5778#5803#0" expanded="true" />
-                <element signature="e#6283#6316#0" expanded="true" />
-                <element signature="e#6662#6698#0" expanded="true" />
-                <element signature="e#7044#7074#0" expanded="true" />
-              </folding>
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseParse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseParse.java">
+      <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserTasks.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserTasks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/UserTasks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="103" column="50" selection-start-line="103" selection-start-column="50" selection-end-line="103" selection-end-column="50" />
+            <state vertical-scroll-proportion="2.7739725">
+              <caret line="144" column="18" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,15 +114,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_done_user_tasks.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_done_user_tasks.xml">
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.034483">
-              <caret line="29" column="49" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="49" />
+            <state vertical-scroll-proportion="-2.7777777">
+              <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer">
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_about.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -245,8 +154,8 @@
       <list>
         <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
-        <option value="valueResourceFile" />
         <option value="Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -1716,14 +1625,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_test.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentTest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_my_new.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentMyNEW.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/user.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/manager.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/AddUser.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_edit.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
@@ -1732,26 +1633,16 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main_activity_create_team.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/PhotoHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_make_photo.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/priority.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/drop_down_priority.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/drop_down_status.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-v21/drop_down_category.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskNew.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskEdit.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-v21/menu_user_task_options.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_edit_user.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recycle_task_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_task_edit.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MakePhotoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/menu_task_options.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_task_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskAdapterManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/BL/RecycleFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_user_tasks.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentHelper.java" />
@@ -1760,13 +1651,31 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_in_progress_user_tasks.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_all_user_tasks.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_done_user_tasks.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseParse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/UserTasks.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainLogin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/LocalTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskAdapterManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentPandingUserTasks.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentInProgressUserTasks.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentDoneUserTasks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentInProgressUserTasks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentPandingUserTasks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseParse.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-w820dp/drop_down_due_time.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-v21/drop_down_category.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-w820dp/drop_down_duetime.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/drop_down_due_time.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_task_edit.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskNew.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskEdit.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/UserTasks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/manager.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/AboutActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -1781,7 +1690,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1258" />
+    <option name="x" value="1310" />
     <option name="y" value="5" />
     <option name="width" value="1325" />
     <option name="height" value="1016" />
@@ -1835,14 +1744,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1854,26 +1755,8 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MobileAppNew" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1892,38 +1775,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="finalmobileproject" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MobileAppNew" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finalmobileproject" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MobileAppNew" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2106,6 +1957,7 @@
       <recent name="com.example.oranmoshe.finalmobileproject" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/values-w820dp" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/values-v21" />
       <recent name="$PROJECT_DIR$/app/src/main/res/menu" />
@@ -2324,8 +2176,17 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="1258" y="5" width="1325" height="1016" extended-state="0" />
+    <frame x="1310" y="5" width="1325" height="1016" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2334,7 +2195,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912987" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.49664992" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31555554" sideWeight="0.4882747" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32" sideWeight="0.4882747" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27666667" sideWeight="0.4916248" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2625202" sideWeight="0.50873363" order="4" side_tool="true" content_ui="tabs" />
@@ -2403,18 +2264,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java</url>
-          <line>176</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java</url>
-          <line>203</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseParse.java</url>
           <line>446</line>
           <properties />
@@ -2422,7 +2271,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskNew.java</url>
-          <line>106</line>
+          <line>182</line>
           <properties />
           <option name="timeStamp" value="78" />
         </line-breakpoint>
@@ -2440,13 +2289,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskEdit.java</url>
-          <line>159</line>
+          <line>184</line>
           <properties />
           <option name="timeStamp" value="106" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskEdit.java</url>
-          <line>32</line>
+          <line>52</line>
           <properties />
           <option name="timeStamp" value="107" />
         </line-breakpoint>
@@ -2464,26 +2313,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java</url>
-          <line>133</line>
+          <line>146</line>
           <properties />
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java</url>
-          <line>116</line>
+          <line>129</line>
           <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java</url>
-          <line>122</line>
+          <line>135</line>
           <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java</url>
-          <line>189</line>
-          <option name="timeStamp" value="24" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskNew.java</url>
+          <line>235</line>
+          <properties />
+          <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseParse.java</url>
@@ -2497,12 +2347,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java</url>
-          <line>28</line>
+          <line>33</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java</url>
-          <line>42</line>
+          <line>47</line>
           <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -2524,484 +2374,11 @@
           <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="142" />
+      <option name="time" value="146" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/drop_down_category.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/drop_down_location.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleAdapterManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.033557046">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="59" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="59" />
-          <folding>
-            <element signature="e#496#497#0" expanded="false" />
-            <element signature="e#528#529#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.111111">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_edit_user.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding>
-            <element signature="e#456#493#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/LocalActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recycle_task_row.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_task_edit.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.2413793">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.896552">
-          <caret line="101" column="41" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5184" column="0" selection-start-line="5184" selection-start-column="0" selection-end-line="5184" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MakePhotoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tasks_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/menu_edit_options.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/menu_user_task_options.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/drop_down_status.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/menu_task_options.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="39" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_task_view.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="184" column="42" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskAdapterManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6882217">
-          <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
-          <folding>
-            <element signature="e#2094#2095#0" expanded="false" />
-            <element signature="e#2130#2131#0" expanded="false" />
-            <element signature="e#2190#2191#0" expanded="false" />
-            <element signature="e#2221#2222#0" expanded="false" />
-            <element signature="e#3849#3850#0" expanded="false" />
-            <element signature="e#3887#3888#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding>
-            <element signature="e#3774#3787#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="82" selection-start-line="103" selection-start-column="82" selection-end-line="103" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/AddUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskNew.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="2" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="75" />
-          <folding>
-            <element signature="e#4444#4452#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/app/Instrumentation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1104" column="0" selection-start-line="1104" selection-start-column="0" selection-end-line="1104" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#76910#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6411#6412#0" expanded="false" />
-            <element signature="e#6439#6440#0" expanded="false" />
-            <element signature="e#9114#9115#0" expanded="false" />
-            <element signature="e#9150#9151#0" expanded="false" />
-            <element signature="e#9362#9363#0" expanded="false" />
-            <element signature="e#9395#9396#0" expanded="false" />
-            <element signature="e#9922#9923#0" expanded="false" />
-            <element signature="e#9956#9957#0" expanded="false" />
-            <element signature="e#10174#10175#0" expanded="false" />
-            <element signature="e#10218#10219#0" expanded="false" />
-            <element signature="e#18260#18261#0" expanded="false" />
-            <element signature="e#18297#18298#0" expanded="false" />
-            <element signature="e#18471#18472#0" expanded="false" />
-            <element signature="e#18509#18510#0" expanded="false" />
-            <element signature="e#18730#18731#0" expanded="false" />
-            <element signature="e#18767#18768#0" expanded="false" />
-            <element signature="e#18902#18903#0" expanded="false" />
-            <element signature="e#18938#18939#0" expanded="false" />
-            <element signature="e#19108#19109#0" expanded="false" />
-            <element signature="e#19152#19153#0" expanded="false" />
-            <element signature="e#38172#38173#0" expanded="false" />
-            <element signature="e#38202#38203#0" expanded="false" />
-            <element signature="e#47433#47434#0" expanded="false" />
-            <element signature="e#47467#47468#0" expanded="false" />
-            <element signature="e#47751#47752#0" expanded="false" />
-            <element signature="e#47787#47788#0" expanded="false" />
-            <element signature="e#48782#48783#0" expanded="false" />
-            <element signature="e#48815#48816#0" expanded="false" />
-            <element signature="e#50092#50093#0" expanded="false" />
-            <element signature="e#50131#50132#0" expanded="false" />
-            <element signature="e#50459#50460#0" expanded="false" />
-            <element signature="e#50504#50505#0" expanded="false" />
-            <element signature="e#52166#52175#0" expanded="false" />
-            <element signature="e#54171#54172#0" expanded="false" />
-            <element signature="e#54213#54214#0" expanded="false" />
-            <element signature="e#54333#54334#0" expanded="false" />
-            <element signature="e#54375#54376#0" expanded="false" />
-            <element signature="e#73998#73999#0" expanded="false" />
-            <element signature="e#74033#74034#0" expanded="false" />
-            <element signature="e#74919#74920#0" expanded="false" />
-            <element signature="e#74959#74960#0" expanded="false" />
-            <element signature="e#75599#75600#0" expanded="false" />
-            <element signature="e#75639#75640#0" expanded="false" />
-            <element signature="e#75823#75824#0" expanded="false" />
-            <element signature="e#75863#75864#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2414" column="0" selection-start-line="2414" selection-start-column="0" selection-end-line="2414" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6247" column="31" selection-start-line="6247" selection-start-column="31" selection-end-line="6247" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#280082#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#37036#37051#0" expanded="false" />
-            <element signature="e#38135#38136#0" expanded="false" />
-            <element signature="e#38165#38166#0" expanded="false" />
-            <element signature="e#38552#38553#0" expanded="false" />
-            <element signature="e#38587#38588#0" expanded="false" />
-            <element signature="e#38695#38696#0" expanded="false" />
-            <element signature="e#38730#38731#0" expanded="false" />
-            <element signature="e#38833#38834#0" expanded="false" />
-            <element signature="e#38871#38872#0" expanded="false" />
-            <element signature="e#38985#38986#0" expanded="false" />
-            <element signature="e#39015#39016#0" expanded="false" />
-            <element signature="e#39129#39130#0" expanded="false" />
-            <element signature="e#39166#39167#0" expanded="false" />
-            <element signature="e#39514#39515#0" expanded="false" />
-            <element signature="e#39544#39545#0" expanded="false" />
-            <element signature="e#39681#39682#0" expanded="false" />
-            <element signature="e#39733#39734#0" expanded="false" />
-            <element signature="e#40075#40076#0" expanded="false" />
-            <element signature="e#40148#40149#0" expanded="false" />
-            <element signature="e#48983#48984#0" expanded="false" />
-            <element signature="e#49035#49036#0" expanded="false" />
-            <element signature="e#52431#52432#0" expanded="false" />
-            <element signature="e#52461#52462#0" expanded="false" />
-            <element signature="e#55061#55062#0" expanded="false" />
-            <element signature="e#55108#55109#0" expanded="false" />
-            <element signature="e#55966#55967#0" expanded="false" />
-            <element signature="e#56005#56006#0" expanded="false" />
-            <element signature="e#67446#67447#0" expanded="false" />
-            <element signature="e#67474#67475#0" expanded="false" />
-            <element signature="e#68254#68255#0" expanded="false" />
-            <element signature="e#68281#68282#0" expanded="false" />
-            <element signature="e#78226#78227#0" expanded="false" />
-            <element signature="e#78267#78268#0" expanded="false" />
-            <element signature="e#82550#82551#0" expanded="false" />
-            <element signature="e#82577#82578#0" expanded="false" />
-            <element signature="e#84275#84276#0" expanded="false" />
-            <element signature="e#84302#84303#0" expanded="false" />
-            <element signature="e#85757#85758#0" expanded="false" />
-            <element signature="e#85811#85812#0" expanded="false" />
-            <element signature="e#92856#92857#0" expanded="false" />
-            <element signature="e#92907#92908#0" expanded="false" />
-            <element signature="e#99266#99267#0" expanded="false" />
-            <element signature="e#99318#99319#0" expanded="false" />
-            <element signature="e#99488#99489#0" expanded="false" />
-            <element signature="e#99542#99543#0" expanded="false" />
-            <element signature="e#107363#107364#0" expanded="false" />
-            <element signature="e#107391#107392#0" expanded="false" />
-            <element signature="e#108766#108767#0" expanded="false" />
-            <element signature="e#108794#108795#0" expanded="false" />
-            <element signature="e#111490#111491#0" expanded="false" />
-            <element signature="e#111518#111519#0" expanded="false" />
-            <element signature="e#112748#112749#0" expanded="false" />
-            <element signature="e#112776#112777#0" expanded="false" />
-            <element signature="e#117258#117259#0" expanded="false" />
-            <element signature="e#117282#117283#0" expanded="false" />
-            <element signature="e#121787#121788#0" expanded="false" />
-            <element signature="e#121814#121815#0" expanded="false" />
-            <element signature="e#133758#133759#0" expanded="false" />
-            <element signature="e#133795#133796#0" expanded="false" />
-            <element signature="e#138032#138033#0" expanded="false" />
-            <element signature="e#138089#138090#0" expanded="false" />
-            <element signature="e#138425#138426#0" expanded="false" />
-            <element signature="e#138482#138483#0" expanded="false" />
-            <element signature="e#138784#138785#0" expanded="false" />
-            <element signature="e#138822#138823#0" expanded="false" />
-            <element signature="e#140695#140696#0" expanded="false" />
-            <element signature="e#140722#140723#0" expanded="false" />
-            <element signature="e#142424#142425#0" expanded="false" />
-            <element signature="e#142465#142466#0" expanded="false" />
-            <element signature="e#142659#142660#0" expanded="false" />
-            <element signature="e#142704#142705#0" expanded="false" />
-            <element signature="e#144414#144415#0" expanded="false" />
-            <element signature="e#144450#144451#0" expanded="false" />
-            <element signature="e#151513#151514#0" expanded="false" />
-            <element signature="e#151548#151549#0" expanded="false" />
-            <element signature="e#154871#154872#0" expanded="false" />
-            <element signature="e#154917#154918#0" expanded="false" />
-            <element signature="e#156672#156673#0" expanded="false" />
-            <element signature="e#156726#156727#0" expanded="false" />
-            <element signature="e#178899#178900#0" expanded="false" />
-            <element signature="e#178947#178948#0" expanded="false" />
-            <element signature="e#180755#180756#0" expanded="false" />
-            <element signature="e#180801#180802#0" expanded="false" />
-            <element signature="e#196008#196009#0" expanded="false" />
-            <element signature="e#196035#196036#0" expanded="false" />
-            <element signature="e#202194#202195#0" expanded="false" />
-            <element signature="e#202221#202222#0" expanded="false" />
-            <element signature="e#205912#205913#0" expanded="false" />
-            <element signature="e#205944#205945#0" expanded="false" />
-            <element signature="e#206123#206124#0" expanded="false" />
-            <element signature="e#206156#206157#0" expanded="false" />
-            <element signature="e#206720#206721#0" expanded="false" />
-            <element signature="e#206766#206767#0" expanded="false" />
-            <element signature="e#208671#208672#0" expanded="false" />
-            <element signature="e#208700#208701#0" expanded="false" />
-            <element signature="e#210420#210421#0" expanded="false" />
-            <element signature="e#210444#210445#0" expanded="false" />
-            <element signature="e#212615#212616#0" expanded="false" />
-            <element signature="e#212643#212644#0" expanded="false" />
-            <element signature="e#222590#222591#0" expanded="false" />
-            <element signature="e#222623#222624#0" expanded="false" />
-            <element signature="e#224858#224859#0" expanded="false" />
-            <element signature="e#224900#224901#0" expanded="false" />
-            <element signature="e#225492#225493#0" expanded="false" />
-            <element signature="e#225521#225522#0" expanded="false" />
-            <element signature="e#225561#225562#0" expanded="false" />
-            <element signature="e#225595#225596#0" expanded="false" />
-            <element signature="e#232061#232062#0" expanded="false" />
-            <element signature="e#232120#232121#0" expanded="false" />
-            <element signature="e#233529#233530#0" expanded="false" />
-            <element signature="e#233584#233585#0" expanded="false" />
-            <element signature="e#234727#234728#0" expanded="false" />
-            <element signature="e#234754#234755#0" expanded="false" />
-            <element signature="e#246717#246718#0" expanded="false" />
-            <element signature="e#246747#246748#0" expanded="false" />
-            <element signature="e#261243#261244#0" expanded="false" />
-            <element signature="e#261309#261310#0" expanded="false" />
-            <element signature="e#261778#261779#0" expanded="false" />
-            <element signature="e#261810#261811#0" expanded="false" />
-            <element signature="e#270644#270645#0" expanded="false" />
-            <element signature="e#270675#270676#0" expanded="false" />
-            <element signature="e#277465#277466#0" expanded="false" />
-            <element signature="e#277522#277523#0" expanded="false" />
-            <element signature="e#277796#277797#0" expanded="false" />
-            <element signature="e#277841#277842#0" expanded="false" />
-            <element signature="e#278494#278495#0" expanded="false" />
-            <element signature="e#278538#278539#0" expanded="false" />
-            <element signature="e#278605#278606#0" expanded="false" />
-            <element signature="e#278666#278667#0" expanded="false" />
-            <element signature="e#279380#279381#0" expanded="false" />
-            <element signature="e#279430#279431#0" expanded="false" />
-            <element signature="e#279842#279843#0" expanded="false" />
-            <element signature="e#279903#279904#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_tasks.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.13.0/f43cc29ff26f12c25bcc55eed39e9c7633cb2982/parse-android-1.13.0-sources.jar!/com/parse/ParseTaskUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding>
-            <element signature="e#4079#4739#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/os/Looper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3134,26 +2511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseParse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/UserTasks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="50" selection-start-line="103" selection-start-column="50" selection-end-line="103" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainLogin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3162,28 +2519,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskAdapterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="76" selection-start-line="95" selection-start-column="76" selection-end-line="95" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/RecycleTaskItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#594#595#0" expanded="false" />
+            <element signature="e#626#627#0" expanded="false" />
+            <element signature="e#723#724#0" expanded="false" />
+            <element signature="e#755#756#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentDoneUserTasks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.333333">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding>
+            <element signature="e#3708#3709#0" expanded="false" />
+            <element signature="e#4439#4464#0" expanded="false" />
+            <element signature="e#4469#4494#0" expanded="false" />
+            <element signature="e#4582#4607#0" expanded="false" />
+            <element signature="e#4612#4637#0" expanded="false" />
+            <element signature="e#4703#4733#0" expanded="false" />
+            <element signature="e#4738#4768#0" expanded="false" />
+            <element signature="e#4818#4851#0" expanded="false" />
+            <element signature="e#4856#4889#0" expanded="false" />
+            <element signature="e#4939#4975#0" expanded="false" />
+            <element signature="e#4980#5016#0" expanded="false" />
+            <element signature="e#5066#5096#0" expanded="false" />
+            <element signature="e#5101#5131#0" expanded="false" />
+            <element signature="method#onContextItemSelected#0;class#FragmentDoneUserTasks#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentInProgressUserTasks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="102" selection-start-line="90" selection-start-column="102" selection-end-line="90" selection-end-column="102" />
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3926#3951#0" expanded="true" />
-            <element signature="e#3956#3981#0" expanded="true" />
-            <element signature="e#4069#4094#0" expanded="true" />
-            <element signature="e#4099#4124#0" expanded="true" />
-            <element signature="e#4191#4224#0" expanded="true" />
-            <element signature="e#4229#4262#0" expanded="true" />
-            <element signature="e#4312#4348#0" expanded="true" />
-            <element signature="e#4353#4389#0" expanded="true" />
-            <element signature="e#4439#4469#0" expanded="true" />
-            <element signature="e#4474#4504#0" expanded="true" />
+            <element signature="e#3461#3462#0" expanded="false" />
+            <element signature="e#4196#4221#0" expanded="false" />
+            <element signature="e#4226#4251#0" expanded="false" />
+            <element signature="e#4339#4364#0" expanded="false" />
+            <element signature="e#4369#4394#0" expanded="false" />
+            <element signature="e#4461#4494#0" expanded="false" />
+            <element signature="e#4499#4532#0" expanded="false" />
+            <element signature="e#4582#4618#0" expanded="false" />
+            <element signature="e#4623#4659#0" expanded="false" />
+            <element signature="e#4709#4739#0" expanded="false" />
+            <element signature="e#4744#4774#0" expanded="false" />
             <element signature="method#onContextItemSelected#0;class#FragmentInProgressUserTasks#0" expanded="false" />
-            <element signature="e#5294#5319#0" expanded="true" />
-            <element signature="e#5791#5816#0" expanded="true" />
-            <element signature="e#6296#6329#0" expanded="true" />
-            <element signature="e#6675#6711#0" expanded="true" />
-            <element signature="e#7057#7087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3191,78 +2588,382 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentPandingUserTasks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="88" selection-end-column="9" />
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3907#3932#0" expanded="true" />
-            <element signature="e#3937#3962#0" expanded="true" />
-            <element signature="e#4049#4074#0" expanded="true" />
-            <element signature="e#4079#4104#0" expanded="true" />
-            <element signature="e#4178#4211#0" expanded="true" />
-            <element signature="e#4216#4249#0" expanded="true" />
-            <element signature="e#4299#4335#0" expanded="true" />
-            <element signature="e#4340#4376#0" expanded="true" />
-            <element signature="e#4426#4456#0" expanded="true" />
-            <element signature="e#4461#4491#0" expanded="true" />
-            <element signature="e#5281#5306#0" expanded="true" />
-            <element signature="e#5778#5803#0" expanded="true" />
-            <element signature="e#6283#6316#0" expanded="true" />
-            <element signature="e#6662#6698#0" expanded="true" />
-            <element signature="e#7044#7074#0" expanded="true" />
+            <element signature="e#3293#3448#0" expanded="true" />
+            <element signature="e#3447#3448#0" expanded="true" />
+            <element signature="e#4179#4204#0" expanded="true" />
+            <element signature="e#4209#4234#0" expanded="true" />
+            <element signature="e#4321#4346#0" expanded="true" />
+            <element signature="e#4351#4376#0" expanded="true" />
+            <element signature="e#4450#4483#0" expanded="true" />
+            <element signature="e#4488#4521#0" expanded="true" />
+            <element signature="e#4571#4607#0" expanded="true" />
+            <element signature="e#4612#4648#0" expanded="true" />
+            <element signature="e#4698#4728#0" expanded="true" />
+            <element signature="e#4733#4763#0" expanded="true" />
+            <element signature="e#5553#5578#0" expanded="true" />
+            <element signature="e#6050#6075#0" expanded="true" />
+            <element signature="e#6555#6588#0" expanded="true" />
+            <element signature="e#6934#6970#0" expanded="true" />
+            <element signature="e#7316#7346#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentDoneUserTasks.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/DatabaseParse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.888889">
-          <caret line="95" column="102" selection-start-line="95" selection-start-column="102" selection-end-line="95" selection-end-column="102" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="63" selection-start-line="134" selection-start-column="63" selection-end-line="134" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4169#4194#0" expanded="true" />
-            <element signature="e#4199#4224#0" expanded="true" />
-            <element signature="e#4312#4337#0" expanded="true" />
-            <element signature="e#4342#4367#0" expanded="true" />
-            <element signature="e#4433#4463#0" expanded="true" />
-            <element signature="e#4468#4498#0" expanded="true" />
-            <element signature="e#4548#4581#0" expanded="true" />
-            <element signature="e#4586#4619#0" expanded="true" />
-            <element signature="e#4669#4705#0" expanded="true" />
-            <element signature="e#4710#4746#0" expanded="true" />
-            <element signature="e#4796#4826#0" expanded="true" />
-            <element signature="e#4831#4861#0" expanded="true" />
-            <element signature="method#onContextItemSelected#0;class#FragmentDoneUserTasks#0" expanded="false" />
-            <element signature="e#5651#5676#0" expanded="true" />
-            <element signature="e#6148#6173#0" expanded="true" />
-            <element signature="e#6653#6686#0" expanded="true" />
-            <element signature="e#7032#7068#0" expanded="true" />
-            <element signature="e#7414#7444#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/FragmentAllUserTasks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56632656">
-          <caret line="87" column="14" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3839#3864#0" expanded="true" />
-            <element signature="e#3869#3894#0" expanded="true" />
-            <element signature="e#3981#4006#0" expanded="true" />
-            <element signature="e#4011#4036#0" expanded="true" />
-            <element signature="e#4110#4143#0" expanded="true" />
-            <element signature="e#4148#4181#0" expanded="true" />
-            <element signature="e#4231#4267#0" expanded="true" />
-            <element signature="e#4272#4308#0" expanded="true" />
-            <element signature="e#4358#4388#0" expanded="true" />
-            <element signature="e#4393#4423#0" expanded="true" />
+            <element signature="e#3320#3475#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#4206#4231#0" expanded="true" />
+            <element signature="e#4236#4261#0" expanded="true" />
+            <element signature="e#4348#4373#0" expanded="true" />
+            <element signature="e#4378#4403#0" expanded="true" />
+            <element signature="e#4477#4510#0" expanded="true" />
+            <element signature="e#4515#4548#0" expanded="true" />
+            <element signature="e#4598#4634#0" expanded="true" />
+            <element signature="e#4639#4675#0" expanded="true" />
+            <element signature="e#4725#4755#0" expanded="true" />
+            <element signature="e#4760#4790#0" expanded="true" />
             <element signature="method#onContextItemSelected#0;class#FragmentAllUserTasks#0" expanded="false" />
-            <element signature="e#5212#5237#0" expanded="true" />
-            <element signature="e#5709#5734#0" expanded="true" />
-            <element signature="e#6214#6247#0" expanded="true" />
-            <element signature="e#6593#6629#0" expanded="true" />
-            <element signature="e#6975#7005#0" expanded="true" />
+            <element signature="e#5579#5604#0" expanded="true" />
+            <element signature="e#6076#6101#0" expanded="true" />
+            <element signature="e#6581#6614#0" expanded="true" />
+            <element signature="e#6960#6996#0" expanded="true" />
+            <element signature="e#7342#7372#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/LocalTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/java/lang/ThreadGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33226323">
+          <caret line="692" column="0" selection-start-line="692" selection-start-column="0" selection-end-line="692" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TasksList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10204082">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_task_view.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="42" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49197862">
+          <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main_login.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_task_edit.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskNew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="8" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="91" />
+          <folding>
+            <element signature="e#6311#6451#0" expanded="true" />
+            <element signature="e#6450#6451#0" expanded="true" />
+            <element signature="e#7720#7891#0" expanded="true" />
+            <element signature="e#7890#7891#0" expanded="true" />
+            <element signature="e#8298#8977#0" expanded="true" />
+            <element signature="e#8976#8977#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/TaskEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
+          <folding>
+            <element signature="e#4976#4984#0" expanded="true" />
+            <element signature="e#7716#7887#0" expanded="true" />
+            <element signature="e#7886#7887#0" expanded="true" />
+            <element signature="e#8294#8971#0" expanded="true" />
+            <element signature="e#8970#8971#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/menu_user_task_options.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/menu_task_options.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26929983">
+          <caret line="10" column="58" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/drop_down_category.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23116438">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/drop_down_due_time.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12842466">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/drop_down_location.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/drop_down_priority.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.051369864">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/drop_down_status.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10273973">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/menu_edit_options.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#302#303#0" expanded="false" />
+            <element signature="e#346#347#0" expanded="false" />
+            <element signature="e#393#394#0" expanded="false" />
+            <element signature="e#433#434#0" expanded="false" />
+            <element signature="e#467#468#0" expanded="false" />
+            <element signature="e#516#517#0" expanded="false" />
+            <element signature="e#664#665#0" expanded="false" />
+            <element signature="e#705#706#0" expanded="false" />
+            <element signature="e#747#748#0" expanded="false" />
+            <element signature="e#782#783#0" expanded="false" />
+            <element signature="e#813#814#0" expanded="false" />
+            <element signature="e#854#855#0" expanded="false" />
+            <element signature="e#896#897#0" expanded="false" />
+            <element signature="e#931#932#0" expanded="false" />
+            <element signature="e#961#962#0" expanded="false" />
+            <element signature="e#1001#1002#0" expanded="false" />
+            <element signature="e#1042#1043#0" expanded="false" />
+            <element signature="e#1075#1076#0" expanded="false" />
+            <element signature="e#1102#1103#0" expanded="false" />
+            <element signature="e#1139#1140#0" expanded="false" />
+            <element signature="e#1177#1178#0" expanded="false" />
+            <element signature="e#1210#1211#0" expanded="false" />
+            <element signature="e#1240#1241#0" expanded="false" />
+            <element signature="e#1280#1281#0" expanded="false" />
+            <element signature="e#1321#1322#0" expanded="false" />
+            <element signature="e#1354#1355#0" expanded="false" />
+            <element signature="e#1384#1385#0" expanded="false" />
+            <element signature="e#1424#1425#0" expanded="false" />
+            <element signature="e#1463#1464#0" expanded="false" />
+            <element signature="e#1495#1496#0" expanded="false" />
+            <element signature="e#1541#1542#0" expanded="false" />
+            <element signature="e#1582#1583#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/AboutActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="57" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/MainActivityCreateTeam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6679#6680#0" expanded="true" />
+            <element signature="e#6710#6711#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/manager.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <element signature="e#840#858#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7777777">
+          <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/oranmoshe/finalmobileproject/UserTasks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.7739725">
+          <caret line="144" column="18" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
