@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.DeleteCallback;
@@ -67,6 +70,90 @@ public class DatabaseParse extends Application {
     }
 
 
+    public void ImportDataAndUpdateRecycler(final String objectID, final DatabaseHandler dh,
+                                            final RecyclerView mRecyclerView,final TextView textView,
+                                            final Context context, final int status) {
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        dh.InitData();
+        query.whereEqualTo("m_id",objectID);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    users.clear();
+                    dh.ClearUsers();
+                    for (ParseUser user : objects) {
+                        users.add(user);
+                        LocalUser lu = new LocalUser(user.getObjectId(), user.getString("m_id"),
+                                user.getString("username"), user.getString("passwordClone"),
+                                user.getString("email"), user.getString("phone"), user.getInt("t_id"),
+                                user.getString("team"));
+                        dh.Add_User(lu);
+                    }
+                }
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
+                query.whereEqualTo("m_id", objectID);
+                final List<ParseObject> list = new ArrayList<ParseObject>();
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, com.parse.ParseException e) {
+
+                        if (e == null) {
+                            ArrayList<LocalTask> list = null;
+                            for (ParseObject o : objects) {
+                                LocalTask lt = new LocalTask(o.getObjectId(), o.getString("m_id"), o.getString("name"),
+                                        o.getInt("priority"), o.getString("location"), o.getString("due_time"),
+                                        o.getString("assign"), o.getInt("accept"), o.getInt("status"), o.getString("pic"),
+                                        o.getString("category"));
+                                dh.Add_Task(lt);
+                            }
+                            if (mRecyclerView != null) {
+                                RecyclerView.Adapter mAdapter;
+                                RecyclerView.LayoutManager mLayoutManager;
+                                ArrayList<RecycleTaskItem> items;
+                                mRecyclerView.setHasFixedSize(true);
+                                mLayoutManager = new LinearLayoutManager(context);
+                                mRecyclerView.setLayoutManager(mLayoutManager);
+                                items = new ArrayList<RecycleTaskItem>();
+
+                                if(ParseUser.getCurrentUser().getObjectId().equals(objectID)){
+                                    if(status==0){
+                                        list = dh.Get_Tasks_By_Manager(objectID);
+                                    }else{
+                                        list = dh.Get_Tasks_By_Manager_And_Status(objectID, status);
+                                    }
+                                }else{
+                                    if(status==0) {
+                                        list = dh.Get_Tasks_By_User(ParseUser.getCurrentUser().getObjectId());
+                                    }else{
+                                        list = dh.Get_Tasks_By_User_And_Status(ParseUser.getCurrentUser().getObjectId(), status);
+                                    }
+                                }
+                                if(list.size() > 0){
+                                    for (LocalTask lt: list) {
+                                        String email = dh.Get_User(lt.get_assign()).getEmail();
+                                        items.add(new RecycleTaskItem(lt.get_name(), lt.get_t_id(), email));
+                                    }
+
+                                    textView.setText(String.valueOf(list.size())+ " tasks");
+                                }
+                                Log.d("<<<<<<<<","status: " + status + " size: "+ String.valueOf(items.size()));
+                                mAdapter = new RecycleTaskAdapterManager(items);
+                                mRecyclerView.setAdapter(mAdapter);
+                                mAdapter.notifyDataSetChanged();
+                            }
+
+                        } else {
+                        }
+
+                    }
+                });
+            }
+        });
+    }
+
+
+
     public void ImportData(final String objectID, final DatabaseHandler dh, final Intent intent,final Context context) {
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("m_id",objectID);
@@ -104,6 +191,7 @@ public class DatabaseParse extends Application {
                         } else {
                         }
                         if (intent != null) {
+                            Log.d(">>>>>>>>>>>>>>>>>>",">>>>>>>>>>>>>>>>>");
                             intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
                         }

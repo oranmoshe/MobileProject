@@ -106,14 +106,6 @@ public class TaskView extends AppCompatActivity {
         TextView textViewAssign = (TextView) findViewById(R.id.textViewAssign);
         textViewAssign.setText(controller.getLocalUser(localTask.get_assign()).getEmail());
 
-        Button btn = (Button)findViewById(R.id.buttonTakePic);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 0);
-            }
-        });
         GetParseImage(localTask.get_pic());
     }
 
@@ -157,7 +149,7 @@ public class TaskView extends AppCompatActivity {
                                         // ImageView
                                         image.setImageBitmap(bmp);
 
-//                                        // Close progress dialog
+                                         // Close progress dialog
                                         progressDialog.dismiss();
 
                                     } else {
@@ -172,53 +164,5 @@ public class TaskView extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void SaveOnParse(Bitmap bitmap) {
-
-        // Convert it to byte
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        // Compress image to lower quality scale 1 - 100
-        bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
-        byte[] image = stream.toByteArray();
-
-        // Create the ParseFile
-        final ParseFile file = new ParseFile("androidbegin.png", image);
-        // Upload the image into Parse Cloud
-        file.saveInBackground(new ProgressCallback() {
-            @Override
-            public void done(Integer percentDone) {
-                // Create a New Class called "ImageUpload" in Parse
-                final ParseObject imgupload = new ParseObject("ImageUpload");
-
-                // Create a column named "ImageName" and set the string
-                imgupload.put("ImageName", "AndroidBegin Logo");
-
-                // Create a column named "ImageFile" and insert the image
-                imgupload.put("ImageFile", file);
-
-                // Create the class and the columns
-                imgupload.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(com.parse.ParseException e) {
-
-                        controller.UpdateTaskPic(localTask.get_t_id(),imgupload.getObjectId());
-                        finish();
-                        startActivity(getIntent());
-                    }
-                });
-            }
-        });
-
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
-        super.onActivityResult(requestCode, resultCode, data);
-
-        Bitmap bp = (Bitmap) data.getExtras().get("data");
-        SaveOnParse(bp);
     }
 }

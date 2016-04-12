@@ -3,7 +3,9 @@ package com.example.oranmoshe.finalmobileproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
@@ -32,7 +35,10 @@ public class FragmentInProgressUserTasks extends Fragment {
     private String team = "";
     Controller controller = Controller.getInstance(getContext());
     private String userObjectID = "";
+    protected String groupID = "";
     View rootView;
+    private SwipeRefreshLayout swipeContainer;
+
 
     @Nullable
     @Override
@@ -40,17 +46,34 @@ public class FragmentInProgressUserTasks extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_in_progress_user_tasks, container, false);
 
         userObjectID = ParseUser.getCurrentUser().getObjectId();
+        groupID = ParseUser.getCurrentUser().getString("m_id");
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewInProgressTaskee);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewInProgressTask);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                fetchTimelineAsync(0);
+            }
+        });
+
         registerForContextMenu(mRecyclerView);
-
         LoadData();
-
         return rootView;
+    }
+
+    public void fetchTimelineAsync(int page) {
+        LoadData();
+        swipeContainer.setRefreshing(false);
     }
 
     @Override
@@ -59,26 +82,24 @@ public class FragmentInProgressUserTasks extends Fragment {
         LoadData();
     }
 
-    void LoadData() {
-        // specify an adapter (see also next example)
-        items = new ArrayList<RecycleTaskItem>();
+    void LoadData(){
         ArrayList<LocalTask> list = null;
-        if (controller.IsManager()) {
-            list = controller.getLocalTasksByManagerAndStatus(userObjectID, 2);
-        } else {
-            list = controller.getLocalTasksByUserAndStatus(userObjectID, 2);
+        items = new ArrayList<RecycleTaskItem>();
+        if(ParseUser.getCurrentUser().getObjectId().equals(groupID)){
+            list = controller.getLocalTasksByManagerAndStatus(groupID, 2);
+        }else{
+            list = controller.getLocalTasksByUserAndStatus(ParseUser.getCurrentUser().getObjectId(), 2);
         }
-        if (list.size() > 0) {
-            for (LocalTask lt : list) {
+        if(list.size() > 0){
+            for (LocalTask lt: list) {
                 String email = controller.getLocalUser(lt.get_assign()).getEmail();
                 items.add(new RecycleTaskItem(lt.get_name(), lt.get_t_id(), email));
             }
-        } else {
-            items.add(new RecycleTaskItem("No current Tasks", "0", ""));
+            ((TextView)rootView.findViewById(R.id.textViewCurrent)).setText(String.valueOf(list.size())+ " tasks");
         }
-
         mAdapter = new RecycleTaskAdapterManager(items);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
     int UNIQUE_FRAGMENT_GROUP_ID = 3;
@@ -102,7 +123,9 @@ public class FragmentInProgressUserTasks extends Fragment {
 
         int position = -1;
         try {
-            position = ((RecycleTaskAdapterManager) mAdapter).getPosition();
+            mAdapter = mRecyclerView.getAdapter();
+            RecycleTaskAdapterManager recycleTaskAdapterManager =  ((RecycleTaskAdapterManager)mAdapter);
+            position = recycleTaskAdapterManager.getPosition();
         } catch (Exception e) {
             return super.onContextItemSelected(item);
         }
@@ -110,36 +133,36 @@ public class FragmentInProgressUserTasks extends Fragment {
         if (item.getGroupId() == UNIQUE_FRAGMENT_GROUP_ID) {
             switch (item.getItemId()) {
                 case R.string.option_task_view:
-                    RecycleTaskItem currentItem = items.get(position);
-                    Intent intent = new Intent(getContext(), TaskView.class);
+                    RecycleTaskItem currentItem = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
+                    Intent intent = new Intent(getContext(),TaskView.class);
                     Bundle mBundle = new Bundle();
                     mBundle.putSerializable("TASKID", currentItem.GetUID());
                     intent.putExtras(mBundle);
                     getContext().startActivity(intent);
                     break;
                 case R.string.option_task_edit:
-                    RecycleTaskItem currentItem1 = items.get(position);
-                    Intent intent1 = new Intent(getContext(), TaskEdit.class);
+                    RecycleTaskItem currentItem1 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
+                    Intent intent1 = new Intent(getContext(),TaskEdit.class);
                     Bundle mBundle1 = new Bundle();
                     mBundle1.putSerializable("TASKID", currentItem1.GetUID());
                     intent1.putExtras(mBundle1);
                     getContext().startActivity(intent1);
                     break;
                 case R.string.option_user_task_pending:
-                    RecycleTaskItem currentItem2 = items.get(position);
+                    RecycleTaskItem currentItem2 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     controller.UpdateTaskStatus(currentItem2.GetUID(), 1);
                     getActivity().finish();
                     startActivity(getActivity().getIntent());
                     break;
                 case R.string.option_user_task_in_process:
-                    RecycleTaskItem currentItem3 = items.get(position);
+                    RecycleTaskItem currentItem3 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     controller.UpdateTaskStatus(currentItem3.GetUID(), 2);
                     getActivity().finish();
                     startActivity(getActivity().getIntent());
                     break;
                 case R.string.option_user_task_done:
-                    RecycleTaskItem currentItem4 = items.get(position);
-                    controller.UpdateTaskStatus(currentItem4.GetUID(), 3);
+                    RecycleTaskItem currentItem4 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
+                    controller.UpdateTaskStatus(currentItem4.GetUID(),3);
                     getActivity().finish();
                     startActivity(getActivity().getIntent());
                     break;

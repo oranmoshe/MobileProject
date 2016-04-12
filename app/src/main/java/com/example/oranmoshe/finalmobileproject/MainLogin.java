@@ -28,7 +28,6 @@ import java.util.List;
 public class MainLogin extends AppCompatActivity {
 
     Controller controller = Controller.getInstance(this);
-    private ProgressDialog progress;
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +62,10 @@ public class MainLogin extends AppCompatActivity {
     }
 
     public void goToListTasks(View v) {
-        v.setEnabled(false);
         final View v1 = v;
+        v1.setEnabled(false);
         progressDialog = ProgressDialog.show(MainLogin.this, "",
-                "Downloading Image...", true);
+                "Please wait..", true);
 
         String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
         String password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
@@ -75,8 +74,9 @@ public class MainLogin extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (e == null) {
                     Intent intent = new Intent(getBaseContext(), UserTasks.class);
-                    controller.ImportData(user.getString("m_id"), intent);
                     controller.SetCurrentUser(controller.getLocalUser(ParseUser.getCurrentUser().getObjectId()));
+                    controller.ImportData(ParseUser.getCurrentUser().getString("m_id"), intent);
+
                 } else {
                     Toast.makeText(getBaseContext(), "Invalid username or password..", Toast.LENGTH_LONG).show();
                 }

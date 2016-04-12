@@ -98,8 +98,10 @@ public class MainActivityCreateTeam extends AppCompatActivity {
     protected void sendEmail(String[] TO) {
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, TO);
-        email.putExtra(Intent.EXTRA_SUBJECT, "Participation in the group\n");
-        email.putExtra(Intent.EXTRA_TEXT, "Congratulations, you are participating in a group.\nTo download the app: Link\n");
+        email.putExtra(Intent.EXTRA_SUBJECT, "Invitation to Join OTS team");
+        email.putExtra(Intent.EXTRA_TEXT, "Hi\n" +
+                "\tYou have been invited to be a team member in an OTS Team created by me.\n" +
+                "\tUse this link to download and install the App from Google Play.\n");
         email.setType("message/rfc822");
         startActivity(Intent.createChooser(email, "Choose an Email client :"));
     }

@@ -116,7 +116,17 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
     }
 
 
+    // Clean all elements of the recycler
+    public void clear() {
+        mDataset.clear();
+        notifyDataSetChanged();
+    }
 
+    // Add a list of items
+    public void addAll(ArrayList<RecycleTaskItem> list) {
+        mDataset.addAll(list);
+        notifyDataSetChanged();
+    }
 
     public RecycleTaskItem getRecyceItem(int position){
         return mDataset.get(position);

@@ -1,5 +1,6 @@
 package com.example.oranmoshe.finalmobileproject;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +26,20 @@ public class UserTasks extends AppCompatActivity {
     Controller controller;
     TabLayout tabLayout;
     ViewPager viewPager;
+    private ProgressDialog progressDialog;
 
+    public interface FragmentRefreshListener{
+        void onRefresh();
+    }
+    public FragmentRefreshListener getFragmentRefreshListener() {
+        return fragmentRefreshListener;
+    }
+
+    public void setFragmentRefreshListener(FragmentRefreshListener fragmentRefreshListener) {
+        this.fragmentRefreshListener = fragmentRefreshListener;
+    }
+
+    private FragmentRefreshListener fragmentRefreshListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,21 +75,47 @@ public class UserTasks extends AppCompatActivity {
             public void onClick(View view) {
                 // Click action
                 ArrayList<LocalUser> list = controller.getLocalUsers(ParseUser.getCurrentUser().getString("m_id"));
-                if(list.size() >1) {
+                if (list.size() > 1) {
                     Intent intent = new Intent(getBaseContext(), TaskNew.class);
                     startActivity(intent);
-                }
-                else{
-                    Toast.makeText(getBaseContext(),"There are no users in the team, please add team members.",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getBaseContext(), "There are no users in the team, please add team members.", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
         if(!ParseUser.getCurrentUser().getString("m_id").equals(ParseUser.getCurrentUser().getObjectId())){
             fab.setVisibility(View.GONE);
         }
 
-        controller = Controller.getInstance(this);
+        FloatingActionButton fabRefresh = (FloatingActionButton)findViewById(R.id.fabRefresh);
+        fabRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = getIntent();
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("FRAGMENT", String.valueOf(viewPager.getCurrentItem()));
+                intent.putExtras(mBundle);
+                startActivity(intent);
+            }
+        });
 
+        controller = Controller.getInstance(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Refresh(getIntent());
+    }
+
+    public void Refresh(Intent i){
+        String givenFregment = (String)getIntent().getSerializableExtra("FRAGMENT");
+        if(givenFregment!=null) {
+            int fragment = Integer.parseInt(givenFregment);
+            viewPager.setCurrentItem(fragment);
+        }
     }
 
     @Override

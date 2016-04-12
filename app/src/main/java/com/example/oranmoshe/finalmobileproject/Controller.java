@@ -5,8 +5,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -89,7 +92,15 @@ public class Controller {
       //  db.ImportTasks(m_id, dbLocal, intent, ctx);
     }
 
+
+    public void UpdateRecycleTasks( RecyclerView mRecyclerView, TextView textView,String m_id, int status){
+        dbLocal.InitData();
+        db.ImportDataAndUpdateRecycler(m_id, dbLocal,mRecyclerView,textView, getContext(), status );
+    }
+
+
     public void ImportData(String m_id, Intent intent) {
+        Log.d("<<<<<ss>>>","<<<<dd>>>>>");
         dbLocal.InitData();
         db.ImportData(m_id, dbLocal, intent, ctx);
     }
