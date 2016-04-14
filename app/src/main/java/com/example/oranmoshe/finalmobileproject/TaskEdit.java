@@ -4,10 +4,12 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,9 +22,11 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
-public class TaskEdit extends AppCompatActivity {
+public class TaskEdit extends BaseClass {
 
     Controller controller = Controller.getInstance(this);
     LocalTask localTask =  null;
@@ -34,8 +38,7 @@ public class TaskEdit extends AppCompatActivity {
     Spinner spinnerPriority = null;
     Spinner spinnerStatus = null;
     Spinner spinnerAssign = null;
-
-
+    ArrayAdapter<CharSequence> adapterLocation=null;
 
 
     private TextView tvDisplayDate;
@@ -51,7 +54,7 @@ public class TaskEdit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("killl", "2");
+
         setContentView(R.layout.activity_task_edit);
 
         String taskID = (String)getIntent().getSerializableExtra("TASKID");
@@ -60,17 +63,49 @@ public class TaskEdit extends AppCompatActivity {
 
          localUser = controller.getLocalUser(localTask.get_assign());
 
-        spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
+         spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
         ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this,
                 R.array.category, android.R.layout.simple_spinner_item);
         adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapterCategory);
 
         spinnerLocation = (Spinner)findViewById(R.id.spinnerLocation);
-        ArrayAdapter<CharSequence> adapterLocation = ArrayAdapter.createFromResource(this,
+        adapterLocation = ArrayAdapter.createFromResource(this,
                 R.array.location, android.R.layout.simple_spinner_item);
         adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLocation.setAdapter(adapterLocation);
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                try {
+                    // your code here
+                    if (position == 3) {
+                        try {
+
+                            Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                            intent.putExtra("SCAN_MODE", "QR_CODE_MODE"); // "PRODUCT_MODE for bar codes
+
+                            startActivityForResult(intent, 0);
+
+                        } catch (Exception e) {
+
+                            Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
+                            Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                            startActivity(marketIntent);
+                        }
+                    }
+                } catch (Exception exc) {
+                    Log.d("Error: ", exc.toString());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
 
 
         editTextName = (EditText)findViewById(R.id.editTextTaskEditName);
@@ -259,5 +294,28 @@ public class TaskEdit extends AppCompatActivity {
             Toast.makeText(getBaseContext(),String.valueOf(day),Toast.LENGTH_LONG).show();
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+
+            if (resultCode == RESULT_OK) {
+                String contents = data.getStringExtra("SCAN_RESULT");
+                String[] mTestArray;
+                mTestArray = getResources().getStringArray(R.array.location);
+                List<CharSequence> stringList = new ArrayList<CharSequence>(Arrays.asList(mTestArray));
+                stringList.add(contents);
+                adapterLocation =  new ArrayAdapter<CharSequence>(getBaseContext(),
+                        android.R.layout.simple_spinner_item, stringList);
+                adapterLocation.notifyDataSetChanged();
+                spinnerLocation.setAdapter(adapterLocation);
+                spinnerLocation.setSelection(stringList.indexOf(contents));
+            }
+            if(resultCode == RESULT_CANCELED){
+                //handle cancel
+            }
+        }
+    }
 
 }

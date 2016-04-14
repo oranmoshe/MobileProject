@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -21,30 +23,21 @@ import com.parse.Parse;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
-public class UserTasks extends AppCompatActivity {
+public class UserTasks extends BaseClass {
     Controller controller;
     TabLayout tabLayout;
     ViewPager viewPager;
+    FloatingActionButton fabRefresh = null;
     private ProgressDialog progressDialog;
-
-    public interface FragmentRefreshListener{
-        void onRefresh();
-    }
-    public FragmentRefreshListener getFragmentRefreshListener() {
-        return fragmentRefreshListener;
-    }
-
-    public void setFragmentRefreshListener(FragmentRefreshListener fragmentRefreshListener) {
-        this.fragmentRefreshListener = fragmentRefreshListener;
-    }
-
-    private FragmentRefreshListener fragmentRefreshListener;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_tasks);
+
+        mHandler = new Handler(Looper.getMainLooper());
+
 
         viewPager = (ViewPager)findViewById(R.id.viewTabPager);
         viewPager.setAdapter(new CustomAdapter(getSupportFragmentManager(),getApplicationContext()));
@@ -88,16 +81,17 @@ public class UserTasks extends AppCompatActivity {
             fab.setVisibility(View.GONE);
         }
 
-        FloatingActionButton fabRefresh = (FloatingActionButton)findViewById(R.id.fabRefresh);
+        fabRefresh = (FloatingActionButton)findViewById(R.id.fabRefresh);
         fabRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                progressDialog = ProgressDialog.show(UserTasks.this, "",
+                        "Please wait..", true);
                 Intent intent = getIntent();
                 Bundle mBundle = new Bundle();
                 mBundle.putSerializable("FRAGMENT", String.valueOf(viewPager.getCurrentItem()));
                 intent.putExtras(mBundle);
-                startActivity(intent);
+                controller.ImportData(ParseUser.getCurrentUser().getString("m_id"), intent);
             }
         });
 
@@ -107,10 +101,19 @@ public class UserTasks extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Refresh(getIntent());
+        SetFragment(getIntent());
     }
 
-    public void Refresh(Intent i){
+    public void Refresh(){
+        finish();
+        Intent intent = getIntent();
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("FRAGMENT", String.valueOf(viewPager.getCurrentItem()));
+        intent.putExtras(mBundle);
+        startActivity(intent);
+    }
+
+    public void SetFragment(Intent i){
         String givenFregment = (String)getIntent().getSerializableExtra("FRAGMENT");
         if(givenFregment!=null) {
             int fragment = Integer.parseInt(givenFregment);
@@ -118,40 +121,7 @@ public class UserTasks extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if(controller.IsManager()) {
-            getMenuInflater().inflate(R.menu.manager, menu);
-        }
-        else{
-            getMenuInflater().inflate(R.menu.user, menu);
-        }
-        Log.d("manager","sdfssfsF");
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i = null;
-        switch (item.getItemId()) {
-            case R.id.menuManagerEditGroup:
-                i = new Intent(this,MainActivityCreateTeam.class);
-                this.startActivity(i);
-                return true;
-            case R.id.menuUserLogout:
-            case R.id.menuManagerLogout:
-                ParseUser.logOut();
-                i = new Intent(this,MainLogin.class);
-                this.startActivity(i);
-                return true;
-            case R.id.menuManagerAbout:
-                i = new Intent(this,AboutActivity.class);
-                this.startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private class CustomAdapter extends FragmentPagerAdapter {
 
@@ -177,8 +147,6 @@ public class UserTasks extends AppCompatActivity {
             }
         }
 
-
-
         @Override
         public int getCount() {
             return fragments.length;
@@ -188,5 +156,39 @@ public class UserTasks extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return fragments[position];
         }
+    }
+
+    private Handler mHandler;
+    Runnable myTask;
+
+    {
+        myTask = new Runnable() {
+            @Override
+            public void run() {
+                //do work
+                Refresh();
+                Calendar c = Calendar.getInstance();
+                int seconds = c.get(Calendar.SECOND);
+                int hour = c.get(Calendar.HOUR);
+                int minute = c.get(Calendar.MINUTE);
+                String time = String.valueOf(hour)+"/"+String.valueOf(seconds)+"/"+String.valueOf(minute);
+                Log.d("time", time);
+                mHandler.postDelayed(this, controller.GetTimer() * 1000*60);
+            }
+        };
+    }
+
+    //just as an example, we'll start the task when the activity is started
+    @Override
+    public void onStart() {
+        super.onStart();
+        mHandler.postDelayed(myTask, controller.GetTimer()*1000*60);
+    }
+
+    //at some point in your program you will probably want the handler to stop (in onStop is a good place)
+    @Override
+    public void onStop() {
+        super.onStop();
+        mHandler.removeCallbacks(myTask);
     }
 }

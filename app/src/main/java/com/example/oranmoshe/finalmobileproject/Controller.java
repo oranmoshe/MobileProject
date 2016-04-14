@@ -8,6 +8,7 @@ import android.provider.ContactsContract;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.List;
 
 /**
@@ -93,14 +95,13 @@ public class Controller {
     }
 
 
-    public void UpdateRecycleTasks( RecyclerView mRecyclerView, TextView textView,String m_id, int status){
+    public void UpdateRecycleTasks( RecyclerView mRecyclerView,RecyclerView.Adapter mAdapter, TextView textView,String m_id, int status){
         dbLocal.InitData();
-        db.ImportDataAndUpdateRecycler(m_id, dbLocal,mRecyclerView,textView, getContext(), status );
+        db.ImportDataAndUpdateRecycler(m_id, dbLocal, mRecyclerView, mAdapter, textView, getContext(), status);
     }
 
 
     public void ImportData(String m_id, Intent intent) {
-        Log.d("<<<<<ss>>>","<<<<dd>>>>>");
         dbLocal.InitData();
         db.ImportData(m_id, dbLocal, intent, ctx);
     }
@@ -109,16 +110,49 @@ public class Controller {
         return ParseUser.getCurrentUser().getString("m_id");
     }
 
-    public void RemoveUser(String id){
+    public void RemoveUser(final String id, final Event result){
         LocalUser user = getLocalUser(id);
-        dbLocal.Delete_User(id);
-        db.DeleteUser(user.getUsername(),user.getPassword());
+
+        Event parseEvent = new Event();
+        db.DeleteUser(user.getUsername(), user.getPassword(), parseEvent);
+        parseEvent.setOnEventListener(new OnEventListener() {
+            @Override
+            public void onEvent(EventObject e) {
+                if ((Boolean) e.getSource()) {
+                    dbLocal.Delete_User(id);
+                    result.doEvent(new EventObject(true));
+                } else {
+                    result.doEvent(new EventObject(false));
+                }
+            }
+        });
     }
 
-    public String AddUser(String  m_id, String username, String password, String email, String phone, int t_id,
-                          String team, Activity fa){
-        db.SignUp(m_id, username, password, email, phone, t_id, team, dbLocal, fa);
-        return "";
+    public void AddUser(final String  m_id, final String username, final String password, final String email,
+                          final  String phone, final int t_id, final String team, final Event result){
+        Event parseEvent = new Event();
+        parseEvent.setOnEventListener(new OnEventListener() {
+            @Override
+            public void onEvent(EventObject objectId) {
+                if(!objectId.getSource().toString().equals("Error")) {
+                    final LocalUser localUser = new LocalUser(objectId.toString(), m_id, username,
+                            password, email, phone, t_id, team);
+                    dbLocal.Add_User(localUser);
+                    result.doEvent(new EventObject(true));
+                } else {
+                    result.doEvent(new EventObject(false));
+                }
+            }
+        });
+        db.SignUp(m_id, username, password, email, phone, t_id, team, dbLocal, parseEvent);
+    }
+
+    public void SetTimer(int minutes){
+        db.SetTimer(minutes, dbLocal);
+    }
+
+    public int GetTimer(){
+        return db.GetTimer();
     }
 
     public void AddManager(String  m_id, String username, String password, String email, String phone, int t_id,

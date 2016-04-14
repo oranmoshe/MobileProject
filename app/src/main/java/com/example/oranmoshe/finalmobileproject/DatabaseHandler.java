@@ -728,4 +728,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(this.TABLE_TASKS, null, null);
         db.delete(this.TABLE_USERS, null, null);
     }
+
+    public int SetTimer(String u_id, int minutes) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_T_ID, minutes);
+        // updating row
+        return db.update(TABLE_USERS, values, KEY_U_ID + " = ?",
+                new String[] { u_id});
+    }
 }

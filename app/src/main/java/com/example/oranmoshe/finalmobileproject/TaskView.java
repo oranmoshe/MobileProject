@@ -33,7 +33,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskView extends AppCompatActivity {
+public class TaskView extends BaseClass {
 
     Controller controller = Controller.getInstance(this);
     public File imagefile;
@@ -106,10 +106,11 @@ public class TaskView extends AppCompatActivity {
         TextView textViewAssign = (TextView) findViewById(R.id.textViewAssign);
         textViewAssign.setText(controller.getLocalUser(localTask.get_assign()).getEmail());
 
-        GetParseImage(localTask.get_pic());
+        ImageView image = (ImageView) findViewById(R.id.imageViewTask);
+        GetParseImage(localTask.get_pic(),image);
     }
 
-    public void GetParseImage(String pic) {
+    public void GetParseImage(String pic, final ImageView imageView) {
         try {
             progressDialog = ProgressDialog.show(TaskView.this, "",
                     "Downloading Image...", true);
@@ -144,11 +145,11 @@ public class TaskView extends AppCompatActivity {
 
                                             // Get the ImageView from
                                             // main.xml
-                                            ImageView image = (ImageView) findViewById(R.id.imageViewTask);
+
 
                                             // Set the Bitmap into the
                                             // ImageView
-                                            image.setImageBitmap(bmp);
+                                            imageView.setImageBitmap(bmp);
 
                                             // Close progress dialog
                                             progressDialog.dismiss();

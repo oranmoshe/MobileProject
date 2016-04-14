@@ -25,9 +25,10 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.List;
 
-public class MainActivityCreateTeam extends AppCompatActivity {
+public class MainActivityCreateTeam extends AppCompatActivity{
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -38,7 +39,6 @@ public class MainActivityCreateTeam extends AppCompatActivity {
     private String u_id = "";
     Controller controller = Controller.getInstance(this);
     ArrayList<LocalUser> users;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +85,12 @@ public class MainActivityCreateTeam extends AppCompatActivity {
                 String team = ((EditText) findViewById(R.id.editTextTeamName)).getText().toString();
                 String u_id = ParseUser.getCurrentUser().getObjectId();
                 controller.UpdateTeamName(team, u_id);
-                Intent intent = new Intent(getBaseContext(),UserTasks.class);
+                Intent intent = new Intent(getBaseContext(), UserTasks.class);
                 startActivity(intent);
             }
         });
 
         UpdateData();
-
 
     }
 
@@ -130,41 +129,7 @@ public class MainActivityCreateTeam extends AppCompatActivity {
         }
     }
 
-//    private void WaitForChanges(){
-//        (new Thread(new Runnable()
-//        {
-//
-//            @Override
-//            public void run()
-//            {
-//                while (!Thread.interrupted())
-//                    try
-//                    {
-//                        Thread.sleep(100);
-//                        runOnUiThread(new Runnable() // start actions in UI thread
-//                        {
-//
-//                            @Override
-//                            public void run()
-//                            {
-//                                if (controller.IsUsersChanged()) {
-//                                    List<LocalUser> users = controller.getUsers();
-//                                    Toast.makeText(getBaseContext(), "changes: " + users.size() + " size..", Toast.LENGTH_LONG).show();
-//                                    UpdateData();
-//                                    controller.IsUsersChangedSeen();
-//                                    Thread.interrupted();
-//                                }
-//                            }
-//                        });
-//                    }
-//                    catch (InterruptedException e)
-//                    {
-//                        // ooops
-//                    }
-//            }
-//        })).start(); // the while thread will start in BG thread
-//
-//    }
+
 
     @Override
     protected void onResume() {
@@ -183,6 +148,44 @@ public class MainActivityCreateTeam extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Friends Option");
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_edit, menu);
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        int position = 0;
+        try {
+            mAdapter = mRecyclerView.getAdapter();
+            RecycleAdapterManager recycleAdapterManager =  ((RecycleAdapterManager)mAdapter);
+            position = recycleAdapterManager.getPosition();
+        } catch (Exception e) {
+            return super.onContextItemSelected(item);
+        }
+        switch (item.getItemId()) {
+            case R.id.id_option_delete:
+                RecycleItem currentItem = ((RecycleAdapterManager) mAdapter).getRecyceItem(position);
+                String id = currentItem.GetUID();
+                Event event = new Event();
+                event.setOnEventListener(new OnEventListener() {
+                    @Override
+                    public void onEvent(EventObject e) {
+                        UpdateData();
+                    }
+                });
+                controller.RemoveUser(id, event);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -223,13 +226,7 @@ public class MainActivityCreateTeam extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        menu.setHeaderTitle("Friends Option");
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_edit, menu);
-    }
+
 
 
     public void goToLogin(View v){

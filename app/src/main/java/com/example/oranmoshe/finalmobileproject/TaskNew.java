@@ -3,6 +3,8 @@ package com.example.oranmoshe.finalmobileproject;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,11 +24,13 @@ import com.parse.ParseUser;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
-public class TaskNew extends AppCompatActivity {
+public class TaskNew extends BaseClass {
 
     Controller controller = Controller.getInstance(this);
 
@@ -41,6 +45,7 @@ public class TaskNew extends AppCompatActivity {
     Spinner spinnerPriority = null;
     Spinner spinnerStatus = null;
     Spinner spinnerAssign = null;
+    ArrayAdapter<CharSequence> adapterLocation=null;
     public static Activity fa;
 
     private TextView tvDisplayDate;
@@ -73,10 +78,43 @@ public class TaskNew extends AppCompatActivity {
 
         // location
         spinnerLocation = (Spinner)findViewById(R.id.spinnerLocation);
-        ArrayAdapter<CharSequence> adapterLocation = ArrayAdapter.createFromResource(this,
+        adapterLocation = ArrayAdapter.createFromResource(this,
                 R.array.location, android.R.layout.simple_spinner_item);
         adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLocation.setAdapter(adapterLocation);
+
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                try {
+                    // your code here
+                    if (position == 3) {
+                        try {
+
+                            Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                            intent.putExtra("SCAN_MODE", "QR_CODE_MODE"); // "PRODUCT_MODE for bar codes
+
+                            startActivityForResult(intent, 0);
+
+                        } catch (Exception e) {
+
+                            Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
+                            Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                            startActivity(marketIntent);
+                        }
+                    }
+                }catch (Exception exc){
+                    Log.d("Error: ", exc.toString());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
 
         // priority
         spinnerPriority = (Spinner) findViewById(R.id.spinnerTaskViewPriority);
@@ -162,6 +200,29 @@ public class TaskNew extends AppCompatActivity {
                 Save();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+
+            if (resultCode == RESULT_OK) {
+                String contents = data.getStringExtra("SCAN_RESULT");
+                String[] mTestArray;
+                mTestArray = getResources().getStringArray(R.array.location);
+                List<CharSequence> stringList = new ArrayList<CharSequence>(Arrays.asList(mTestArray));
+                stringList.add(contents);
+                adapterLocation =  new ArrayAdapter<CharSequence>(getBaseContext(),
+                        android.R.layout.simple_spinner_item, stringList);
+                adapterLocation.notifyDataSetChanged();
+                spinnerLocation.setAdapter(adapterLocation);
+                spinnerLocation.setSelection(stringList.indexOf(contents));
+            }
+            if(resultCode == RESULT_CANCELED){
+                //handle cancel
+            }
+        }
     }
 
     void Save(){

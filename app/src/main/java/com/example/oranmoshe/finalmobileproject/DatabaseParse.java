@@ -28,6 +28,7 @@ import com.parse.SignUpCallback;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EventObject;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -69,13 +70,24 @@ public class DatabaseParse extends Application {
         });
     }
 
+    public void SetTimer(final int minutes, final DatabaseHandler databaseHandler){
+        ParseUser parseUser = ParseUser.getCurrentUser();
+        parseUser.put("t_id", minutes);
+        parseUser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(com.parse.ParseException e) {
+                databaseHandler.SetTimer(ParseUser.getCurrentUser().getObjectId(), minutes);
+            }
+        });
+    }
+
 
     public void ImportDataAndUpdateRecycler(final String objectID, final DatabaseHandler dh,
-                                            final RecyclerView mRecyclerView,final TextView textView,
+                                            final RecyclerView mRecyclerView,final RecyclerView.Adapter _mAdapter, final TextView textView,
                                             final Context context, final int status) {
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         dh.InitData();
-        query.whereEqualTo("m_id",objectID);
+        query.whereEqualTo("m_id", objectID);
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> objects, com.parse.ParseException e) {
@@ -108,7 +120,7 @@ public class DatabaseParse extends Application {
                                 dh.Add_Task(lt);
                             }
                             if (mRecyclerView != null) {
-                                RecyclerView.Adapter mAdapter;
+                                RecyclerView.Adapter mAdapter = _mAdapter;
                                 RecyclerView.LayoutManager mLayoutManager;
                                 ArrayList<RecycleTaskItem> items;
                                 mRecyclerView.setHasFixedSize(true);
@@ -116,28 +128,28 @@ public class DatabaseParse extends Application {
                                 mRecyclerView.setLayoutManager(mLayoutManager);
                                 items = new ArrayList<RecycleTaskItem>();
 
-                                if(ParseUser.getCurrentUser().getObjectId().equals(objectID)){
-                                    if(status==0){
+                                if (ParseUser.getCurrentUser().getObjectId().equals(objectID)) {
+                                    if (status == 0) {
                                         list = dh.Get_Tasks_By_Manager(objectID);
-                                    }else{
+                                    } else {
                                         list = dh.Get_Tasks_By_Manager_And_Status(objectID, status);
                                     }
-                                }else{
-                                    if(status==0) {
+                                } else {
+                                    if (status == 0) {
                                         list = dh.Get_Tasks_By_User(ParseUser.getCurrentUser().getObjectId());
-                                    }else{
+                                    } else {
                                         list = dh.Get_Tasks_By_User_And_Status(ParseUser.getCurrentUser().getObjectId(), status);
                                     }
                                 }
-                                if(list.size() > 0){
-                                    for (LocalTask lt: list) {
+                                if (list.size() > 0) {
+                                    for (LocalTask lt : list) {
                                         String email = dh.Get_User(lt.get_assign()).getEmail();
                                         items.add(new RecycleTaskItem(lt.get_name(), lt.get_t_id(), email, lt.get_due_time()));
                                     }
 
-                                    textView.setText(String.valueOf(list.size())+ " tasks");
+                                    textView.setText(String.valueOf(list.size()) + " tasks");
                                 }
-                                Log.d("<<<<<<<<","status: " + status + " size: "+ String.valueOf(items.size()));
+                                Log.d("<<<<<<<<", "status: " + status + " size: " + String.valueOf(items.size()));
                                 mAdapter = new RecycleTaskAdapterManager(items);
                                 mRecyclerView.setAdapter(mAdapter);
                                 mAdapter.notifyDataSetChanged();
@@ -312,42 +324,57 @@ public class DatabaseParse extends Application {
         });
     }
 
-    protected void SignUp(String  m_id, String username, String password, String email, String phone, int t_id,
-                          String team, final DatabaseHandler dh,final Activity fa) {
-
-        final ParseUser parseUser = new ParseUser();
-        parseUser.put("username", username);
-        parseUser.put("password", phone);
-        parseUser.put("passwordClone", phone);
-        parseUser.put("phone", phone);
-        parseUser.put("email", email);
-        parseUser.put("t_id", t_id);
-        parseUser.put("team", team);
-        parseUser.put("m_id", m_id);
-
-        final ParseUser parseUserManager = ParseUser.getCurrentUser();
-        if (parseUserManager!=null) {
-            // do stuff with the user
-            ParseUser.logOut();
-        }
-        parseUser.signUpInBackground(new SignUpCallback() {
+    protected void SignUp(final String  m_id, final String username, final String password,
+                          final String email, final String phone, final int t_id, final String team,
+                          final DatabaseHandler dh,final Event result) {
+        // Checks if username available
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("email", email);
+        query.findInBackground(new FindCallback<ParseUser>() {
             @Override
-            public void done(com.parse.ParseException e) {
-                ParseUser.logInInBackground(parseUserManager.getUsername(), parseUserManager.getString("passwordClone"), new LogInCallback() {
-                    public void done(ParseUser user, com.parse.ParseException e) {
-                        if (user != null) {
-                            final LocalUser localUser = new LocalUser(parseUser.getObjectId(),
-                                    parseUser.getString("m_id"), parseUser.getString("username"),
-                                    parseUser.getString("passwordClone"), parseUser.getString("email"),
-                                    parseUser.getString("phone"), parseUser.getInt("t_id"), parseUser.getString("team"));
-                            dh.Add_User(localUser);
-                            if (fa != null) {
-                                fa.finish();
-                            }
-                        } else {
-                        }
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+
+                if (e == null && objects.size() ==0) {
+                    final ParseUser parseUser = new ParseUser();
+                    parseUser.put("username", username);
+                    parseUser.put("password", phone);
+                    parseUser.put("passwordClone", phone);
+                    parseUser.put("phone", phone);
+                    parseUser.put("email", email);
+                    parseUser.put("t_id", t_id);
+                    parseUser.put("team", team);
+                    parseUser.put("m_id", m_id);
+
+                    final ParseUser parseUserManager = ParseUser.getCurrentUser();
+                    if (parseUserManager != null) {
+                        // do stuff with the user
+                        ParseUser.logOut();
                     }
-                });
+                    parseUser.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(com.parse.ParseException e) {
+                            try {
+                                ParseUser.logInInBackground(parseUserManager.getUsername(), parseUserManager.getString("passwordClone"), new LogInCallback() {
+                                    public void done(ParseUser user, com.parse.ParseException e) {
+                                        try {
+                                            if (user != null) {
+                                                result.doEvent(new EventObject(parseUser.getObjectId()));
+                                            } else {
+                                                result.doEvent(new EventObject("Error"));
+                                            }
+                                        } catch (Exception exc) {
+                                            result.doEvent(new EventObject("Error"));
+                                        }
+                                    }
+                                });
+                            } catch (Exception exc) {
+                                result.doEvent(new EventObject("Error"));
+                            }
+                        }
+                    });
+                } else {
+                    result.doEvent(new EventObject("Error"));
+                }
             }
         });
     }
@@ -405,13 +432,13 @@ public class DatabaseParse extends Application {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, com.parse.ParseException e) {
                 if (user != null) {
-                    user.put("m_id",m_id);
-                    user.put("password",password);
-                    user.put("passwordClone",password);
-                    user.put("email",email);
-                    user.put("t_id",t_id);
-                    user.put("team",team);
-                    user.put("phone",phone);
+                    user.put("m_id", m_id);
+                    user.put("password", password);
+                    user.put("passwordClone", password);
+                    user.put("email", email);
+                    user.put("t_id", t_id);
+                    user.put("team", team);
+                    user.put("phone", phone);
                     user.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(com.parse.ParseException e) {
@@ -425,7 +452,7 @@ public class DatabaseParse extends Application {
                             localUser.setT_ID(t_id);
                             dh.Update_User(localUser);
                             if (fa != null) {
-                                fa.startActivity(new Intent(getBaseContext(),MainActivityCreateTeam.class));
+                                fa.startActivity(new Intent(getBaseContext(), MainActivityCreateTeam.class));
                                 fa.finish();
                             }
 
@@ -635,7 +662,7 @@ public class DatabaseParse extends Application {
         });
     }
 
-    public  void  DeleteUser(final String username,final String password) {
+    public  void  DeleteUser(final String username,final String password, final Event event) {
         //Logout Admin
         ParseUser currentUser = ParseUser.getCurrentUser();
         final String managerUsername = currentUser.getUsername();
@@ -649,27 +676,33 @@ public class DatabaseParse extends Application {
                     user.deleteInBackground(new DeleteCallback() {
                         @Override
                         public void done(com.parse.ParseException arg0) {
-                            if (arg0 == null){
-                                    ParseUser.logInInBackground(managerUsername, managerPassword, new LogInCallback() {
-                                        public void done(ParseUser user, com.parse.ParseException e) {
-                                            if (user != null) {
-
-                                            } else {
-                                            }
+                            if (arg0 == null) {
+                                ParseUser.logInInBackground(managerUsername, managerPassword, new LogInCallback() {
+                                    public void done(ParseUser user, com.parse.ParseException e) {
+                                        if (user != null) {
+                                            event.doEvent(new EventObject(true));
+                                        } else {
+                                            event.doEvent(new EventObject(false));
                                         }
-                                    });
-                                }
-                            else{
+                                    }
+                                });
+                            } else {
                                 System.out.println("deleted the tag crashed" + arg0);
                             }
                         }
                     });
-
                 } else {
+                    event.doEvent(new EventObject(false));
                 }
             }
         });
 
+    }
+
+    public int GetTimer() {
+        int timer = 0;
+        timer = ParseUser.getCurrentUser().getInt("t_id");
+        return timer;
     }
 }
 

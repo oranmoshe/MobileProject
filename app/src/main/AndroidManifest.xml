@@ -12,6 +12,10 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".DatabaseParse"
         android:allowBackup="true"
@@ -40,7 +44,8 @@
             android:name=".MainActivityCreateManager"
             android:label="@string/title_activity_main_activity_create_m" >
         </activity>
-        <activity android:name=".MainActivityCreateTeam" >
+        <activity android:name=".MainActivityCreateTeam"
+            android:windowSoftInputMode="adjustPan"  >
         </activity>
         <activity
             android:name=".CreateNewTask"
@@ -69,6 +74,8 @@
         <activity android:name=".MakePhotoActivity" >
         </activity>
         <activity android:name=".AboutActivity" >
+        </activity>
+        <activity android:name=".SettingsActivity" >
         </activity>
     </application>
 

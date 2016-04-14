@@ -10,9 +10,11 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
+import java.util.EventObject;
 
 
 public class AddUser extends AppCompatActivity {
@@ -38,7 +40,20 @@ public class AddUser extends AppCompatActivity {
                 ParseUser pu = ParseUser.getCurrentUser();
                 if(pu!= null) {
                     String u_id = (ParseUser.getCurrentUser()).getObjectId();
-                    controller.AddUser(u_id, username, password, username, password, 0, "", fa);
+                    Event result = new Event();
+                    result.setOnEventListener(new OnEventListener() {
+                        @Override
+                        public void onEvent(EventObject e) {
+                            if((Boolean)e.getSource()) {
+                                Intent intent = new Intent(getBaseContext(), MainActivityCreateTeam.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(getBaseContext(),"Please try another username.",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                    controller.AddUser(u_id, username, password, username, password, 0, "", result);
                 }
             }
         });

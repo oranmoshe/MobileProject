@@ -4,6 +4,8 @@
     android:title="Edit Group" />
     <item android:id="@+id/menuManagerTasks"
         android:title="Tasks" />
+    <item android:id="@+id/menuManagerSettings"
+        android:title="Settings" />
     <item android:id="@+id/menuManagerAbout"
         android:title="About" />
     <item android:id="@+id/menuManagerLogout"
