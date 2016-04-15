@@ -13,7 +13,6 @@ import com.parse.ParseUser;
 public class BaseClass extends AppCompatActivity {
 
     Controller controller = Controller.getInstance(this);
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if(controller.IsManager()) {

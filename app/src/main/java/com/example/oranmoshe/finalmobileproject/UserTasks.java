@@ -92,6 +92,7 @@ public class UserTasks extends BaseClass {
                 mBundle.putSerializable("FRAGMENT", String.valueOf(viewPager.getCurrentItem()));
                 intent.putExtras(mBundle);
                 controller.ImportData(ParseUser.getCurrentUser().getString("m_id"), intent);
+                progressDialog.dismiss();
             }
         });
 

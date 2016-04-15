@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="location">
+    <string-array name="location1">
         <item>Shenkar, Anna Frank 12, Ramat Gan</item>
         <item>Dror 14, Rishon Letzion</item>
         <item>Perzov 2, Ramat Gan</item>

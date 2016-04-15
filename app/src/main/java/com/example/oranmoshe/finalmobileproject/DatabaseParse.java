@@ -203,7 +203,7 @@ public class DatabaseParse extends Application {
                         } else {
                         }
                         if (intent != null) {
-                            Log.d(">>>>>>>>>>>>>>>>>>",">>>>>>>>>>>>>>>>>");
+                            Log.d(">>>>>>>>>>>>>>>>>>", ">>>>>>>>>>>>>>>>>");
                             intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
                         }
@@ -215,7 +215,7 @@ public class DatabaseParse extends Application {
 
     public void ImportUsers(String m_id, final DatabaseHandler dh, final Intent intent,final Context context){
         ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("m_id",m_id);
+        query.whereEqualTo("m_id", m_id);
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> objects, com.parse.ParseException e) {
@@ -231,7 +231,7 @@ public class DatabaseParse extends Application {
                         dh.Add_User(lu);
                     }
                 }
-                if(intent!=null) {
+                if (intent != null) {
                     intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
@@ -532,7 +532,7 @@ public class DatabaseParse extends Application {
 
     }
 
-    public  void UpdateTaskPic(final String t_id, final String pic) {
+    public  void UpdateTaskPic(final String t_id, final String pic,final Event event) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
         query.whereEqualTo("objectId", t_id);
 
@@ -544,7 +544,17 @@ public class DatabaseParse extends Application {
                     if (objects.size() > 0) {
                         ParseObject po = objects.get(0);
                         po.put("pic", pic);
-                        po.saveInBackground();
+                        po.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(com.parse.ParseException e) {
+                                if(e==null) {
+                                    event.doEvent(new EventObject("Done"));
+                                }
+                                else{
+                                    event.doEvent(new EventObject("Error"));
+                                }
+                            }
+                        });
                     }
                     Log.d("saved", objects.get(0).get("name").toString());
                 } else {
@@ -552,7 +562,6 @@ public class DatabaseParse extends Application {
                 }
             }
         });
-
     }
     public  void UpdateTaskStatus(final String t_id, final int status) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");

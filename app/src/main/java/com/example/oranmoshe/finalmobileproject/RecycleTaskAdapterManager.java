@@ -1,6 +1,8 @@
 package com.example.oranmoshe.finalmobileproject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
         public TextView txtHeader;
         public TextView txtUserName;
         public EditText edtHeader;
+        public CardView cardView;
 
         public ViewHolder(View v) {
             super(v);
@@ -33,6 +36,8 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
 
             txtUserName = (TextView) v.findViewById(R.id.secondLine);
+
+            cardView = (CardView) v.findViewById(R.id.card_view);
 
             v.setOnCreateContextMenuListener(this);
         }
@@ -101,6 +106,13 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
                 return false;
             }
         });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setPosition(holder.getLayoutPosition());
+            }
+        });
+
     }
 
     @Override

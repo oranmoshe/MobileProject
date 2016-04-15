@@ -2,8 +2,11 @@ package com.example.oranmoshe.finalmobileproject;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,16 +17,28 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.ProgressCallback;
+import com.parse.SaveCallback;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.EventObject;
 import java.util.List;
 
 public class TaskEdit extends BaseClass {
@@ -39,7 +54,9 @@ public class TaskEdit extends BaseClass {
     Spinner spinnerStatus = null;
     Spinner spinnerAssign = null;
     ArrayAdapter<CharSequence> adapterLocation=null;
-
+    ArrayAdapter<CharSequence> adapterCategory=null;
+    private ProgressDialog progressDialog;
+    Bitmap bp;
 
     private TextView tvDisplayDate;
     private DatePicker dpResult;
@@ -50,6 +67,9 @@ public class TaskEdit extends BaseClass {
     private int day;
 
     static final int DATE_DIALOG_ID = 999;
+
+    private  static int REQUEST_QR_CODE = 0;
+    private  static int REQUEST_CAMERA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +83,12 @@ public class TaskEdit extends BaseClass {
 
          localUser = controller.getLocalUser(localTask.get_assign());
 
-         spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
-        ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this,
+        spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
+        adapterCategory = ArrayAdapter.createFromResource(TaskEdit.this,
                 R.array.category, android.R.layout.simple_spinner_item);
         adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapterCategory);
-
+//
         spinnerLocation = (Spinner)findViewById(R.id.spinnerLocation);
         adapterLocation = ArrayAdapter.createFromResource(this,
                 R.array.location, android.R.layout.simple_spinner_item);
@@ -85,7 +105,7 @@ public class TaskEdit extends BaseClass {
                             Intent intent = new Intent("com.google.zxing.client.android.SCAN");
                             intent.putExtra("SCAN_MODE", "QR_CODE_MODE"); // "PRODUCT_MODE for bar codes
 
-                            startActivityForResult(intent, 0);
+                            startActivityForResult(intent,REQUEST_QR_CODE);
 
                         } catch (Exception e) {
 
@@ -118,7 +138,7 @@ public class TaskEdit extends BaseClass {
         textViewDueTime.setText(localTask.get_due_time());
 
         spinnerPriority = (Spinner) findViewById(R.id.spinnerTaskViewPriority);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(TaskEdit.this,
                 R.array.priority, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPriority.setAdapter(adapter);
@@ -191,6 +211,21 @@ public class TaskEdit extends BaseClass {
         setCurrentDate();
         addListenerOnButton();
 
+        ImageView imageView = (ImageView)findViewById(R.id.imageEditTask);
+        GetParseImage(localTask.get_pic(),imageView);
+
+        ImageButton imageButton = (ImageButton)findViewById(R.id.imageButtonCamera);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPhoto = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                Bundle mBundlePhoto = new Bundle();
+                mBundlePhoto.putSerializable("TASKID", localTask.get_t_id());
+                intentPhoto.putExtras(mBundlePhoto);
+                startActivityForResult(intentPhoto,  REQUEST_CAMERA);
+            }
+        });
+
         Button btnSave = (Button) findViewById(R.id.buttonSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,6 +237,9 @@ public class TaskEdit extends BaseClass {
     }
 
     void Save(){
+        if(bp!=null) {
+            SaveOnParse(bp, localTask.get_t_id());
+        }
         LocalUser user = controller.getLocalUserByUsername(spinnerAssign.getSelectedItem().toString());
         int priority = 0;
         switch (spinnerPriority.getSelectedItem().toString()){
@@ -215,6 +253,7 @@ public class TaskEdit extends BaseClass {
                 priority=1;
                 break;
         }
+
         int status = 0;
         String statusStr = spinnerStatus.getSelectedItem().toString();
         switch (statusStr){
@@ -228,13 +267,18 @@ public class TaskEdit extends BaseClass {
                 status=1;
                 break;
         }
-        controller.UpdateTask(localTask.get_t_id(), editTextName.getText().toString(), priority,
-                spinnerLocation.getSelectedItem().toString(),textViewDueTime.getText().toString(),
-                user.get_id(), localTask.get_accept(),
-                status,localTask.get_pic(),spinnerCategory.getSelectedItem().toString());
+
+        String t_id = localTask.get_t_id();
+        String name = editTextName.getText().toString();
+        String location = spinnerLocation.getSelectedItem().toString();
+        String duetime = textViewDueTime.getText().toString();
+        String u_id =  user.get_id();
+        int accept = localTask.get_accept();
+        String pic =localTask.get_pic();
+        String category = spinnerCategory.getSelectedItem().toString();
+        controller.UpdateTask(t_id,name , priority,location ,duetime,u_id , accept, status,pic,category);
+
         finish();
-
-
     }
 
     // display current date
@@ -298,7 +342,7 @@ public class TaskEdit extends BaseClass {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0) {
+        if (requestCode ==  REQUEST_QR_CODE) {
 
             if (resultCode == RESULT_OK) {
                 String contents = data.getStringExtra("SCAN_RESULT");
@@ -315,6 +359,125 @@ public class TaskEdit extends BaseClass {
             if(resultCode == RESULT_CANCELED){
                 //handle cancel
             }
+        }
+        else if(requestCode ==  REQUEST_CAMERA){
+            if (resultCode == RESULT_OK) {
+                // TODO Auto-generated method stub
+                super.onActivityResult(requestCode, resultCode, data);
+                bp = (Bitmap) data.getExtras().get("data");
+                ImageView imageView = (ImageView) findViewById(R.id.imageEditTask);
+                imageView.setImageBitmap(bp);
+            }
+            if(resultCode == RESULT_CANCELED){
+                //handle cancel
+            }
+        }
+    }
+
+    public void SaveOnParse(final Bitmap bitmap, String t_id) {
+
+        // Convert it to byte
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Compress image to lower quality scale 1 - 100
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        final byte[] image = stream.toByteArray();
+
+        // Create the ParseFile
+        final ParseFile file = new ParseFile("androidbegin.png", image);
+        // Upload the image into Parse Cloud
+        file.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                // Create a New Class called "ImageUpload" in Parse
+                final ParseObject imgupload = new ParseObject("ImageUpload");
+
+                // Create a column named "ImageName" and set the string
+                imgupload.put("ImageName", "AndroidBegin Logo");
+
+                // Create a column named "ImageFile" and insert the image
+                imgupload.put("ImageFile", file);
+
+                // Create the class and the columns
+                imgupload.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        Event event = new Event();
+                        event.setOnEventListener(new OnEventListener() {
+                            @Override
+                            public void onEvent(EventObject e) {
+                                if(e.getSource().toString().equals("Done")){
+
+                                }else{
+                                    Toast.makeText(getBaseContext(),"Somthing went wrong..",Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                        controller.UpdateTaskPic(localTask.get_t_id(), imgupload.getObjectId(), event);
+                    }
+                });
+            }
+        });
+    }
+
+
+    public void GetParseImage(String pic, final ImageView imageView) {
+        try {
+            progressDialog = ProgressDialog.show(TaskEdit.this, "",
+                    "Downloading Image...", true);
+
+            // Locate the class table named "ImageUpload" in Parse.com
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                    "ImageUpload");
+
+            // Locate the objectId from the class
+            query.getInBackground(pic, new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject object, com.parse.ParseException e) {
+                    if (e == null) {
+                        // Locate the column named "ImageName" and set
+                        // the string
+                        ParseFile fileObject = (ParseFile) object
+                                .get("ImageFile");
+                        fileObject
+                                .getDataInBackground(new GetDataCallback() {
+                                    @Override
+                                    public void done(byte[] data, com.parse.ParseException e) {
+
+                                        if (e == null) {
+                                            Log.d("test",
+                                                    "We've got data in data.");
+                                            // Decode the Byte[] into
+                                            // Bitmap
+                                            Bitmap bmp = BitmapFactory
+                                                    .decodeByteArray(
+                                                            data, 0,
+                                                            data.length);
+
+                                            // Get the ImageView from
+                                            // main.xml
+
+
+                                            // Set the Bitmap into the
+                                            // ImageView
+                                            imageView.setImageBitmap(bmp);
+
+                                            // Close progress dialog
+                                            progressDialog.dismiss();
+
+                                        } else {
+                                            Log.d("test",
+                                                    "There was a problem downloading the data.");
+                                            progressDialog.dismiss();
+                                        }
+                                    }
+                                });
+                    } else {
+                        progressDialog.dismiss();
+                    }
+                }
+            });
+        }catch (Exception exc){
+            Log.d("Error",exc.toString());
         }
     }
 

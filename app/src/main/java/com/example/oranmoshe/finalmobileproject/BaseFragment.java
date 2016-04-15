@@ -13,6 +13,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -92,6 +93,20 @@ public class BaseFragment extends Fragment {
                 mAdapter = new RecycleTaskAdapterManager(items);
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
+
+
+                mRecyclerView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        RecycleTaskItem currentItem = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(((RecycleTaskAdapterManager) mAdapter).getPosition());
+//                        Intent intent = new Intent(getContext(),TaskView.class);
+//                        Bundle mBundle = new Bundle();
+//                        mBundle.putSerializable("TASKID", currentItem.GetUID());
+//                        intent.putExtras(mBundle);
+//                        getContext().startActivity(intent);
+                        Toast.makeText(getContext(), String.valueOf(currentItem.GetUserName()), Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         }
         catch (Exception exc){
@@ -107,9 +122,9 @@ public class BaseFragment extends Fragment {
         }
         else{
             menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_add_photo, 0, R.string.option_task_add_photo);
-            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_user_task_pending, 0, R.string.option_user_task_pending);
-            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_user_task_in_process, 0, R.string.option_user_task_in_process);
-            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_user_task_done, 0, R.string.option_user_task_done);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_add_pending, 0, R.string.option_task_add_pending);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_add_in_process, 0, R.string.option_task_add_in_process);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_add_done, 0, R.string.option_task_add_done);
         }
 
     }
@@ -149,27 +164,27 @@ public class BaseFragment extends Fragment {
                     getContext().startActivity(intent1);
                     break;
                 case R.string.option_task_add_photo:
-                    Intent intentPhoto = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    Bundle mBundlePhoto = new Bundle();
-                    RecycleTaskItem currentItemPhoto = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
-                    task_clicked = currentItemPhoto.GetUID();
-                    mBundlePhoto.putSerializable("TASKID", currentItemPhoto.GetUID());
-                    intentPhoto.putExtras(mBundlePhoto);
-                    startActivityForResult(intentPhoto, 0);
+//                    Intent intentPhoto = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//                    Bundle mBundlePhoto = new Bundle();
+//                    RecycleTaskItem currentItemPhoto = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
+//                    task_clicked = currentItemPhoto.GetUID();
+//                    mBundlePhoto.putSerializable("TASKID", currentItemPhoto.GetUID());
+//                    intentPhoto.putExtras(mBundlePhoto);
+//                    startActivityForResult(intentPhoto, 0);
                     break;
-                case R.string.option_user_task_pending:
+                case R.string.option_task_add_pending:
                     RecycleTaskItem currentItem2 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     controller.UpdateTaskStatus(currentItem2.GetUID(), 1);
                     getActivity().finish();
                     startActivity(getActivity().getIntent());
                     break;
-                case R.string.option_user_task_in_process:
+                case R.string.option_task_add_in_process:
                     RecycleTaskItem currentItem3 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     controller.UpdateTaskStatus(currentItem3.GetUID(), 2);
                     getActivity().finish();
                     startActivity(getActivity().getIntent());
                     break;
-                case R.string.option_user_task_done:
+                case R.string.option_task_add_done:
                     RecycleTaskItem currentItem4 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     controller.UpdateTaskStatus(currentItem4.GetUID(),3);
                     getActivity().finish();
@@ -179,61 +194,61 @@ public class BaseFragment extends Fragment {
         }
         return true;
     }
-    public void SaveOnParse(final Bitmap bitmap, String t_id) {
-        progressDialog = ProgressDialog.show(getContext(), "",
-                "Please wait..", true);
-        // Convert it to byte
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        // Compress image to lower quality scale 1 - 100
-        bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
-        byte[] image = stream.toByteArray();
+//    public void SaveOnParse(final Bitmap bitmap, String t_id) {
+//        progressDialog = ProgressDialog.show(getContext(), "",
+//                "Please wait..", true);
+//        // Convert it to byte
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        // Compress image to lower quality scale 1 - 100
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
+//        byte[] image = stream.toByteArray();
+//
+//        // Create the ParseFile
+//        final ParseFile file = new ParseFile("androidbegin.png", image);
+//        // Upload the image into Parse Cloud
+//        file.saveInBackground(new ProgressCallback() {
+//            @Override
+//            public void done(Integer percentDone) {
+//                // Create a New Class called "ImageUpload" in Parse
+//                final ParseObject imgupload = new ParseObject("ImageUpload");
+//
+//                // Create a column named "ImageName" and set the string
+//                imgupload.put("ImageName", "AndroidBegin Logo");
+//
+//                // Create a column named "ImageFile" and insert the image
+//                imgupload.put("ImageFile", file);
+//
+//                // Create the class and the columns
+//                imgupload.saveInBackground(new SaveCallback() {
+//                    @Override
+//                    public void done(com.parse.ParseException e) {
+//                        if (e == null) {
+//                            controller.UpdateTaskPic(task_clicked, imgupload.getObjectId());
+//                            Intent intent = new Intent(getContext(), TaskView.class);
+//                            Bundle mBundle = new Bundle();
+//                            mBundle.putSerializable("TASKID", task_clicked);
+//                            intent.putExtras(mBundle);
+//                            getContext().startActivity(intent);
+//
+//                            progressDialog.dismiss();
+//                        } else {
+//                            Log.d("Error: ", e.toString());
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//
+//
+//    }
 
-        // Create the ParseFile
-        final ParseFile file = new ParseFile("androidbegin.png", image);
-        // Upload the image into Parse Cloud
-        file.saveInBackground(new ProgressCallback() {
-            @Override
-            public void done(Integer percentDone) {
-                // Create a New Class called "ImageUpload" in Parse
-                final ParseObject imgupload = new ParseObject("ImageUpload");
-
-                // Create a column named "ImageName" and set the string
-                imgupload.put("ImageName", "AndroidBegin Logo");
-
-                // Create a column named "ImageFile" and insert the image
-                imgupload.put("ImageFile", file);
-
-                // Create the class and the columns
-                imgupload.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(com.parse.ParseException e) {
-                        if (e == null) {
-                            controller.UpdateTaskPic(task_clicked, imgupload.getObjectId());
-                            Intent intent = new Intent(getContext(), TaskView.class);
-                            Bundle mBundle = new Bundle();
-                            mBundle.putSerializable("TASKID", task_clicked);
-                            intent.putExtras(mBundle);
-                            getContext().startActivity(intent);
-
-                            progressDialog.dismiss();
-                        } else {
-                            Log.d("Error: ", e.toString());
-                        }
-                    }
-                });
-            }
-        });
 
 
-    }
-
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
-        super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bp = (Bitmap) data.getExtras().get("data");
-        SaveOnParse(bp, task_clicked);
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        // TODO Auto-generated method stub
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Bitmap bp = (Bitmap) data.getExtras().get("data");
+//        SaveOnParse(bp, task_clicked);
+//    }
 }

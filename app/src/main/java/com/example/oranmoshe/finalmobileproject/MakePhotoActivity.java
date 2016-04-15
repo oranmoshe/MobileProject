@@ -86,7 +86,7 @@ public class MakePhotoActivity extends AppCompatActivity {
                                     public void done(ParseException e) {
                                         String taskID = (String) getIntent().getSerializableExtra("TASKID");
                                         LocalTask localTask = controller.getLocalTask("t_id", taskID);
-                                        controller.UpdateTaskPic(localTask.get_t_id(), imgupload.getObjectId());
+                                      //  controller.UpdateTaskPic(localTask.get_t_id(), imgupload.getObjectId());
                                         finish();
                                     }
                                 });

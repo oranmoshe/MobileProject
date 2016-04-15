@@ -213,10 +213,33 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:id="@+id/linearLayout28"
+        android:layout_below="@+id/linearLayout26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButtonCamera"
+            android:maxWidth="10dp"
+            android:src="@drawable/camera" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageEditTask"
+            android:nestedScrollingEnabled="false"
+            android:maxHeight="30dp"
+            android:maxWidth="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout27"
-        android:layout_below="@+id/linearLayout26"
+        android:layout_below="@+id/linearLayout28"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -231,6 +254,5 @@
 
     </LinearLayout>
 
-arLayout>
 
 </RelativeLayout>

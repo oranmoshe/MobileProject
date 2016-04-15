@@ -82,6 +82,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Login"
+            android:textColor="#fff"
+            android:background="@drawable/black_button"
             android:id="@+id/buttonLogin"
             android:layout_gravity="center_horizontal" />
 
@@ -101,6 +103,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Signup"
+            android:textColor="#fff"
+            android:background="@drawable/blue_button"
             android:id="@+id/buttonSignup" />
     </LinearLayout>
 

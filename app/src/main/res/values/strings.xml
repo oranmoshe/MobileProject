@@ -10,8 +10,9 @@
     <string name="title_activity_create_new_task">CreateNewTask</string>
     <string name="title_activity_manager">Manager</string>
     <string name="users_changes">USERS_CHANGED</string>
-
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="task_icon">task_icon</string>
+    <string name="task_image">task image</string>
 
 </resources>

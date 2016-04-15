@@ -219,11 +219,23 @@ public class Controller {
         db.UpdateTaskStatus(t_id, status);
     }
 
-    public void UpdateTaskPic(String t_id,String pic){
+    public void UpdateTaskPic(String t_id,String pic, final Event eventUploading){
         // Update Task Locally
         dbLocal.Update_Task_Pic(t_id, pic);
         // Update Task Cloud
-        db.UpdateTaskPic(t_id, pic);
+        Event eventParse = new Event();
+        eventParse.setOnEventListener(new OnEventListener() {
+            @Override
+            public void onEvent(EventObject e) {
+                if(e.getSource().toString().equals("Done")){
+                    eventUploading.doEvent(e);
+                }
+                else{
+                    eventUploading.doEvent(e);
+                }
+            }
+        });
+        db.UpdateTaskPic(t_id, pic,eventParse);
     }
 
     public String UpdateUser(String  m_id, String username, String password, String email, String phone, int t_id,

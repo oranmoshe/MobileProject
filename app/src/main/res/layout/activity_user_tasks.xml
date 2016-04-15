@@ -12,7 +12,7 @@
         android:id="@+id/viewTabLayout"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="#3598DC"
+        android:background="#eaeffa"
         app:tabMode="scrollable"
         app:tabGravity="fill"/>
 
