@@ -124,15 +124,13 @@ public class Controller {
         Event parseEvent = new Event();
         parseEvent.setOnEventListener(new OnEventListener() {
             @Override
-            public void onEvent(EventObject objectId) {
-                if(((EventObjectExtender)objectId).getId()) {
-                    final User user = new User(objectId.toString(), username,
+            public void onEvent(EventObject e) {
+                if(((EventObjectExtender)e).getId()==1) {
+                    final User user = new User(e.getSource().toString(), username,
                             password, email, phone, t_id, team);
                     dbLocal.Add_User(user);
-                    result.doEvent(new EventObject(true));
-                } else {
-                    result.doEvent(new EventObject(false));
                 }
+                result.doEvent(e);
             }
         });
         db.SignUpManager(username, password, email, phone, t_id, team, dbLocal, parseEvent);
