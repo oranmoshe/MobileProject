@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="option_task_view">View</string>
-    <string name="option_task_edit">Edit</string>
-    <string name="option_task_add_photo">Add Photo</string>
-    <string name="option_task_add_pending">Pending</string>
-    <string name="option_task_add_in_process">In Process</string>
-    <string name="option_task_add_done">Done</string>
-</resources>
