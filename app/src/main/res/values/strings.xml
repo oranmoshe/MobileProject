@@ -14,5 +14,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="task_icon">task_icon</string>
     <string name="task_image">task image</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

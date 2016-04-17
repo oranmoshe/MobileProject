@@ -5,11 +5,19 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.example.oranmoshe.finalmobileproject"
+        applicationId "om.otsproject"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+    }
+    signingConfigs{
+        release{
+            storeFile file("/Users/oranmoshe/keystores.jks");
+            storePassword("mo2012");
+            keyAlias "BusinessToDoKey"
+            keyPassword "todo1234"
+        }
     }
     buildTypes {
         release {
