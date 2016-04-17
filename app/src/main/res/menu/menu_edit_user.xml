@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/option_user_task_view"
+        android:title="@string/option_user_task_view"
+        ></item>
+    <item
+        android:id="@+id/option_user_task_pending"
+        android:title="@string/option_user_task_pending"
+        ></item>
+    <item
+        android:id="@+id/option_user_task_in_progress"
+        android:title="@string/option_user_task_in_process"
+        ></item>
+    <item
+        android:id="@+id/id_option_user_edit"
+        android:title="@string/option_user_task_done"
+        ></item>
+</menu>

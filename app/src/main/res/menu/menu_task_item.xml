@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+        android:id="@+id/id_option_view"
+        android:title="@string/option_task_view"
+      ></item>
+    <item
+        android:id="@+id/id_option_edit"
+        android:title="@string/option_task_edit"
+        ></item>
+</menu>
