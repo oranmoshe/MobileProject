@@ -406,12 +406,13 @@ public class DatabaseParse extends Application {
                     });
                 } else {
                     if(objects.size() >0){
-                        event.doEvent(new EventObjectExtender(new EventObject("Username not available"),0));
+                        event.doEvent(new EventObjectExtender(new EventObject("Error"),0));
                     }else{
                         event.doEvent(new EventObjectExtender(new EventObject("Error"),-1));
                     }
-
+                    event.doEvent(new EventObjectExtender(new EventObject("Error"),-1));
                 }
+
             }
         });
     }

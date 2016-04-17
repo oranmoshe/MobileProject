@@ -118,13 +118,14 @@ public class Controller {
         return db.GetTimer();
     }
 
+
     public void AddManager(final String username, final String password, final String email,
                         final  String phone, final int t_id, final String team, final Event result){
         Event parseEvent = new Event();
         parseEvent.setOnEventListener(new OnEventListener() {
             @Override
             public void onEvent(EventObject objectId) {
-                if(!objectId.getSource().toString().equals("Error")) {
+                if(((EventObjectExtender)objectId).getId()) {
                     final User user = new User(objectId.toString(), username,
                             password, email, phone, t_id, team);
                     dbLocal.Add_User(user);
