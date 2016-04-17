@@ -40,12 +40,24 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/CreateUserActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
-                <element signature="e#811#1962#0" expanded="true" />
-                <element signature="e#1288#1842#0" expanded="true" />
-                <element signature="e#1841#1842#0" expanded="true" />
-                <element signature="e#1961#1962#0" expanded="true" />
+                <element signature="e#811#2050#0" expanded="true" />
+                <element signature="e#1318#1930#0" expanded="true" />
+                <element signature="e#1929#1930#0" expanded="true" />
+                <element signature="e#2049#2050#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,61 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Handler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/os/Handler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Looper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/os/Looper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main2Activity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Main2Activity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventObjectExtender.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/EventObjectExtender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.3333335">
+              <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding>
                 <element signature="e#1270#1271#0" expanded="true" />
                 <element signature="e#1301#1302#0" expanded="true" />
@@ -128,28 +90,75 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParseTaskUtils.java" pinned="false" current-in-tab="true">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.13.0/f43cc29ff26f12c25bcc55eed39e9c7633cb2982/parse-android-1.13.0-sources.jar!/com/parse/ParseTaskUtils.java">
+      <file leaf-file-name="AddUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/AddUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5926518">
-              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseParse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java">
+      <file leaf-file-name="ManageTeamActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/ManageTeamActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="408" column="84" selection-start-line="408" selection-start-column="84" selection-end-line="408" selection-end-column="84" />
+              <caret line="95" column="67" selection-start-line="95" selection-start-column="67" selection-end-line="95" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3495#3508#0" expanded="true" />
-                <element signature="e#8019#8032#0" expanded="true" />
-                <element signature="e#17674#19477#0" expanded="true" />
-                <element signature="e#19476#19477#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseParse.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.7368421">
+              <caret line="309" column="44" selection-start-line="309" selection-start-column="44" selection-end-line="309" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3528#3541#0" expanded="true" />
+                <element signature="e#8052#8065#0" expanded="true" />
+                <element signature="e#12096#12965#0" expanded="true" />
+                <element signature="e#12964#12965#0" expanded="true" />
+                <element signature="e#14393#15767#0" expanded="true" />
+                <element signature="e#15766#15767#0" expanded="true" />
+                <element signature="e#16751#19280#0" expanded="true" />
+                <element signature="e#17382#18931#0" expanded="true" />
+                <element signature="e#17632#18818#0" expanded="true" />
+                <element signature="e#17998#18728#0" expanded="true" />
+                <element signature="e#18727#18728#0" expanded="true" />
+                <element signature="e#18817#18818#0" expanded="true" />
+                <element signature="e#18930#18931#0" expanded="true" />
+                <element signature="e#19279#19280#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParseTaskUtils.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.13.0/f43cc29ff26f12c25bcc55eed39e9c7633cb2982/parse-android-1.13.0-sources.jar!/com/parse/ParseTaskUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+              <folding>
+                <element signature="e#4079#4739#0" expanded="true" />
+                <element signature="e#4738#4739#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Handler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/os/Handler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1638,7 +1647,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/black_button.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/blue_button.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/red_button.xml" />
@@ -1686,9 +1694,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/Event.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/EventObjectExtender.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/MainLogin.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/CreateUserActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/CreateUserActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/ManageTeamActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java" />
       </list>
     </option>
   </component>
@@ -1937,7 +1946,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4df1de5a5cf67fa1" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="04157df4eb10e71a" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_One_API_23" />
     <property name="FullScreen" value="false" />
     <property name="OverrideImplement.combined" value="true" />
@@ -2188,25 +2197,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280363" sideWeight="0.4972973" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674772" sideWeight="0.49434572" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10486322" sideWeight="0.49664992" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.039513677" sideWeight="0.47650453" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5699088" sideWeight="0.4701131" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893652" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0060790274" sideWeight="0.47320694" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32451093" sideWeight="0.5234955" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38297874" sideWeight="0.47253636" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5699088" sideWeight="0.5298869" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26545754" sideWeight="0.51038575" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23496027" sideWeight="0.51772463" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26545754" sideWeight="0.51038575" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26291794" sideWeight="0.4972973" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26291794" sideWeight="0.4911147" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826748" sideWeight="0.4972973" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826748" sideWeight="0.4806139" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2489695" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -2272,38 +2281,110 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/CreateUserActivity.java</url>
-          <line>46</line>
+          <line>37</line>
           <properties />
-          <option name="timeStamp" value="336" />
+          <option name="timeStamp" value="344" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java</url>
           <line>130</line>
           <properties />
-          <option name="timeStamp" value="338" />
+          <option name="timeStamp" value="346" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java</url>
-          <line>129</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/CreateUserActivity.java</url>
+          <line>39</line>
           <properties />
-          <option name="timeStamp" value="340" />
+          <option name="timeStamp" value="356" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java</url>
-          <line>128</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>382</line>
           <properties />
-          <option name="timeStamp" value="341" />
+          <option name="timeStamp" value="361" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java</url>
-          <line>132</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>383</line>
           <properties />
-          <option name="timeStamp" value="342" />
+          <option name="timeStamp" value="362" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>384</line>
+          <properties />
+          <option name="timeStamp" value="364" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>385</line>
+          <properties />
+          <option name="timeStamp" value="365" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>376</line>
+          <properties />
+          <option name="timeStamp" value="366" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>389</line>
+          <properties />
+          <option name="timeStamp" value="367" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>388</line>
+          <properties />
+          <option name="timeStamp" value="368" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>390</line>
+          <properties />
+          <option name="timeStamp" value="369" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>379</line>
+          <properties />
+          <option name="timeStamp" value="370" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>362</line>
+          <properties />
+          <option name="timeStamp" value="371" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>403</line>
+          <properties />
+          <option name="timeStamp" value="372" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>404</line>
+          <properties />
+          <option name="timeStamp" value="373" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>361</line>
+          <properties />
+          <option name="timeStamp" value="374" />
         </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/TaskView.java</url>
           <line>193</line>
           <option name="timeStamp" value="288" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java</url>
+          <line>378</line>
+          <properties method="done" />
+          <option name="timeStamp" value="357" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -2314,11 +2395,15 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="343" />
+      <option name="time" value="375" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
         <watch expression="bp" language="JAVA" custom="java.lang.management.BufferPoolMXBean" />
+        <watch expression="username" language="JAVA" custom="" />
+        <watch expression="phone" language="JAVA" custom="" />
+        <watch expression="e" language="JAVA" custom="" />
+        <watch expression="username" language="JAVA" custom="" />
       </configuration>
     </watches-manager>
   </component>
@@ -2655,36 +2740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3178808">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/AddUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="100" selection-start-line="40" selection-start-column="20" selection-end-line="53" selection-end-column="100" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/ManageTeamActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37251654">
@@ -2701,14 +2756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Main2Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/EventObjectExtender.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2717,16 +2764,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Main2Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="408" column="84" selection-start-line="408" selection-start-column="84" selection-end-line="408" selection-end-column="84" />
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3495#3508#0" expanded="true" />
-            <element signature="e#8019#8032#0" expanded="true" />
-            <element signature="e#17674#19477#0" expanded="true" />
-            <element signature="e#19476#19477#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/ManageTeamActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="67" selection-start-line="95" selection-start-column="67" selection-end-line="95" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/AddUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.3333335">
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding>
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#3450#3451#0" expanded="true" />
+            <element signature="e#3486#3487#0" expanded="true" />
+            <element signature="e#3762#4183#0" expanded="true" />
+            <element signature="e#4182#4183#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2734,12 +2828,12 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/CreateUserActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <element signature="e#811#1962#0" expanded="true" />
-            <element signature="e#1288#1842#0" expanded="true" />
-            <element signature="e#1841#1842#0" expanded="true" />
-            <element signature="e#1961#1962#0" expanded="true" />
+            <element signature="e#811#2050#0" expanded="true" />
+            <element signature="e#1318#1930#0" expanded="true" />
+            <element signature="e#1929#1930#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2752,6 +2846,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.13.0/f43cc29ff26f12c25bcc55eed39e9c7633cb2982/parse-android-1.13.0-sources.jar!/com/parse/ParseTaskUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding>
+            <element signature="e#4079#4739#0" expanded="true" />
+            <element signature="e#4738#4739#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/os/Handler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2760,34 +2865,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/os/Looper.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/DatabaseParse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/om/otsproject/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.7368421">
+          <caret line="309" column="44" selection-start-line="309" selection-start-column="44" selection-end-line="309" selection-end-column="44" />
           <folding>
-            <element signature="e#1270#1271#0" expanded="true" />
-            <element signature="e#1301#1302#0" expanded="true" />
-            <element signature="e#3450#3451#0" expanded="true" />
-            <element signature="e#3486#3487#0" expanded="true" />
-            <element signature="e#3762#4183#0" expanded="true" />
-            <element signature="e#4182#4183#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3528#3541#0" expanded="true" />
+            <element signature="e#8052#8065#0" expanded="true" />
+            <element signature="e#12096#12965#0" expanded="true" />
+            <element signature="e#12964#12965#0" expanded="true" />
+            <element signature="e#14393#15767#0" expanded="true" />
+            <element signature="e#15766#15767#0" expanded="true" />
+            <element signature="e#16751#19280#0" expanded="true" />
+            <element signature="e#17382#18931#0" expanded="true" />
+            <element signature="e#17632#18818#0" expanded="true" />
+            <element signature="e#17998#18728#0" expanded="true" />
+            <element signature="e#18727#18728#0" expanded="true" />
+            <element signature="e#18817#18818#0" expanded="true" />
+            <element signature="e#18930#18931#0" expanded="true" />
+            <element signature="e#19279#19280#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.13.0/f43cc29ff26f12c25bcc55eed39e9c7633cb2982/parse-android-1.13.0-sources.jar!/com/parse/ParseTaskUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5926518">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

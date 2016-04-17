@@ -93,7 +93,8 @@ public class ManageTeamActivity extends AppCompatActivity{
         email.putExtra(Intent.EXTRA_SUBJECT, "Invitation to Join OTS team");
         email.putExtra(Intent.EXTRA_TEXT, "Hi\n" +
                 "\tYou have been invited to be a team member in an OTS Team created by me.\n" +
-                "\tUse this link to download and install the App from Google Play.\n");
+                "\tUse this link to download and install the App from Google Play.\n" +
+                "https://play.google.com/store/apps/details?id=om.otsproject\n");
         email.setType("message/rfc822");
         startActivity(Intent.createChooser(email, "Choose an Email client :"));
     }

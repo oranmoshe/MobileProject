@@ -13,6 +13,7 @@ import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -306,7 +307,7 @@ public class DatabaseParse extends Application {
                     parseUser.put("passwordClone", phone);
                     parseUser.put("phone", phone);
                     parseUser.put("email", email);
-                    parseUser.put("t_id", t_id);
+                    parseUser.put("t_id", 15);
                     parseUser.put("team", team);
                     parseUser.put("m_id", m_id);
 
@@ -352,6 +353,11 @@ public class DatabaseParse extends Application {
     protected void SignUpManager( final String username, final String password,
                           final String email, final String phone, final int t_id, final String team,
                           final DatabaseHandler dh,final Event event) {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser!=null) {
+            // do stuff with the user
+            currentUser.logOut();
+        }
         // Checks if username available
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("email", email);
@@ -366,51 +372,40 @@ public class DatabaseParse extends Application {
                     parseUser.put("password", phone);
                     parseUser.put("passwordClone", phone);
                     parseUser.put("phone", phone);
-                    parseUser.put("email", email);
-                    parseUser.put("t_id", t_id);
-                    parseUser.put("team", team);
-                    final ParseUser parseUserManager = ParseUser.getCurrentUser();
-                    if (parseUserManager!=null) {
-                        // do stuff with the user
-                        ParseUser.logOut();
-                    }
+                    parseUser.put("t_id", 15);
+                    parseUser.put("email", username);
                     parseUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(com.parse.ParseException e) {
-                            ParseUser.logInInBackground(username, phone, new LogInCallback() {
-                                public void done(ParseUser user, com.parse.ParseException e) {
-                                    if (user != null) {
-                                        user.put("m_id", user.getObjectId());
-                                        user.saveInBackground(new SaveCallback() {
-                                            @Override
-                                            public void done(com.parse.ParseException e) {
-                                                if(e==null) {
-                                                    final User user = new User(parseUser.getObjectId(),
-                                                            parseUser.getString("m_id"), parseUser.getString("username"),
-                                                            parseUser.getString("passwordClone"), parseUser.getString("email"),
-                                                            parseUser.getString("phone"), parseUser.getInt("t_id"), parseUser.getString("team"));
-                                                    dh.Add_User(user);
-                                                    event.doEvent(new EventObjectExtender(new EventObject("Done"),1));
-                                                }else {
-                                                    event.doEvent(new EventObjectExtender(new EventObject("Error"),-1));
-                                                }
-                                            }
-                                        });
-                                    } else {
-                                        event.doEvent(new EventObjectExtender(new EventObject("Error"),-1));
-                                    }
-                                }
-                            });
+                            if (e == null) {
+                                ParseUser.logInInBackground(username, phone, new LogInCallback() {
+                                            public void done(ParseUser user, com.parse.ParseException e) {
+                                                ParseUser p = ParseUser.getCurrentUser();
+                                                p.put("m_id", p.getObjectId());
+                                                p.saveInBackground(new SaveCallback() {
+                                                    @Override
+                                                    public void done(ParseException e) {
+                                                        if (e == null) {
+                                                            event.doEvent(new EventObjectExtender(new EventObject("Done"), 1));
+                                                        } else {
+                                                            event.doEvent(new EventObjectExtender(new EventObject("Error"), -1));
+                                                        }
 
+                                                    }
+                                                });
+                                            }
+                                        }
+                                );
+                            }
                         }
                     });
+
                 } else {
                     if(objects.size() >0){
                         event.doEvent(new EventObjectExtender(new EventObject("Error"),0));
                     }else{
-                        event.doEvent(new EventObjectExtender(new EventObject("Error"),-1));
+                        event.doEvent(new EventObjectExtender(new EventObject("Error"), -1));
                     }
-                    event.doEvent(new EventObjectExtender(new EventObject("Error"),-1));
                 }
 
             }

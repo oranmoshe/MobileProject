@@ -27,15 +27,16 @@ public class CreateUserActivity extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = ((EditText)findViewById(R.id.editTextUsernameManager)).toString();
-                String password = ((EditText)findViewById(R.id.editTextPasswordManager)).toString();
-                String phone = ((EditText)findViewById(R.id.editTextPhoneManager)).toString();
+                String username = ((EditText)findViewById(R.id.editTextUsernameManager)).getText().toString();
+                String password = ((EditText)findViewById(R.id.editTextPasswordManager)).getText().toString();
+                String phone = ((EditText)findViewById(R.id.editTextPhoneManager)).getText().toString();
 
                 Event result = new Event();
                 result.setOnEventListener(new OnEventListener() {
                     @Override
                     public void onEvent(EventObject e) {
-                        if((Boolean)e.getSource()) {
+                        int result = ((EventObjectExtender)e).getId();
+                        if(result==1) {
                             Intent intent = new Intent(getBaseContext(), ManageTeamActivity.class);
                             startActivity(intent);
                         }
