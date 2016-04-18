@@ -4,8 +4,4 @@
         android:id="@+id/id_option_delete"
         android:title="@string/option_delete"
       ></item>
-    <item
-        android:id="@+id/id_option_edit"
-        android:title="@string/option_edit"
-        ></item>
 </menu>

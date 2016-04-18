@@ -6,6 +6,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.widget.Button;
@@ -14,6 +17,7 @@ import android.widget.EditText;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.EventObject;
 
 public class EditGroupActivity extends BaseClass
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -120,5 +124,40 @@ public class EditGroupActivity extends BaseClass
 
         }
     }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Friends Option");
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_edit, menu);
+    }
 
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        int position = 0;
+        try {
+            mAdapter = mRecyclerView.getAdapter();
+            RecycleAdapterManager recycleAdapterManager =  ((RecycleAdapterManager)mAdapter);
+            position = recycleAdapterManager.getPosition();
+        } catch (Exception e) {
+            return super.onContextItemSelected(item);
+        }
+        switch (item.getItemId()) {
+            case R.id.id_option_delete:
+                RecycleItem currentItem = ((RecycleAdapterManager) mAdapter).getRecyceItem(position);
+                String id = currentItem.GetUID();
+                Event event = new Event();
+                event.setOnEventListener(new OnEventListener() {
+                    @Override
+                    public void onEvent(EventObject e) {
+                        UpdateData();
+                    }
+                });
+                controller.RemoveUser(id, event);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
