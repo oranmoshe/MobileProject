@@ -45,7 +45,7 @@ public class CreateManagerActivity extends AppCompatActivity {
                 if(phone.equals("") || password.equals("") || username.equals("")){
                     Toast.makeText(CreateManagerActivity.this, "Please enter all the fields..", Toast.LENGTH_LONG).show();
                     }else{
-                        if(!isEmailValid(username)) {
+                        if(isEmailValid(username)) {
                             Event result = new Event();
                             result.setOnEventListener(new OnEventListener() {
                                 @Override
@@ -71,18 +71,18 @@ public class CreateManagerActivity extends AppCompatActivity {
     }
     public boolean isEmailValid(String email)
     {
-        String regExpn =
+
+         Pattern pattern;
+         Matcher matcher;
+
+        String EMAIL_PATTERN =
                 "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-        CharSequence inputStr = email;
+        pattern = Pattern.compile(EMAIL_PATTERN);
 
-        Pattern pattern = Pattern.compile(regExpn, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(inputStr);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
 
-        if(matcher.matches())
-            return true;
-        else
-            return false;
     }
 }

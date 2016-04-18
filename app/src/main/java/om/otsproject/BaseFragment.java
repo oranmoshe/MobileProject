@@ -109,8 +109,12 @@ public class BaseFragment extends Fragment {
                 sorted = list.toArray(sorted);
                 if (list.size() > 0) {
                     for(int i=0; i<sorted.length;i++){
-                        String email = controller.getLocalUser(sorted[i].get_assign()).getEmail();
-                        items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time()));
+                        try {
+                            String email = controller.getLocalUser(sorted[i].get_assign()).getEmail();
+                            items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time()));
+                        }catch (Exception exc){
+                            Log.d("Error", exc.toString());// probably user deleted
+                        }
                     }
 
                     textView.setText(String.valueOf(list.size()) + " tasks");

@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -20,6 +22,10 @@ public class MainLogin extends AppCompatActivity {
 
     Controller controller = Controller.getInstance(this);
     private ProgressDialog progressDialog;
+
+    public static GoogleAnalytics analytics;
+    public static Tracker tracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,14 @@ public class MainLogin extends AppCompatActivity {
         });
 
         setSupportActionBar(toolbar);
+
+        analytics = GoogleAnalytics.getInstance(this);
+        analytics.setLocalDispatchPeriod(1800);
+
+        tracker = analytics.newTracker("UA-76567317-1"); // Replace with actual tracker id
+        tracker.enableExceptionReporting(true);
+        tracker.enableAdvertisingIdCollection(true);
+        tracker.enableAutoActivityTracking(true);
     }
 
     @Override
