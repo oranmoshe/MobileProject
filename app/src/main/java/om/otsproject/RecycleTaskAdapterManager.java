@@ -47,7 +47,7 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(),TaskView.class);
+                    Intent intent = new Intent(v.getContext(),ReportTaskActivity.class);
                     Bundle mBundle = new Bundle();
                     mBundle.putSerializable("TASKID", mDataset.get(getPosition()).GetUID());
                     intent.putExtras(mBundle);

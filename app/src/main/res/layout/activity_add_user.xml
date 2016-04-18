@@ -122,6 +122,8 @@
             android:layout_height="wrap_content"
             android:text="Add User"
             android:id="@+id/btnAddUserAdd"
+            android:textColor="#fff"
+            android:background="@drawable/black_button"
             android:layout_below="@+id/linearLayout22"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />

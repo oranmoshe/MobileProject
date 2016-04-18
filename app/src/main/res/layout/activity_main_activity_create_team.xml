@@ -84,6 +84,8 @@
             android:id="@+id/buttonAddEmail"
             android:layout_alignTop="@+id/linearLayout9"
             android:layout_alignParentRight="true"
+            android:textColor="#fff"
+            android:background="@drawable/black_button"
             android:layout_alignParentEnd="true" />
     </LinearLayout>
 

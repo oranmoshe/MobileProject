@@ -18,5 +18,10 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_report_task">ReportTaskActivity</string>
+    <string name="title_activity_edit_task">EditTaskActivity</string>
+    <string name="title_activity_edit_group">EditGroupActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
 
 </resources>

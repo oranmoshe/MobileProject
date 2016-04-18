@@ -44,7 +44,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextUsername"
             android:layout_weight="1"
-            android:text="q@q.q"
             android:hint="Username" />
     </LinearLayout>
     <LinearLayout
@@ -62,7 +61,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextPassword"
             android:layout_weight="1"
-            android:text="ss"
+            android:inputType="textPassword"
             android:hint="Password" />
     </LinearLayout>
 

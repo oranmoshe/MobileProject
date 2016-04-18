@@ -38,7 +38,7 @@ public class TasksActivity extends BaseClass {
 
 
         viewPager = (ViewPager)findViewById(R.id.viewTabPager);
-        viewPager.setAdapter(new CustomAdapter(getSupportFragmentManager(),getApplicationContext()));
+        viewPager.setAdapter(new CustomAdapter(getSupportFragmentManager(), getApplicationContext()));
 
         tabLayout = (TabLayout)findViewById(R.id.viewTabLayout);
         tabLayout.setupWithViewPager(viewPager);
@@ -67,7 +67,7 @@ public class TasksActivity extends BaseClass {
                 // Click action
                 ArrayList<User> list = controller.getLocalUsers(ParseUser.getCurrentUser().getString("m_id"));
                 if (list.size() > 1) {
-                    Intent intent = new Intent(getBaseContext(), TaskNew.class);
+                    Intent intent = new Intent(getBaseContext(), CreateTaskActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getBaseContext(), "There are no users in the team, please add team members.", Toast.LENGTH_LONG).show();
@@ -95,7 +95,12 @@ public class TasksActivity extends BaseClass {
         });
 
         controller = Controller.getInstance(this);
+
+        SetHeader("Task");
+
     }
+
+
 
     @Override
     protected void onResume() {

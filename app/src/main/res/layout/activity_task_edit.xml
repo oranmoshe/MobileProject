@@ -248,6 +248,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Save"
+            android:textColor="#fff"
+            android:background="@drawable/black_button"
             android:id="@+id/buttonSave"
             android:nestedScrollingEnabled="false"
             android:singleLine="true" />

@@ -174,13 +174,15 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Create"
         android:id="@+id/button"
         android:layout_below="@+id/linearLayout7"
         android:layout_centerHorizontal="true"
         android:onClick="goToListTasks"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="35dp"
+        android:textColor="#fff"
+        android:background="@drawable/black_button" />
 
 </RelativeLayout>

@@ -23,7 +23,7 @@ public class Task implements Comparable<Task>{
 
     @Override
     public int compareTo(Task o) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         String dateInString = o.get_due_time();
         String thisdateInString = get_due_time();
         Date date = new Date();

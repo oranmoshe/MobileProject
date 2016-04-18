@@ -365,12 +365,12 @@ public class DatabaseParse extends Application {
             @Override
             public void done(List<ParseUser> objects, com.parse.ParseException e) {
 
-                if (e == null && objects.size() ==0) {
+                if (e == null && objects.size() == 0) {
 
                     final ParseUser parseUser = new ParseUser();
                     parseUser.put("username", username);
-                    parseUser.put("password", phone);
-                    parseUser.put("passwordClone", phone);
+                    parseUser.put("password", password);
+                    parseUser.put("passwordClone", password);
                     parseUser.put("phone", phone);
                     parseUser.put("t_id", 15);
                     parseUser.put("email", username);
@@ -401,9 +401,9 @@ public class DatabaseParse extends Application {
                     });
 
                 } else {
-                    if(objects.size() >0){
-                        event.doEvent(new EventObjectExtender(new EventObject("Error"),0));
-                    }else{
+                    if (objects.size() > 0) {
+                        event.doEvent(new EventObjectExtender(new EventObject("Error"), 0));
+                    } else {
                         event.doEvent(new EventObjectExtender(new EventObject("Error"), -1));
                     }
                 }
@@ -413,43 +413,6 @@ public class DatabaseParse extends Application {
     }
 
 
-    public void UpdateUser(final String  m_id, final String username, final String password, final String email, final String phone, final int t_id,
-                           final String team, final DatabaseHandler dh,final Activity fa){
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
-            public void done(ParseUser user, com.parse.ParseException e) {
-                if (user != null) {
-                    user.put("m_id", m_id);
-                    user.put("password", password);
-                    user.put("passwordClone", password);
-                    user.put("email", email);
-                    user.put("t_id", t_id);
-                    user.put("team", team);
-                    user.put("phone", phone);
-                    user.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(com.parse.ParseException e) {
-                            User user = dh.Get_User(ParseUser.getCurrentUser().getObjectId());
-                            user.setTeam(team);
-                            user.setPhone(phone);
-                            user.setUsername(username);
-                            user.setEmail(email);
-                            user.setM_ID(m_id);
-                            user.setPassword(password);
-                            user.setT_ID(t_id);
-                            dh.Update_User(user);
-                            if (fa != null) {
-                                fa.startActivity(new Intent(getBaseContext(), ManageTeamActivity.class));
-                                fa.finish();
-                            }
-
-                        }
-                    });
-                } else {
-                }
-            }
-        });
-
-    }
     public void UpdateTeamName(String teamName){
         ParseUser pu = ParseUser.getCurrentUser();
         pu.put("team", teamName);

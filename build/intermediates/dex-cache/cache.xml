@@ -6,70 +6,70 @@
         jumboMode="false"
         revision="23.0.2"
         sha1="d96886efea7cc74fbb3abd0e3b51d5638fc57be0">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/classes-c68f33042fb324709ce7e0053843a756072ce509.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/classes-c68f33042fb324709ce7e0053843a756072ce509.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0-3332a2c193cf5f6aa6d3fe3cc576a4906e2bf3a0.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/bolts-applinks-1.4.0-3332a2c193cf5f6aa6d3fe3cc576a4906e2bf3a0.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/classes-fca69dd7e94c4efaf52ff6ab0b75bf5bfb43b82e.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/classes-fca69dd7e94c4efaf52ff6ab0b75bf5bfb43b82e.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/classes-bfbda8b539455bdddf841901b9cdec6bf9f10300.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/classes-bfbda8b539455bdddf841901b9cdec6bf9f10300.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-7c8b9ae196edf6d679faea70cc9c36a232b13937.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/support-annotations-23.1.1-7c8b9ae196edf6d679faea70cc9c36a232b13937.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/classes-4fa33be9662415e25a73aa7830085215199d324c.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/classes-4fa33be9662415e25a73aa7830085215199d324c.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0-53c6cfd0171cc54d0e977beb0754fa7b0e72f977.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/bolts-tasks-1.4.0-53c6cfd0171cc54d0e977beb0754fa7b0e72f977.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.13.0/58a7d54b6a4f28be11f0cecec93097eddf473e6f/parse-android-1.13.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="58a7d54b6a4f28be11f0cecec93097eddf473e6f">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/parse-android-1.13.0-9330509b7392eb7bceab6458940d7ee7f7c14663.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/parse-android-1.13.0-9330509b7392eb7bceab6458940d7ee7f7c14663.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-ac30987d736ba493458ad036ad1584d50470f64b.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/internal_impl-23.1.1-ac30987d736ba493458ad036ad1584d50470f64b.jar" />
     </item>
     <item
         jar="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/debug/classes-4a72d63663fe84fff8c1b300e1443fc9facf4975.jar" />
+        <dex dex="/Users/oranmoshe/AndroidStudioProjects/MobileAppNew/app/build/intermediates/pre-dexed/release/classes-4a72d63663fe84fff8c1b300e1443fc9facf4975.jar" />
     </item>
 
 </items>

@@ -125,7 +125,7 @@ public class Controller {
         parseEvent.setOnEventListener(new OnEventListener() {
             @Override
             public void onEvent(EventObject e) {
-                if(((EventObjectExtender)e).getId()==1) {
+                if (((EventObjectExtender) e).getId() == 1) {
                     final User user = new User(e.getSource().toString(), username,
                             password, email, phone, t_id, team);
                     dbLocal.Add_User(user);
@@ -198,8 +198,9 @@ public class Controller {
     public boolean IsManager(){
         if(ParseUser.getCurrentUser().getString("m_id").equals(ParseUser.getCurrentUser().getObjectId())){
             return true;
+        }else {
+            return false;
         }
-        return false;
     }
 
     public  ArrayList<Task> getLocalTasksByUserAndStatus(String assign, int status){

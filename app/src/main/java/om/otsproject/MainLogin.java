@@ -79,7 +79,7 @@ public class MainLogin extends AppCompatActivity {
     }
 
     public void goToCreate(View v) {
-        Intent intent  = new Intent(getBaseContext(),CreateUserActivity.class);
+        Intent intent  = new Intent(getBaseContext(),CreateManagerActivity.class);
         startActivity(intent);
     }
 
