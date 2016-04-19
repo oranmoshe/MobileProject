@@ -112,7 +112,8 @@ public class BaseFragment extends Fragment {
                     for(int i=0; i<sorted.length;i++){
                         try {
                             String email = controller.getLocalUser(sorted[i].get_assign()).getEmail();
-                            items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time()));
+                            boolean isRead = (sorted[i].get_accept()==1?true:false);
+                            items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time(),isRead));
                         }catch (Exception exc){
                             Log.d("Error", exc.toString());// probably user deleted
                         }
@@ -161,25 +162,31 @@ public class BaseFragment extends Fragment {
                 case R.string.option_task_accept:
                     RecycleTaskItem currentItem6 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     controller.UpdateTaskStatus(currentItem6.GetUID(), 1);
-                    startActivity(getActivity().getIntent());
-                    getActivity().finish();
+                    Intent intent1 = new Intent(getContext(),TasksActivity.class);
+                    Bundle mBundle1 = new Bundle();
+                    mBundle1.putSerializable("FRAGMENT", "1");
+                    intent1.putExtras(mBundle1);
+                    getActivity().startActivity(intent1);
                     break;
                 case R.string.option_task_reject:
                     RecycleTaskItem currentItem7 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     controller.UpdateTaskAssign(currentItem7.GetUID(), "");
-                    startActivity(getActivity().getIntent());
-                    getActivity().finish();
+                    Intent intent2 = new Intent(getContext(),TasksActivity.class);
+                    Bundle mBundle2 = new Bundle();
+                    mBundle2.putSerializable("FRAGMENT", "1");
+                    intent2.putExtras(mBundle2);
+                    getActivity().startActivity(intent2);
                     break;
                 case R.string.option_task_edit:
                     RecycleTaskItem currentItem1 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
                     // check if task is done for edit pic
                     Task task = controller.getLocalTask("t_id", currentItem1.GetUID());
-                    if(!(task.get_status()==0)) {
-                        Intent intent1 = new Intent(getContext(), EditTaskActivity.class);
-                        Bundle mBundle1 = new Bundle();
-                        mBundle1.putSerializable("TASKID", currentItem1.GetUID());
-                        intent1.putExtras(mBundle1);
-                        getActivity().startActivity(intent1);
+                    if(!(task.get_status()==0)|| controller.IsManager()) {
+                        Intent intent3 = new Intent(getContext(), EditTaskActivity.class);
+                        Bundle mBundle3 = new Bundle();
+                        mBundle3.putSerializable("TASKID", currentItem1.GetUID());
+                        intent3.putExtras(mBundle3);
+                        getActivity().startActivity(intent3);
                     }else{
                         Toast.makeText(getContext(),"A task can not be edited in request mode",Toast.LENGTH_LONG).show();
                     }

@@ -9,7 +9,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.parse.ParseUser;
 
@@ -38,6 +41,16 @@ public class BaseClass extends AppCompatActivity implements NavigationView.OnNav
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setIcon(R.drawable.ic_launcher_new);
 
+        View view = navigationView.getHeaderView(0);
+        TextView textView = (TextView)view.findViewById(R.id.textViewUserEmailAddress);
+        textView.setText("Hi, "+ ParseUser.getCurrentUser().getEmail());
+
+        if(!controller.IsManager()) {
+            Menu menu = navigationView.getMenu();
+            MenuItem nav_edit = menu.findItem(R.id.nav_edit_group);
+            nav_edit.setVisible(false);
+            navigationView.setNavigationItemSelectedListener(this);
+        }
     }
 
     @Override

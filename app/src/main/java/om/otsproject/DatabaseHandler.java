@@ -671,6 +671,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(t_id) });
     }
 
+
+    // Updating task status
+    public int Update_Task_Accept(String t_id,int accept) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ACCEPT, accept);
+        // updating row
+        return db.update(TABLE_TASKS, values, KEY_TASK_ID + " = ?",
+                new String[] { String.valueOf(t_id) });
+    }
+
     // Updating task assign
     public int Update_Task_Assign(String t_id,String assign) {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -11,13 +11,15 @@ public class RecycleTaskItem implements Serializable {
     private String u_name;
     private String u_id;
     private String dueTime;
+    private boolean isReaden;
     private static final long serialVersionUID = 46543445;
 
-    RecycleTaskItem(String name, String u_id, String u_name,String dueTime){
+    RecycleTaskItem(String name, String u_id, String u_name,String dueTime, boolean isReaden){
         this.name = name;
         this.u_name = u_name;
         this.u_id = u_id;
         this.dueTime = dueTime;
+        this.isReaden = isReaden;
     }
 
     public String GetName(){
@@ -36,5 +38,6 @@ public class RecycleTaskItem implements Serializable {
         return this.dueTime;
     }
 
+    public boolean GetIsReaden(){ return  isReaden;}
 
 }

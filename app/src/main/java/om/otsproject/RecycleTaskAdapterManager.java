@@ -2,6 +2,8 @@ package om.otsproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -112,6 +114,10 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
         // - replace the contents of the view with that element
         final RecycleTaskItem task = mDataset.get(position);
         holder.txtHeader.setText(task.GetName());
+        holder.txtHeader.setTypeface(null, Typeface.BOLD);
+        if(!task.GetIsReaden()) {
+            holder.txtHeader.setTextColor(Color.parseColor("#FF0000"));
+        }
         holder.txtUserName.setText(task.GetUserName() + " " + task.GetDate());
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

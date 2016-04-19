@@ -97,7 +97,7 @@ public class TasksActivity extends BaseClass {
         controller = Controller.getInstance(this);
 
         SetHeader("Task");
-        SetFragment(getIntent());
+
     }
 
 

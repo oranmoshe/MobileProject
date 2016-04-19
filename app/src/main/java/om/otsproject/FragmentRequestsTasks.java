@@ -24,8 +24,12 @@ public class FragmentRequestsTasks extends BaseFragment {
 
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
         menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_view, 0, R.string.option_task_view);
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_reject, 0, R.string.option_task_reject);
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_accept, 0, R.string.option_task_accept);
+        if(!controller.IsManager()) {
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_reject, 0, R.string.option_task_reject);
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_accept, 0, R.string.option_task_accept);
+        }else{
+            menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_edit, 0, R.string.option_task_edit);
+        }
     }
 
 }

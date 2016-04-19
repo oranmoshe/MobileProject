@@ -138,7 +138,8 @@ public class DatabaseParse extends Application {
                                     for (int i = 0; i < sorted.length; i++) {
                                         try {
                                             String email = dh.Get_User(sorted[i].get_assign()).getEmail();
-                                            items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time()));
+                                            boolean isRead = (sorted[i].get_accept() == 1 ? true : false);
+                                            items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time(), isRead));
                                         } catch (Exception exc) {
                                             Log.d("Error", exc.toString());// probably user deleted
                                         }
@@ -530,6 +531,28 @@ public class DatabaseParse extends Application {
                     if (objects.size() > 0) {
                         ParseObject po = objects.get(0);
                         po.put("status", status);
+                        po.saveInBackground();
+                    }
+                    Log.d("saved", objects.get(0).get("name").toString());
+                } else {
+                    Log.d("not saved", "no entries found");
+                }
+            }
+        });
+
+    }
+    public  void UpdateTaskAccept(final String t_id, final int accept) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
+        query.whereEqualTo("objectId", t_id);
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+
+                if (e == null) {
+                    if (objects.size() > 0) {
+                        ParseObject po = objects.get(0);
+                        po.put("accept", accept);
                         po.saveInBackground();
                     }
                     Log.d("saved", objects.get(0).get("name").toString());

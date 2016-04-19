@@ -176,6 +176,13 @@ public class Controller {
         db.UpdateTaskStatus(t_id, status);
     }
 
+    public void UpdateTaskAccept(String t_id,int status){
+        // Update Task Locally
+        dbLocal.Update_Task_Accept(t_id, status);
+        // Update Task Cloud
+        db.UpdateTaskAccept(t_id, status);
+    }
+
     public void UpdateTaskAssign(String t_id,String assign){
         // Update Task Locally
         dbLocal.Update_Task_Assign(t_id, assign);

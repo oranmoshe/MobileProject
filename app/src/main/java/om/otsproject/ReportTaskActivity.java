@@ -27,6 +27,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
@@ -54,6 +55,10 @@ public class ReportTaskActivity extends BaseClass
         taskID = (String)getIntent().getSerializableExtra("TASKID");
 
         task = controller.getLocalTask("t_id", taskID);
+
+        if(!controller.IsManager()) {
+            controller.UpdateTaskAccept(taskID, 1);
+        }
 
         UpdateComponnents();
 
