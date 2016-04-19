@@ -30,6 +30,8 @@ public class CreateTeamMemberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
         fa = this;
+
+        // Add user by click event
         Button btn = (Button) findViewById(R.id.btnAddUserAdd);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +67,13 @@ public class CreateTeamMemberActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * This function gets email string and return true\false if is valid
+     *
+     * @param email
+     * @return
+     */
 
     public boolean isEmailValid(String email)
     {

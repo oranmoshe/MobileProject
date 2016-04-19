@@ -49,6 +49,9 @@ public class BaseFragment extends Fragment {
     TextView textView;
 
 
+    /**
+     * Updating local database
+     */
     public void fetchTimelineAsync() {
         if(!isInLoading) {
             isInLoading=true;
@@ -66,7 +69,9 @@ public class BaseFragment extends Fragment {
         }
     }
 
-
+    /**
+     * Initializing activities components
+     */
     void Initializing(int status, LayoutInflater inflater, final ViewGroup container){
         try {
 
@@ -96,6 +101,9 @@ public class BaseFragment extends Fragment {
         }
     }
 
+    /**
+     * Updating activities components
+     */
     public void UpdateView(){
         // mRecyclerView init
         if (mRecyclerView != null) {
@@ -142,7 +150,6 @@ public class BaseFragment extends Fragment {
 
                 textView.setText(String.valueOf(list.size()) + " tasks");
             }
-            Log.d("<<<<<<<<", "status: All size: " + String.valueOf(items.size()));
             mAdapter = new RecycleTaskAdapterManager(items);
             mRecyclerView.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();

@@ -126,6 +126,9 @@ public class ReportTaskActivity extends BaseClass
         GetParseImage(task.get_pic(),image);
 
         ImageButton imageButton = (ImageButton)findViewById(R.id.imageButtonCamera);
+        if(task.get_status()!=3){
+            imageButton.setVisibility(View.GONE);
+        }
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -129,14 +129,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public boolean IsUsersChanged(){
-        return isUsersChanged;
-    }
-
-    public void IsUsersChangedSeen(){
-        isUsersChanged = false;
-    }
-
     // Adding new user
     public void Add_User(final User user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -435,51 +427,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return task_list;
     }
 
-    public ArrayList<Task>  Get_Tasks(String key, String value){
-        try {
-            task_list.clear();
-
-            // Select All Query
-            String selectQuery = "SELECT  * FROM " + TABLE_TASKS + " WHERE " + key + " = '"+ value +"'";
-
-            SQLiteDatabase db = this.getWritableDatabase();
-            Cursor cursor = db.rawQuery(selectQuery, null);
-
-            // looping through all rows and adding to list
-            if (cursor.moveToFirst()) {
-                do {
-                    Log.d("size","1");
-                    Task task = new Task();
-                    String _t_id = cursor.getString(0);
-                    String _m_id = cursor.getString(1);
-                    String _name = cursor.getString(2);
-                    int _priority = cursor.getInt(3);
-                    String _location = cursor.getString(4);
-                    String _due_time = cursor.getString(5);
-                    String _assign = cursor.getString(6);
-                    int _accept = cursor.getInt(7);
-                    int _status = cursor.getInt(8);
-                    String _pic = cursor.getString(9);
-                    String _category = cursor.getString(10);
-                    Task lt = new Task(_t_id,_m_id,_name,_priority,_location,_due_time,_assign,_accept,_status,_pic,_category);
-                    task=lt;
-                    // Adding contact to list
-                    task_list.add(task);
-                } while (cursor.moveToNext());
-            }
-
-            // return contact list
-            cursor.close();
-            db.close();
-            return task_list;
-        } catch (Exception e) {
-            // TODO: handle exception
-            Log.e("all_contact", "" + e);
-        }
-
-        return task_list;
-    }
-
     public Task Get_Task(String key, String value){
         try {
             task_list.clear();
@@ -540,51 +487,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         for (User lu: users) {
              Delete_User(lu.get_id());
         }
-    }
-
-    // Getting All Contacts
-    public ArrayList<Task> Get_Tasks() {
-        try {
-            task_list.clear();
-
-            // Select All Query
-            String selectQuery = "SELECT  * FROM " + TABLE_TASKS;
-
-            SQLiteDatabase db = this.getWritableDatabase();
-            Cursor cursor = db.rawQuery(selectQuery, null);
-            User lu;
-            // looping through all rows and adding to list
-            if (cursor.moveToFirst()) {
-                do {
-                    Task task = new Task();
-                    String _t_id = cursor.getString(0);
-                    String _m_id = cursor.getString(1);
-                    String _name = cursor.getString(2);
-                    int _priority = cursor.getInt(3);
-                    String _location = cursor.getString(4);
-                    String _due_time = cursor.getString(5);
-                    String _assign = cursor.getString(6);
-                    int _accept = cursor.getInt(7);
-                    int _status = cursor.getInt(8);
-                    String _pic = cursor.getString(9);
-                    String _category = cursor.getString(10);
-                    Task lt = new Task(_t_id,_m_id,_name,_priority,_location,_due_time,_assign,_accept,_status,_pic,_category);
-                    task=lt;
-                    // Adding contact to list
-                    task_list.add(task);
-                } while (cursor.moveToNext());
-            }
-
-            // return contact list
-            cursor.close();
-            db.close();
-            return task_list;
-        } catch (Exception e) {
-            // TODO: handle exception
-            Log.e("all_contact", "" + e);
-        }
-
-        return task_list;
     }
 
     // Getting All Contacts
@@ -671,7 +573,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(t_id) });
     }
 
-
     // Updating task status
     public int Update_Task_Accept(String t_id,int accept) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -744,12 +645,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    // Warning, Clear data
     public void InitData() {
         SQLiteDatabase db = this.getWritableDatabase(); // helper is object extends SQLiteOpenHelper
         db.delete(this.TABLE_TASKS, null, null);
         db.delete(this.TABLE_USERS, null, null);
     }
 
+    // Set user refresh timer
     public int SetTimer(String u_id, int minutes) {
         SQLiteDatabase db = this.getWritableDatabase();
 

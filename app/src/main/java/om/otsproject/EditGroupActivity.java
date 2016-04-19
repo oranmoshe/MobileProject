@@ -25,10 +25,8 @@ public class EditGroupActivity extends BaseClass
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    public final static int REQUEST_CODE = 1;
     private ArrayList<RecycleItem> items;
     private String team = "";
-    private String u_id = "";
     Controller controller = Controller.getInstance(this);
     ArrayList<User> users;
 

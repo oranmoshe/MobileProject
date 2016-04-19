@@ -14,15 +14,14 @@ import java.util.EventObject;
 
 
 public class CreateUserActivity extends AppCompatActivity {
-    public static Activity fa = null;
+
     Controller controller = Controller.getInstance(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_create_manager);
 
-        fa = this;
-
+        // Create manager
         Button btnCreate = (Button)findViewById(R.id.buttonCreateManager);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +36,7 @@ public class CreateUserActivity extends AppCompatActivity {
                     public void onEvent(EventObject e) {
                         int result = ((EventObjectExtender)e).getId();
                         if(result==1) {
-                            Intent intent = new Intent(getBaseContext(), ManageTeamActivity.class);
+                            Intent intent = new Intent(getBaseContext(), EditGroupActivity.class);
                             startActivity(intent);
                         }
                         else{

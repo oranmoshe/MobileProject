@@ -21,6 +21,7 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.EventObject;
 
 public class TasksActivity extends BaseClass {
     Controller controller;
@@ -28,6 +29,7 @@ public class TasksActivity extends BaseClass {
     ViewPager viewPager;
     FloatingActionButton fabRefresh = null;
     private ProgressDialog progressDialog;
+    public static int currentItem = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,16 +49,19 @@ public class TasksActivity extends BaseClass {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                currentItem = tab.getPosition();
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                currentItem = tab.getPosition();
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                currentItem = tab.getPosition();
             }
         });
 
@@ -85,11 +90,19 @@ public class TasksActivity extends BaseClass {
             public void onClick(View view) {
                 progressDialog = ProgressDialog.show(TasksActivity.this, "",
                         "Please wait..", true);
-                Intent intent = getIntent();
+                final Intent intent = getIntent();
                 Bundle mBundle = new Bundle();
                 mBundle.putSerializable("FRAGMENT", String.valueOf(viewPager.getCurrentItem()));
                 intent.putExtras(mBundle);
-                controller.ImportData(ParseUser.getCurrentUser().getString("m_id"), intent);
+                Event event = new Event();
+                event.setOnEventListener(new OnEventListener() {
+                    @Override
+                    public void onEvent(EventObject e) {
+                        startActivity(intent);
+                    }
+                });
+                String groupID = ParseUser.getCurrentUser().getString("m_id");
+                controller.UpdateLocalDatabase(event, groupID);
                 progressDialog.dismiss();
             }
         });
@@ -105,7 +118,7 @@ public class TasksActivity extends BaseClass {
     @Override
     protected void onResume() {
         super.onResume();
-        SetFragment(getIntent());
+        SetFragment();
     }
 
     public void Refresh(){
@@ -117,12 +130,8 @@ public class TasksActivity extends BaseClass {
         startActivity(intent);
     }
 
-    public void SetFragment(Intent i){
-        String givenFregment = (String)getIntent().getSerializableExtra("FRAGMENT");
-        if(givenFregment!=null) {
-            int fragment = Integer.parseInt(givenFregment);
-            viewPager.setCurrentItem(fragment);
-        }
+    public void SetFragment(){
+            viewPager.setCurrentItem(currentItem);
     }
 
 

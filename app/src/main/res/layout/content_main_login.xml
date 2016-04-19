@@ -99,7 +99,7 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remember me."
+            android:text="Remember me"
             android:id="@+id/checkBoxRemember"
             android:singleLine="true" />
     </LinearLayout>

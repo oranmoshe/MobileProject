@@ -30,13 +30,6 @@ import java.util.List;
  * Created by oranmoshe on 3/7/16.
  */
 public class DatabaseParse extends Application {
-    ParseUser parseUser = null;
-
-    public  List<String> midim = new ArrayList<String>();
-    public  List<ParseUser> users = new ArrayList<ParseUser>();
-    public boolean IsUsersInProcess = false;
-    public boolean IsTasksInProcess = false;
-
 
     @Override
     public void onCreate() {
@@ -45,18 +38,6 @@ public class DatabaseParse extends Application {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseInstallation.getCurrentInstallation().saveInBackground();
-    }
-
-
-    public void Login(String username, String password){
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
-            public void done(ParseUser user, com.parse.ParseException e) {
-                if (user != null) {
-                    parseUser = user;
-                } else {
-                }
-            }
-        });
     }
 
     public void SetTimer(final int minutes, final DatabaseHandler databaseHandler){
@@ -70,96 +51,6 @@ public class DatabaseParse extends Application {
         });
     }
 
-
-    public void ImportDataAndUpdateRecycler(final String objectID, final DatabaseHandler dh,
-                                            final RecyclerView mRecyclerView,final RecyclerView.Adapter _mAdapter, final TextView textView,
-                                            final Context context, final int status) {
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        dh.InitData();
-        query.whereEqualTo("m_id", objectID);
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    users.clear();
-                    dh.ClearUsers();
-                    for (ParseUser user : objects) {
-                        users.add(user);
-                        User lu = new User(user.getObjectId(), user.getString("m_id"),
-                                user.getString("username"), user.getString("passwordClone"),
-                                user.getString("email"), user.getString("phone"), user.getInt("t_id"),
-                                user.getString("team"));
-                        dh.Add_User(lu);
-                    }
-                }
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
-                query.whereEqualTo("m_id", objectID);
-                final List<ParseObject> list = new ArrayList<ParseObject>();
-                query.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> objects, com.parse.ParseException e) {
-
-                        if (e == null) {
-                            ArrayList<Task> list = null;
-                            for (ParseObject o : objects) {
-                                Task lt = new Task(o.getObjectId(), o.getString("m_id"), o.getString("name"),
-                                        o.getInt("priority"), o.getString("location"), o.getString("due_time"),
-                                        o.getString("assign"), o.getInt("accept"), o.getInt("status"), o.getString("pic"),
-                                        o.getString("category"));
-                                dh.Add_Task(lt);
-                            }
-                            if (mRecyclerView != null) {
-                                RecyclerView.Adapter mAdapter = _mAdapter;
-                                RecyclerView.LayoutManager mLayoutManager;
-                                ArrayList<RecycleTaskItem> items;
-                                mRecyclerView.setHasFixedSize(true);
-                                mLayoutManager = new LinearLayoutManager(context);
-                                mRecyclerView.setLayoutManager(mLayoutManager);
-                                items = new ArrayList<RecycleTaskItem>();
-
-                                if (ParseUser.getCurrentUser().getObjectId().equals(objectID)) {
-                                    if (status == -1) {
-                                        list = dh.Get_Tasks_By_Manager(objectID);
-                                    } else {
-                                        list = dh.Get_Tasks_By_Manager_And_Status(objectID, status);
-                                    }
-                                } else {
-                                    if (status == -1) {
-                                        list = dh.Get_Tasks_By_User(ParseUser.getCurrentUser().getObjectId());
-                                    } else {
-                                        list = dh.Get_Tasks_By_User_And_Status(ParseUser.getCurrentUser().getObjectId(), status);
-                                    }
-                                }
-
-                                Collections.sort(list);
-                                Task[] sorted = new Task[list.size()];
-                                sorted = list.toArray(sorted);
-                                if (list.size() > 0) {
-                                    for (int i = 0; i < sorted.length; i++) {
-                                        try {
-                                            String email = dh.Get_User(sorted[i].get_assign()).getEmail();
-                                            boolean isRead = (sorted[i].get_accept() == 1 ? true : false);
-                                            items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time(), isRead));
-                                        } catch (Exception exc) {
-                                            Log.d("Error", exc.toString());// probably user deleted
-                                        }
-                                    }
-                                }
-                                mAdapter = new RecycleTaskAdapterManager(items);
-                                mRecyclerView.setAdapter(mAdapter);
-                                mAdapter.notifyDataSetChanged();
-                            }
-
-                        } else {
-                        }
-
-                    }
-                });
-            }
-        });
-    }
-
-
     public void ImportData(final String objectID, final DatabaseHandler dh, final Event event) {
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("m_id",objectID);
@@ -167,10 +58,8 @@ public class DatabaseParse extends Application {
             @Override
             public void done(List<ParseUser> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    users.clear();
                     dh.ClearUsers();
                     for (ParseUser user : objects) {
-                        users.add(user);
                         User lu = new User(user.getObjectId(), user.getString("m_id"),
                                 user.getString("username"), user.getString("passwordClone"),
                                 user.getString("email"), user.getString("phone"), user.getInt("t_id"),
@@ -207,142 +96,6 @@ public class DatabaseParse extends Application {
         });
     }
 
-
-    public void ImportData(final String objectID, final DatabaseHandler dh, final Intent intent,final Context context) {
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("m_id",objectID);
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    users.clear();
-                    dh.ClearUsers();
-                    for (ParseUser user : objects) {
-                        users.add(user);
-                        User lu = new User(user.getObjectId(), user.getString("m_id"),
-                                user.getString("username"), user.getString("passwordClone"),
-                                user.getString("email"), user.getString("phone"), user.getInt("t_id"),
-                                user.getString("team"));
-                        dh.Add_User(lu);
-                    }
-                }
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
-                query.whereEqualTo("m_id", objectID);
-                final List<ParseObject> list = new ArrayList<ParseObject>();
-                query.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> objects, com.parse.ParseException e) {
-
-                        if (e == null) {
-                            for (ParseObject o : objects) {
-                                Task lt = new Task(o.getObjectId(), o.getString("m_id"), o.getString("name"),
-                                        o.getInt("priority"), o.getString("location"), o.getString("due_time"),
-                                        o.getString("assign"), o.getInt("accept"), o.getInt("status"), o.getString("pic"),
-                                        o.getString("category"));
-                                dh.Add_Task(lt);
-                            }
-
-                        } else {
-                        }
-                        if (intent != null) {
-                            Log.d(">>>>>>>>>>>>>>>>>>", ">>>>>>>>>>>>>>>>>");
-                            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                            context.startActivity(intent);
-                        }
-                    }
-                });
-            }
-        });
-    }
-
-    public void ImportUsers(String m_id, final DatabaseHandler dh, final Intent intent,final Context context){
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("m_id", m_id);
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    users.clear();
-                    dh.ClearUsers();
-                    for (ParseUser user : objects) {
-                        users.add(user);
-                        User lu = new User(user.getObjectId(), user.getString("m_id"),
-                                user.getString("username"), user.getString("passwordClone"),
-                                user.getString("email"), user.getString("phone"), user.getInt("t_id"),
-                                user.getString("team"));
-                        dh.Add_User(lu);
-                    }
-                }
-                if (intent != null) {
-                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
-            }
-        });
-    }
-
-
-
-    public void ImportTasks(String objectID, final DatabaseHandler dh, final Intent intent,final Context context){
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Task");
-        query.whereEqualTo("objectId", objectID);
-        final List<ParseObject> list = new ArrayList<ParseObject>();
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-
-                if (e == null) {
-                    for (ParseObject o : objects) {
-                        Task lt = new Task(o.getObjectId(), o.getString("u_id"), o.getString("name"),
-                                o.getInt("priority"), o.getString("location"), o.getString("dueTime"),
-                                o.getString("assign"), o.getInt("accept"), o.getInt("status"), o.getString("pic"),
-                                o.getString("category"));
-                        dh.Add_Task(lt);
-                    }
-
-                } else {
-                }
-                if (intent != null) {
-                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
-            }
-        });
-    }
-
-
-
-
-    public void RemoveUser(String id){
-        // Get User
-        ParseUser pu = (GetUser(id)).get(0);
-        // Login As user
-        Login(pu.getString("username"), pu.getString("passwordClone"));
-
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("u_id", pu.getInt("u_id"));
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> objects, com.parse.ParseException e) {
-                if (e == null) {
-
-                    for (ParseUser user : objects) {
-                        user.deleteInBackground(new DeleteCallback() {
-
-                            @Override
-                            public void done(com.parse.ParseException arg0) {
-                                if (arg0 == null)
-                                    // TODO Auto-generated method stub
-                                    System.out.println("deleted the tag succesfully");
-                                else
-                                    System.out.println("deleted the tag crashed" + arg0);
-                            }
-                        });
-                    }
-                }
-            }
-        });
-    }
 
     protected void SignUp(final String  m_id, final String username, final String password,
                           final String email, final String phone, final int t_id, final String team,
@@ -466,7 +219,6 @@ public class DatabaseParse extends Application {
         });
     }
 
-
     public void UpdateTeamName(String teamName){
         ParseUser pu = ParseUser.getCurrentUser();
         pu.put("team", teamName);
@@ -498,9 +250,6 @@ public class DatabaseParse extends Application {
             }
         });
     }
-
-
-
 
     public  void UpdateTask(final String t_id, final String name, final int priority,
                             final String location, final String due_time, final String assign,
@@ -566,6 +315,7 @@ public class DatabaseParse extends Application {
             }
         });
     }
+
     public  void UpdateTaskStatus(final String t_id, final int status) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
         query.whereEqualTo("objectId", t_id);
@@ -588,6 +338,7 @@ public class DatabaseParse extends Application {
         });
 
     }
+
     public  void UpdateTaskAccept(final String t_id, final int accept) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
         query.whereEqualTo("objectId", t_id);
@@ -610,6 +361,7 @@ public class DatabaseParse extends Application {
         });
 
     }
+
     public  void UpdateTaskAssign(final String t_id, final String assign) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
         query.whereEqualTo("objectId", t_id);
@@ -631,91 +383,6 @@ public class DatabaseParse extends Application {
             }
         });
 
-    }
-    public  List<ParseObject>  GetTasks(String key, int id) {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Task");
-        query.whereEqualTo(key, id);
-        final List<ParseObject> list = new ArrayList<ParseObject>();
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-
-                if (e == null) {
-                    for (ParseObject o : objects) {
-                        ParseObject po = objects.get(0);
-                        po.getInt("u_id");
-                        po.getString("name");
-                        po.getString("priority");
-                        po.getString("location");
-                        po.getString("dueTime");
-                        po.getInt("assign");
-                        po.getInt("accept");
-                        po.getInt("status");
-                        po.getString("pic");
-                        po.getString("category");
-                        list.add(po);
-                    }
-
-                } else {
-
-                }
-            }
-        });
-        return list;
-    }
-
-    public  List<ParseUser>  GetUsers(String m_id) {
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("m_id", m_id);
-        final List<ParseUser> list = new ArrayList<ParseUser>();
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> objects, com.parse.ParseException e) {
-
-                if (e == null) {
-                    for (ParseUser user : objects) {
-                        list.add(user);
-                        Log.d("Ss", user.getString("passwordClone"));
-                    }
-                } else {
-
-                }
-            }
-        });
-        return list;
-    }
-
-    public  List<ParseUser>  GetUser(String u_id) {
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("u_id", u_id);
-        final List<ParseUser> list = new ArrayList<ParseUser>();
-        query.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> objects, com.parse.ParseException e) {
-
-                if (e == null) {
-                    for (ParseUser user : objects) {
-                        list.add(user);
-                    }
-                } else {
-
-                }
-            }
-        });
-        return list;
-    }
-
-    public  void  DeleteCurrrentUser() {
-        ParseUser.getCurrentUser().deleteInBackground(new DeleteCallback() {
-            @Override
-            public void done(com.parse.ParseException arg0) {
-                if (arg0 == null)
-                    // TODO Auto-generated method stub
-                    System.out.println("deleted the tag succesfully");
-                else
-                    System.out.println("deleted the tag crashed" + arg0);
-            }
-        });
     }
 
     public  void  DeleteUser(final String username,final String password, final Event event) {

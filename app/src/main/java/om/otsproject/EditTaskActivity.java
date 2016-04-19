@@ -65,9 +65,6 @@ public class EditTaskActivity extends BaseClass
     ArrayAdapter<CharSequence> adapterCategory=null;
     private ProgressDialog progressDialog;
 
-
-    private TextView tvDisplayDate;
-    private DatePicker dpResult;
     private Button btnChangeDate;
 
     private int year;
@@ -103,7 +100,7 @@ public class EditTaskActivity extends BaseClass
                 R.array.category, android.R.layout.simple_spinner_item);
         adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapterCategory);
-//
+
         spinnerLocation = (Spinner)findViewById(R.id.spinnerLocation);
         adapterLocation = ArrayAdapter.createFromResource(this,
                 R.array.location, android.R.layout.simple_spinner_item);
@@ -233,6 +230,9 @@ public class EditTaskActivity extends BaseClass
         GetParseImage(task.get_pic(),imageView);
 
         ImageButton imageButton = (ImageButton)findViewById(R.id.imageButtonCamera);
+        if(task.get_status()!=3){
+            imageButton.setVisibility(View.GONE);
+        }
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

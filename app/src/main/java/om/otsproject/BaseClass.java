@@ -80,7 +80,7 @@ public class BaseClass extends AppCompatActivity implements NavigationView.OnNav
             this.startActivity(i);
         } else if (id == R.id.nav_logout) {
             ParseUser.logOut();
-            i = new Intent(this,MainLogin.class);
+            i = new Intent(this,LoginActivity.class);
             this.startActivity(i);
         } else if (id == R.id.nav_settings) {
             i = new Intent(this,SettingActivity.class);

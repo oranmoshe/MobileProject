@@ -59,22 +59,14 @@ public class Controller {
     }
 
 
+    /**
+     * Functionality
+     */
 
-    // Functionality
-
-    public void UpdateRecycleTasks( RecyclerView mRecyclerView,RecyclerView.Adapter mAdapter, TextView textView,String m_id, int status){
-        dbLocal.InitData();
-        db.ImportDataAndUpdateRecycler(m_id, dbLocal, mRecyclerView, mAdapter, textView, getContext(), status);
-    }
 
     public void UpdateLocalDatabase(final Event event, final String m_id){
         dbLocal.InitData();
         db.ImportData(m_id, dbLocal, event);
-    }
-
-    public void ImportData(String m_id, Intent intent) {
-        dbLocal.InitData();
-        db.ImportData(m_id, dbLocal, intent, ctx);
     }
 
     public void RemoveUser(final String id, final Event result){
@@ -113,18 +105,8 @@ public class Controller {
         });
         db.SignUp(m_id, username, password, email, phone, t_id, team, dbLocal, parseEvent);
     }
-
-    public void SetTimer(int minutes){
-        db.SetTimer(minutes, dbLocal);
-    }
-
-    public int GetTimer(){
-        return db.GetTimer();
-    }
-
-
     public void AddManager(final String username, final String password, final String email,
-                        final  String phone, final int t_id, final String team, final Event result){
+                           final  String phone, final int t_id, final String team, final Event result){
         Event parseEvent = new Event();
         parseEvent.setOnEventListener(new OnEventListener() {
             @Override
@@ -140,6 +122,13 @@ public class Controller {
         db.SignUpManager(username, password, email, phone, t_id, team, dbLocal, parseEvent);
     }
 
+    public void SetTimer(int minutes){
+        db.SetTimer(minutes, dbLocal);
+    }
+
+    public int GetTimer(){
+        return db.GetTimer();
+    }
 
     public void UpdateTeamName(String teamName, String u_id){
         db.UpdateTeamName(teamName);
@@ -232,6 +221,7 @@ public class Controller {
     public  ArrayList<Task> getLocalTasksByUser(String assign){
         return dbLocal.Get_Tasks_By_User(assign);
     }
+
     public  ArrayList<Task> getLocalTasksByManager(String assign){
         return dbLocal.Get_Tasks_By_Manager(assign);
     }

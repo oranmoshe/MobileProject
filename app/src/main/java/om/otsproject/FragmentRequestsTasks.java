@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 public class FragmentRequestsTasks extends BaseFragment {
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {

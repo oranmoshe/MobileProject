@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class RecycleAdapterManager extends RecyclerView.Adapter<RecycleAdapterManager.ViewHolder> {
     private ArrayList<RecycleItem> mDataset;
     private Context context;
-
     private final ArrayList<Integer> selected = new ArrayList<>();
 
 

@@ -229,6 +229,9 @@ public class CreateTaskActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *  Save data in local db and parse
+     */
     void Save(){
         User user = controller.getLocalUserByUsername(spinnerAssign.getSelectedItem().toString());
         int priority = 0;
@@ -251,6 +254,9 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *  Date picker issues
+     */
     // display current date
     public void setCurrentDate() {
 
@@ -271,8 +277,6 @@ public class CreateTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 showDialog(DATE_DIALOG_ID, null);
-
-
             }
 
         });

@@ -23,5 +23,6 @@
     <string name="title_activity_edit_group">EditGroupActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="title_activity_login">Login</string>
 
 </resources>
