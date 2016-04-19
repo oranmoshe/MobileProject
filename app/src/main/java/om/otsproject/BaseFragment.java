@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.parse.ParseUser;
@@ -90,7 +91,7 @@ public class BaseFragment extends Fragment {
                 items = new ArrayList<RecycleTaskItem>();
                 List<Task> list = null;
 
-                if (status==0) {
+                if (status==-1) {
                     if (ParseUser.getCurrentUser().getObjectId().equals(groupID)) {
                         list = controller.getLocalTasksByManager(userObjectID);
                     } else {
@@ -132,12 +133,6 @@ public class BaseFragment extends Fragment {
     }
     int UNIQUE_FRAGMENT_GROUP_ID=status;
 
-    public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_view, 0, R.string.option_task_view);
-        menu.add(UNIQUE_FRAGMENT_GROUP_ID, R.string.option_task_edit, 0, R.string.option_task_edit);
-    }
-
-
     public boolean onContextItemSelected(MenuItem item) {
         if (getUserVisibleHint()) {
             // Handle menu events and return true
@@ -163,13 +158,31 @@ public class BaseFragment extends Fragment {
                     intent.putExtras(mBundle);
                     getActivity().startActivity(intent);
                     break;
+                case R.string.option_task_accept:
+                    RecycleTaskItem currentItem6 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
+                    controller.UpdateTaskStatus(currentItem6.GetUID(), 1);
+                    startActivity(getActivity().getIntent());
+                    getActivity().finish();
+                    break;
+                case R.string.option_task_reject:
+                    RecycleTaskItem currentItem7 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
+                    controller.UpdateTaskAssign(currentItem7.GetUID(), "");
+                    startActivity(getActivity().getIntent());
+                    getActivity().finish();
+                    break;
                 case R.string.option_task_edit:
                     RecycleTaskItem currentItem1 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);
-                    Intent intent1 = new Intent(getContext(),EditTaskActivity.class);
-                    Bundle mBundle1 = new Bundle();
-                    mBundle1.putSerializable("TASKID", currentItem1.GetUID());
-                    intent1.putExtras(mBundle1);
-                    getActivity().startActivity(intent1);
+                    // check if task is done for edit pic
+                    Task task = controller.getLocalTask("t_id", currentItem1.GetUID());
+                    if(!(task.get_status()==0)) {
+                        Intent intent1 = new Intent(getContext(), EditTaskActivity.class);
+                        Bundle mBundle1 = new Bundle();
+                        mBundle1.putSerializable("TASKID", currentItem1.GetUID());
+                        intent1.putExtras(mBundle1);
+                        getActivity().startActivity(intent1);
+                    }else{
+                        Toast.makeText(getContext(),"A task can not be edited in request mode",Toast.LENGTH_LONG).show();
+                    }
                     break;
                 case R.string.option_task_add_pending:
                     RecycleTaskItem currentItem2 = ((RecycleTaskAdapterManager) mAdapter).getRecyceItem(position);

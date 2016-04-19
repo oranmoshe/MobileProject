@@ -49,7 +49,7 @@ public class ManageTeamActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 //  WaitForChanges();
-                Intent intent = new Intent(getBaseContext(), AddUser.class);
+                Intent intent = new Intent(getBaseContext(), CreateTeamMemberActivity.class);
                 startActivity(intent);
             }
         });

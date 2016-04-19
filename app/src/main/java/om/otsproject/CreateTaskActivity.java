@@ -246,7 +246,7 @@ public class CreateTaskActivity extends AppCompatActivity {
 
         String  u_id = controller.getLocalUserByUsername(spinnerAssign.getSelectedItem().toString()).get_id();
         controller.AddTask(ParseUser.getCurrentUser().getObjectId(), editTextName.getText().toString(), priority,
-                spinnerLocation.getSelectedItem().toString(), textViewDueTime.getText().toString(), u_id,0, 1, " ",
+                spinnerLocation.getSelectedItem().toString(), textViewDueTime.getText().toString(), u_id,0, 0, " ",
                 spinnerCategory.getSelectedItem().toString(), fa);
 
     }

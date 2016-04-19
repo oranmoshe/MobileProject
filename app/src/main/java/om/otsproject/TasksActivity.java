@@ -97,7 +97,7 @@ public class TasksActivity extends BaseClass {
         controller = Controller.getInstance(this);
 
         SetHeader("Task");
-
+        SetFragment(getIntent());
     }
 
 
@@ -129,7 +129,7 @@ public class TasksActivity extends BaseClass {
 
     private class CustomAdapter extends FragmentPagerAdapter {
 
-        String [] fragments = {"All","Pending","In Process","Done"};
+        String [] fragments = {"All","Requests","Pending","In Process","Done"};
 
         public CustomAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
             super(supportFragmentManager);
@@ -141,10 +141,12 @@ public class TasksActivity extends BaseClass {
                 case 0:
                     return new FragmentAllUserTasks();
                 case 1:
-                    return new FragmentPandingUserTasks();
+                    return new FragmentRequestsTasks();
                 case 2:
-                    return new FragmentInProgressUserTasks();
+                    return new FragmentPandingUserTasks();
                 case 3:
+                    return new FragmentInProgressUserTasks();
+                case 4:
                     return new FragmentDoneUserTasks();
                 default:
                     return null;

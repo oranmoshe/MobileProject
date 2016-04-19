@@ -93,7 +93,9 @@
                 android:id="@+id/buttonAddEmail"
                 android:layout_alignTop="@+id/linearLayout9"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/black_button"
+                android:textColor="#fff" />
         </LinearLayout>
 
         <LinearLayout
@@ -108,7 +110,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/cardList"
                 android:layout_width="wrap_content"
-                android:layout_height="302dp"
+                android:layout_height="348dp"
                 android:layout_below="@+id/linearLayout12"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -126,7 +128,7 @@
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabSave"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_menu_save"/>
 
             <LinearLayout
@@ -138,7 +140,7 @@
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/fabMail"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_dialog_email" />
             </LinearLayout>
 

@@ -97,7 +97,7 @@ public class Controller {
         parseEvent.setOnEventListener(new OnEventListener() {
             @Override
             public void onEvent(EventObject objectId) {
-                if(!objectId.getSource().toString().equals("Error")) {
+                if (!objectId.getSource().toString().equals("Error")) {
                     final User user = new User(objectId.toString(), m_id, username,
                             password, email, phone, t_id, team);
                     dbLocal.Add_User(user);
@@ -174,6 +174,13 @@ public class Controller {
         dbLocal.Update_Task_Status(t_id, status);
         // Update Task Cloud
         db.UpdateTaskStatus(t_id, status);
+    }
+
+    public void UpdateTaskAssign(String t_id,String assign){
+        // Update Task Locally
+        dbLocal.Update_Task_Assign(t_id, assign);
+        // Update Task Cloud
+        db.UpdateTaskAssign(t_id, assign);
     }
 
     public void UpdateTaskPic(String t_id,String pic, final Event eventUploading){

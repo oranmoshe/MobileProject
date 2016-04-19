@@ -34,12 +34,15 @@ public class AddUser extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Intent returnIntent = new Intent(getBaseContext(), MainActivityCreateTeam.class);
+                username = ((EditText) findViewById(R.id.etAddUserUsername)).getText().toString();
+                password = ((EditText) findViewById(R.id.etAddUserPassword)).getText().toString();
+
                 if(!(username.length()==0) || !(password.length()==0)) {
                     Toast.makeText(getBaseContext(), "Please enter all fields..", Toast.LENGTH_LONG).show();
                 }else if (isEmailValid(username)) {
-                        //Intent returnIntent = new Intent(getBaseContext(), MainActivityCreateTeam.class);
-                        username = ((EditText) findViewById(R.id.etAddUserUsername)).getText().toString();
-                        password = ((EditText) findViewById(R.id.etAddUserPassword)).getText().toString();
+
                         ParseUser pu = ParseUser.getCurrentUser();
                         if (pu != null) {
                             String u_id = (ParseUser.getCurrentUser()).getObjectId();
@@ -66,9 +69,6 @@ public class AddUser extends AppCompatActivity {
 
     @Override
     public void finish() {
-//        Intent returnIntent = new Intent(controller.getContext(), MainActivityCreateTeam.class);
-//        setResult(RESULT_OK, returnIntent);
-//        returnIntent.putExtra("passed_item", "1");
         super.finish();
     }
 

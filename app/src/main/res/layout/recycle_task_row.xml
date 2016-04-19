@@ -22,16 +22,18 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="0dp">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:id="@+id/imageView2"
                 android:src="@drawable/task4"
-                android:contentDescription="@string/task_icon" />
+                android:contentDescription="@string/task_icon"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp" />
         </LinearLayout>
 
         <LinearLayout

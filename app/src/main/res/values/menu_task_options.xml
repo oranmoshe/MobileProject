@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="option_task_view">View</string>
+    <string name="option_task_reject">Reject</string>
+    <string name="option_task_accept">Accept</string>
     <string name="option_task_edit">Edit</string>
     <string name="option_task_add_photo">Add Photo</string>
     <string name="option_task_add_pending">Pending</string>
