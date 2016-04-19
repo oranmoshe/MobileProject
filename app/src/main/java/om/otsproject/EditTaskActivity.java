@@ -92,7 +92,10 @@ public class EditTaskActivity extends BaseClass
         task = controller.getLocalTask("t_id", taskID);
 
         user = controller.getLocalUser(task.get_assign());
-
+        String userMail = null;
+        if(user!=null){
+            user.getEmail();
+        }
 
 
         spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
@@ -192,8 +195,11 @@ public class EditTaskActivity extends BaseClass
             case 1:
                 statusValue="Pending";
                 break;
+            case 0:
+                statusValue="Request";
+                break;
             default:
-                statusValue="Pending";
+                statusValue="Request";
                 break;
         }
         if (!statusValue.equals(null)) {
@@ -208,14 +214,14 @@ public class EditTaskActivity extends BaseClass
             if(!user.get_id().equals(ParseUser.getCurrentUser().getObjectId()))
                 usernameArr.add(user.getEmail());
         }
-        String assignMail = controller.getLocalUser(task.get_assign()).getEmail();
+
         spinnerAssign = (Spinner) findViewById(R.id.spinnerTaskViewAssign);
 
         ArrayAdapter<CharSequence> adapterAssign = new ArrayAdapter(this,android.R.layout.simple_spinner_item,usernameArr);
         adapterAssign.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAssign.setAdapter(adapterAssign);
-        if (!task.get_assign().equals(null)) {
-            int spinnerPosition = adapterAssign.getPosition(assignMail);
+        if (userMail!=null) {
+            int spinnerPosition = adapterAssign.getPosition(userMail);
             spinnerAssign.setSelection(spinnerPosition);
         }
         adapterAssign.notifyDataSetChanged();

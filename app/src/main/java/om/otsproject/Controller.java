@@ -67,6 +67,10 @@ public class Controller {
         db.ImportDataAndUpdateRecycler(m_id, dbLocal, mRecyclerView, mAdapter, textView, getContext(), status);
     }
 
+    public void UpdateLocalDatabase(final Event event, final String m_id){
+        dbLocal.InitData();
+        db.ImportData(m_id, dbLocal, event);
+    }
 
     public void ImportData(String m_id, Intent intent) {
         dbLocal.InitData();

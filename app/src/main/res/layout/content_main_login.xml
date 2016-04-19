@@ -74,7 +74,7 @@
         android:id="@+id/linearLayout16"
         android:layout_below="@+id/linearLayoutPassword"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="60dp">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -86,6 +86,22 @@
             android:id="@+id/buttonLogin"
             android:layout_gravity="center_horizontal" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutPassword"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me."
+            android:id="@+id/checkBoxRemember"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout

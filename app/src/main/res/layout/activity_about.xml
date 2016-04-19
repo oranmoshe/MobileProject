@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="v1.0"
+            android:text="v1.4"
             android:id="@+id/textView22"
             android:layout_alignLeft="@+id/textView12"
             android:layout_alignStart="@+id/textView12"

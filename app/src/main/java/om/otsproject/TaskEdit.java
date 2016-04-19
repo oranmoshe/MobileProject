@@ -79,14 +79,18 @@ public class TaskEdit extends BaseClass {
 
          task = controller.getLocalTask("t_id", taskID);
 
-         user = controller.getLocalUser(task.get_assign());
+        user = controller.getLocalUser(task.get_assign());
+        String userMail = null;
+        if(user!=null){
+            user.getEmail();
+        }
 
         spinnerCategory = (Spinner)findViewById(R.id.spinnerCategory);
         adapterCategory = ArrayAdapter.createFromResource(TaskEdit.this,
                 R.array.category, android.R.layout.simple_spinner_item);
         adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapterCategory);
-//
+
         spinnerLocation = (Spinner)findViewById(R.id.spinnerLocation);
         adapterLocation = ArrayAdapter.createFromResource(this,
                 R.array.location, android.R.layout.simple_spinner_item);
@@ -178,8 +182,11 @@ public class TaskEdit extends BaseClass {
             case 1:
                 statusValue="Pending";
                 break;
+            case 0:
+                statusValue="Request";
+                break;
             default:
-                statusValue="Pending";
+                statusValue="Request";
                 break;
         }
         if (!statusValue.equals(null)) {
@@ -194,14 +201,14 @@ public class TaskEdit extends BaseClass {
             if(!user.get_id().equals(ParseUser.getCurrentUser().getObjectId()))
             usernameArr.add(user.getEmail());
         }
-        String assignMail = controller.getLocalUser(task.get_assign()).getEmail();
+
         spinnerAssign = (Spinner) findViewById(R.id.spinnerTaskViewAssign);
 
         ArrayAdapter<CharSequence> adapterAssign = new ArrayAdapter(this,android.R.layout.simple_spinner_item,usernameArr);
         adapterAssign.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAssign.setAdapter(adapterAssign);
-        if (!task.get_assign().equals(null)) {
-            int spinnerPosition = adapterAssign.getPosition(assignMail);
+        if (!userMail.equals("")) {
+            int spinnerPosition = adapterAssign.getPosition(userMail);
             spinnerAssign.setSelection(spinnerPosition);
         }
         adapterAssign.notifyDataSetChanged();

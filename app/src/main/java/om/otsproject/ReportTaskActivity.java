@@ -116,8 +116,12 @@ public class ReportTaskActivity extends BaseClass
         textViewStatus.setText(String.valueOf(statusValue));
 
         TextView textViewAssign = (TextView) findViewById(R.id.textViewAssign);
-        textViewAssign.setText(controller.getLocalUser(task.get_assign()).getEmail());
-
+        try {
+            textViewAssign.setText(controller.getLocalUser(task.get_assign()).getEmail());
+        }catch(Exception exc){
+            Log.d("Error:", "No member signed.");
+            textViewAssign.setText("No member signed.");
+        }
         ImageView image = (ImageView) findViewById(R.id.imageViewTask);
         GetParseImage(task.get_pic(),image);
 

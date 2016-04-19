@@ -2,12 +2,15 @@ package om.otsproject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -25,6 +28,11 @@ public class MainLogin extends AppCompatActivity {
 
     public static GoogleAnalytics analytics;
     public static Tracker tracker;
+
+    public static final String PREFS_NAME = "MyPrefsFile";
+    private static final String PREF_USERNAME = "username";
+    private static final String PREF_PASSWORD = "password";
+    private static final String PREF_REMEMBER = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,8 @@ public class MainLogin extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        // Google analytics issues
+
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
 
@@ -57,6 +67,24 @@ public class MainLogin extends AppCompatActivity {
         tracker.enableExceptionReporting(true);
         tracker.enableAdvertisingIdCollection(true);
         tracker.enableAutoActivityTracking(true);
+
+        // SharedPreferences for user login info
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String username = pref.getString(PREF_USERNAME, null);
+        String password = pref.getString(PREF_PASSWORD, null);
+        String remember = pref.getString(PREF_REMEMBER,"0");
+        TextView textViewUsername = (TextView)findViewById(R.id.editTextUsername);
+        TextView textViewPassword = (TextView)findViewById(R.id.editTextPassword);
+        if (username != null || password != null) {
+            //Prompt for username and password
+            textViewUsername.setText(username);
+            textViewPassword.setText(password);
+        }
+        if(remember.equals("1")){
+            CheckBox checkBox = (CheckBox)findViewById(R.id.checkBoxRemember);
+            checkBox.setChecked(true);
+        }
+
     }
 
     @Override
@@ -72,8 +100,8 @@ public class MainLogin extends AppCompatActivity {
         progressDialog = ProgressDialog.show(MainLogin.this, "",
                 "Please wait..", true);
 
-        String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
-        String password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
+        final String username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
+        final String password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
@@ -81,6 +109,22 @@ public class MainLogin extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), TasksActivity.class);
                     controller.SetCurrentUser(controller.getLocalUser(ParseUser.getCurrentUser().getObjectId()));
                     controller.ImportData(ParseUser.getCurrentUser().getString("m_id"), intent);
+                    CheckBox checkBox = (CheckBox)findViewById(R.id.checkBoxRemember);
+                    if(checkBox.isChecked()) {
+                        getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+                                .edit()
+                                .putString(PREF_USERNAME, username)
+                                .putString(PREF_PASSWORD, password)
+                                .putString(PREF_REMEMBER, "1")
+                                .commit();
+                    }else{
+                        getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+                                .edit()
+                                .putString(PREF_USERNAME, "")
+                                .putString(PREF_PASSWORD, "")
+                                .putString(PREF_REMEMBER, "0")
+                                .commit();
+                    }
 
                 } else {
                     Toast.makeText(getBaseContext(), "Invalid username or password..", Toast.LENGTH_LONG).show();

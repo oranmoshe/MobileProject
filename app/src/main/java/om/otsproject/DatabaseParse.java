@@ -160,6 +160,53 @@ public class DatabaseParse extends Application {
     }
 
 
+    public void ImportData(final String objectID, final DatabaseHandler dh, final Event event) {
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("m_id",objectID);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    users.clear();
+                    dh.ClearUsers();
+                    for (ParseUser user : objects) {
+                        users.add(user);
+                        User lu = new User(user.getObjectId(), user.getString("m_id"),
+                                user.getString("username"), user.getString("passwordClone"),
+                                user.getString("email"), user.getString("phone"), user.getInt("t_id"),
+                                user.getString("team"));
+                        dh.Add_User(lu);
+                    }
+                    event.doEvent(new EventObjectExtender(new EventObject("Done"),1));
+                }
+                else{
+                    event.doEvent(new EventObjectExtender(new EventObject("Error"),0));
+                }
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Tasks");
+                query.whereEqualTo("m_id", objectID);
+                final List<ParseObject> list = new ArrayList<ParseObject>();
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, com.parse.ParseException e) {
+
+                        if (e == null) {
+                            for (ParseObject o : objects) {
+                                Task lt = new Task(o.getObjectId(), o.getString("m_id"), o.getString("name"),
+                                        o.getInt("priority"), o.getString("location"), o.getString("due_time"),
+                                        o.getString("assign"), o.getInt("accept"), o.getInt("status"), o.getString("pic"),
+                                        o.getString("category"));
+                                dh.Add_Task(lt);
+                            }
+                            event.doEvent(new EventObjectExtender(new EventObject("Done"),1));
+                        } else {
+                            event.doEvent(new EventObjectExtender(new EventObject("Error"),0));
+                        }
+                    }
+                });
+            }
+        });
+    }
+
 
     public void ImportData(final String objectID, final DatabaseHandler dh, final Intent intent,final Context context) {
         ParseQuery<ParseUser> query = ParseUser.getQuery();

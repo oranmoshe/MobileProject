@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.EventObject;
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -44,17 +45,27 @@ public class BaseFragment extends Fragment {
     protected View rootView;
     protected int status;
     protected String task_clicked;
+    protected boolean isInLoading = false;
     TextView textView;
 
 
-    public void fetchTimelineAsync(int status) {
-        LoadData(status);
-        swipeContainer.setRefreshing(false);
+    public void fetchTimelineAsync() {
+        if(!isInLoading) {
+            isInLoading=true;
+            Event event = new Event();
+            event.setOnEventListener(new OnEventListener() {
+                @Override
+                public void onEvent(EventObject e) {
+                    UpdateView();
+                    isInLoading = false;
+                }
+            });
+            groupID = ParseUser.getCurrentUser().getString("m_id");
+            controller.UpdateLocalDatabase(event, groupID);
+            swipeContainer.setRefreshing(false);
+        }
     }
 
-    void LoadData(int status){
-        controller.UpdateRecycleTasks(mRecyclerView, mAdapter, textView, groupID, status);
-    }
 
     void Initializing(int status, LayoutInflater inflater, final ViewGroup container){
         try {
@@ -74,64 +85,71 @@ public class BaseFragment extends Fragment {
                     // Your code to refresh the list here.
                     // Make sure you call swipeContainer.setRefreshing(false)
                     // once the network request has completed successfully.
-                    fetchTimelineAsync(status_f);
+                    fetchTimelineAsync();
                 }
             });
 
-            // mRecyclerView init
-            if (mRecyclerView != null) {
-
-                RecyclerView.LayoutManager mLayoutManager;
-                ArrayList<RecycleTaskItem> items;
-                mRecyclerView.setHasFixedSize(true);
-                mLayoutManager = new LinearLayoutManager(getContext());
-                mRecyclerView.setLayoutManager(mLayoutManager);
-                registerForContextMenu(mRecyclerView);
-
-                items = new ArrayList<RecycleTaskItem>();
-                List<Task> list = null;
-
-                if (status==-1) {
-                    if (ParseUser.getCurrentUser().getObjectId().equals(groupID)) {
-                        list = controller.getLocalTasksByManager(userObjectID);
-                    } else {
-                        list = controller.getLocalTasksByUser(userObjectID);
-                    }
-                }else{
-                    if (ParseUser.getCurrentUser().getObjectId().equals(groupID)) {
-                        list = controller.getLocalTasksByManagerAndStatus(userObjectID, status);
-                    } else {
-                        list = controller.getLocalTasksByUserAndStatus(userObjectID, status);
-                    }
-                }
-
-                Collections.sort(list);
-                Task[] sorted = new Task[list.size()];
-                sorted = list.toArray(sorted);
-                if (list.size() > 0) {
-                    for(int i=0; i<sorted.length;i++){
-                        try {
-                            String email = controller.getLocalUser(sorted[i].get_assign()).getEmail();
-                            boolean isRead = (sorted[i].get_accept()==1?true:false);
-                            items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time(),isRead));
-                        }catch (Exception exc){
-                            Log.d("Error", exc.toString());// probably user deleted
-                        }
-                    }
-
-                    textView.setText(String.valueOf(list.size()) + " tasks");
-                }
-                Log.d("<<<<<<<<", "status: All size: " + String.valueOf(items.size()));
-                mAdapter = new RecycleTaskAdapterManager(items);
-                mRecyclerView.setAdapter(mAdapter);
-                mAdapter.notifyDataSetChanged();
-
-            }
+            UpdateView();
         }
         catch (Exception exc){
             Log.d("Error","on initialize components, "+ exc);
         }
     }
+
+    public void UpdateView(){
+        // mRecyclerView init
+        if (mRecyclerView != null) {
+
+            RecyclerView.LayoutManager mLayoutManager;
+            ArrayList<RecycleTaskItem> items;
+            mRecyclerView.setHasFixedSize(true);
+            mLayoutManager = new LinearLayoutManager(getContext());
+            mRecyclerView.setLayoutManager(mLayoutManager);
+            registerForContextMenu(mRecyclerView);
+
+            items = new ArrayList<RecycleTaskItem>();
+            List<Task> list = null;
+
+            if (status==-1) {
+                if (ParseUser.getCurrentUser().getObjectId().equals(groupID)) {
+                    list = controller.getLocalTasksByManager(userObjectID);
+                } else {
+                    list = controller.getLocalTasksByUser(userObjectID);
+                }
+            }else{
+                if (ParseUser.getCurrentUser().getObjectId().equals(groupID)) {
+                    list = controller.getLocalTasksByManagerAndStatus(userObjectID, status);
+                } else {
+                    list = controller.getLocalTasksByUserAndStatus(userObjectID, status);
+                }
+            }
+
+            Collections.sort(list);
+            Task[] sorted = new Task[list.size()];
+            sorted = list.toArray(sorted);
+            if (list.size() > 0) {
+                for(int i=0; i<sorted.length;i++){
+                    String email = "No member signed.";
+                    try {
+                        email  = controller.getLocalUser(sorted[i].get_assign()).getEmail();
+                    }catch (Exception exc){
+                        Log.d("Error", exc.toString());// probably user deleted
+                    }
+                    boolean isRead = (sorted[i].get_accept()==1?true:false);
+                    items.add(new RecycleTaskItem(sorted[i].get_name(), sorted[i].get_t_id(), email, sorted[i].get_due_time(),isRead));
+
+                }
+
+                textView.setText(String.valueOf(list.size()) + " tasks");
+            }
+            Log.d("<<<<<<<<", "status: All size: " + String.valueOf(items.size()));
+            mAdapter = new RecycleTaskAdapterManager(items);
+            mRecyclerView.setAdapter(mAdapter);
+            mAdapter.notifyDataSetChanged();
+
+        }
+    }
+
     int UNIQUE_FRAGMENT_GROUP_ID=status;
 
     public boolean onContextItemSelected(MenuItem item) {

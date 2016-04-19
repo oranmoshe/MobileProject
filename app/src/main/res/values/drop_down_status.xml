@@ -4,5 +4,6 @@
         <item>Done</item>
         <item>In Process</item>
         <item>Pending</item>
+        <item>Request</item>
     </string-array>
 </resources>

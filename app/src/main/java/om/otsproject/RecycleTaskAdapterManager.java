@@ -63,9 +63,20 @@ public class RecycleTaskAdapterManager extends RecyclerView.Adapter<RecycleTaskA
         }
     }
 
+    public boolean ChecksForDuplication(RecycleTaskItem item) {
+        for (RecycleTaskItem object : mDataset) {
+            if (object.GetUID() == item.GetUID()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void add(int position, RecycleTaskItem item) {
-        mDataset.add(position, item);
-        notifyItemInserted(position);
+        if(!ChecksForDuplication(item)){
+            mDataset.add(position, item);
+            notifyItemInserted(position);
+        }
     }
 
     public void remove(RecycleItem item) {
